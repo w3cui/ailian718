@@ -1,0 +1,46 @@
+@import "../less_public/variables.less";//变量
+@import "../less_public/package.less";//组件
+// Body reset
+body,html{background: @col-body; word-wrap:break-word; white-space:normal; word-break:break-all;font-size: @f_12;font-family: @font-family;color: @text-color; min-width: 1000px; padding: 0px; margin: 0px;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+input,button,select,textarea {word-wrap:break-word; white-space:normal; word-break:break-all;font-family: inherit;font-size: inherit;line-height: inherit;outline: 0;}
+// Links
+select{white-space: nowrap;}
+a {
+  color: @text-color;
+  text-decoration: none;
+  &:hover {
+      color: @col-main;
+    text-decoration: none;
+  }
+  &:focus {
+     outline:none;
+     -moz-outline:none;
+  }
+}
+// Figures
+figure {
+  margin: 0;
+}
+// Images
+img {
+  vertical-align: middle;
+  border:0px;
+}
+ul,li,ol,dl,dt,dd,h1,h2,h3,h4,h5,h6,p,input,textarea{ padding: 0px; margin: 0px;list-style-type:none;word-wrap:break-word; white-space:normal; word-break:break-all;}
+// iOS "clickable elements" fix for role="button"
+[role="button"] {
+  cursor: pointer;
+}
+.transition{.transition(all,400ms,ease-out)};
+.opacity8{.opacity(.95)};
+.opacity3{.opacity(.3)};
+.fr{ float: right;}
+.fl{ float: left; border-width:0px; background: none;}
+.ov_h{ overflow: hidden; height: 0px; clear: both;}
+.text-a{ color: @text-a;}
+.col-main{color: @col-main;}
+a.col-main:hover{ text-decoration: underline;}
+.col-red{color: @col-red;}
+.col666{ color: @col666;}
+.last_bd{border:none;}
+.clear:before,.clear:after{display: block;clear: both;content: "";}

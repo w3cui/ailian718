@@ -1,0 +1,79 @@
+//透明度   
+.opacity(@value){
+    @ie6_value:         (@value * 100); 
+    -khtml-opacity:     @value;
+      -moz-opacity:     @value;
+           opacity:     @value;            
+    filter: ~'alpha(opacity=@{ie6_value})';}
+
+//定位
+.pos_r_a(@pos:relative,@z:1,@l:0px,@t:0px){ 
+    position: @pos; zoom:1; z-index:@z; left: @l; top: @t; zoom:1;
+    }
+//定位
+.p_r(@r:relative,@z:1){
+    position: @r; z-index: @z; zoom:1;
+}
+.p_a(){
+  .p_r(absolute,1);
+}
+.p_f(){
+  .p_r(fixed,1);
+}
+
+
+//圆角
+.b_r(@radius){
+  border-radius: @radius;-moz-border-radius: @radius;-webkit-border-radius: @radius;-o-border-radius: @radius;-ms-border-radius: @radius;
+}
+//投影
+.boxS(@x:0,@y:0,@blur:1px,@color:#000){ 
+ -moz-box-shadow: @arguments;
+ -webkit-box-shadow: @arguments;
+ box-shadow: @arguments; 
+ }
+//文字阴影
+.textS(@x:0,@y:0,@blur:1px,@color:#000){
+  -moz-text-shadow: @arguments;
+  -webkit-text-shadow: @arguments;
+  text-shadow: @arguments;
+}
+//图片模糊
+.filter(@blur){
+  filter:blur(@blur);-moz-filter:blur(@blur);-webkit-filter: blur(@blur);
+}
+//动画
+.transition(@all:all,@ms:400ms,@ease:ease-out,@ms:0s){transition:@arguments;-o-transition:@arguments;-moz-transition:@arguments;-webkit-transition:@arguments; transform-origin:center;}
+//高宽 
+.w_h(@w,@h){ 
+    width: @w;
+    height: @h;
+};
+//背景
+.bg_p(@l,@t){
+    background-position:@l @t;
+}
+//移动
+.transformYX(@y:0px,@x:0px){
+    -moz-transform: translateY(@y) translateX(@x);
+    //Webkit内核浏览器：Safari and Chrome
+    -webkit-transform: translateY(@y) translateX(@x);
+    //Opera
+    -o-transform: translateY(@y) translateX(@x);
+    //IE9
+    -ms-transform: translateY(@y) translateX(@x);
+    //W3C标准
+    transform: translateY(@y) translateX(@x);
+    }
+.animationHover(){
+  overflow: hidden;.p_r;
+  &:after{ content: ""; display: block; .p_a; .w_h(0,0px); left: 50%; top: 50%; background: rgba(0,0,0,.0);.transition(all,200ms,ease-out);}
+  &:hover{
+    &:after{ background: rgba(0,0,0,.08); top:0; .w_h(100%,100%); left: 0;}
+  }
+  &:active{
+    &:after{ background: rgba(0,0,0,.15); top:0; .w_h(100%,100%); left: 0;}
+  }
+}
+//dome http://www.w3cmark.com/animation/#1
+@import "animation.less";//动画组件 
