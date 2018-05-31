@@ -1,5 +1,931 @@
-/**
- *  - v1.0.0  License By 
- * 研发技术中心-技术研发部 
+/** lwj-v MIT License By  */
+ /**
+ 
+ @Name : layDate v1.1 日期控件
+ @Author: 贤心
+ @Date: 2014-06-25
+ @QQ群：176047195
+ @Site：http://sentsin.com/layui/laydate
+ 
  */
-!function(e){function t(e){n.skinLink.href=n.getPath+d[4]+e+d[5]}var a={path:"",skin:"default",format:"YYYY-MM-DD",min:"1900-01-01 00:00:00",max:"2099-12-31 23:59:59",isv:!1,init:!0},n={},s=document,i="createElement",o="getElementById",l="getElementsByTagName",d=["laydate_box","laydate_void","laydate_click","LayDateSkin","skins/","/laydate.css"];e.laydate=function(t){t=t||{};try{d.event=e.event?e.event:laydate.caller.arguments[0]}catch(a){}return n.run(t),laydate},laydate.v="1.1",n.getPath=function(){var e=document.scripts,t=e[e.length-1].src;return $plugin.MAIN_HOST?$plugin.MAIN_HOST+"plugin/layer/laydate/":a.path?a.path:t.substring(0,t.lastIndexOf("/")+1)}(),n.use=function(e,t){var a=s[i]("link");a.type="text/css",a.rel="stylesheet",a.href=n.getPath+e+d[5],t&&(a.id=t),s[l]("head")[0].appendChild(a),a=null},n.trim=function(e){return e=e||"",e.replace(/^\s|\s$/g,"").replace(/\s+/g," ")},n.digit=function(e){return e<10?"0"+(0|e):e},n.stopmp=function(t){return t=t||e.event,t.stopPropagation?t.stopPropagation():t.cancelBubble=!0,this},n.each=function(e,t){for(var a=0,n=e.length;a<n&&t(a,e[a])!==!1;a++);},n.hasClass=function(e,t){return e=e||{},new RegExp("\\b"+t+"\\b").test(e.className)},n.addClass=function(e,t){return e=e||{},n.hasClass(e,t)||(e.className+=" "+t),e.className=n.trim(e.className),this},n.removeClass=function(e,t){if(e=e||{},n.hasClass(e,t)){var a=new RegExp("\\b"+t+"\\b");e.className=e.className.replace(a,"")}return this},n.removeCssAttr=function(e,t){var a=e.style;a.removeProperty?a.removeProperty(t):a.removeAttribute(t)},n.shde=function(e,t){e.style.display=t?"none":"block"},n.query=function(e){if(e&&1===e.nodeType){if("input"!==e.tagName.toLowerCase())throw new Error("选择器elem错误");return e}var t,e=n.trim(e).split(" "),a=s[o](e[0].substr(1));if(a){if(e[1]){if(/^\./.test(e[1])){var i,d=e[1].substr(1),r=new RegExp("\\b"+d+"\\b");return t=[],i=s.getElementsByClassName?a.getElementsByClassName(d):a[l]("*"),n.each(i,function(e,a){r.test(a.className)&&t.push(a)}),t[0]?t:""}return t=a[l](e[1]),t[0]?a[l](e[1]):""}return a}},n.on=function(t,a,s){return t.attachEvent?t.attachEvent("on"+a,function(){s.call(t,e.even)}):t.addEventListener(a,s,!1),n},n.stopMosup=function(e,t){"mouseup"!==e&&n.on(t,"mouseup",function(e){n.stopmp(e)})},n.run=function(e){var s,i,o,l=n.query,r=d.event;try{o=r.target||r.srcElement||{}}catch(m){o={}}if(s=e.elem?l(e.elem):o,d.elemv=/textarea|input/.test(s.tagName.toLocaleLowerCase())?"value":"innerHTML",("init"in e?e.init:a.init)&&!s[d.elemv]&&(s[d.elemv]=laydate.now(null,e.format||a.format)),r&&o.tagName){if(!s||s===n.elem)return;n.stopMosup(r.type,s),n.stopmp(r),n.view(s,e),n.reshow()}else i=e.event||"click",n.each((0|s.length)>0?s:[s],function(t,a){n.stopMosup(i,a),n.on(a,i,function(t){n.stopmp(t),a!==n.elem&&(n.view(a,e),n.reshow())})});t(e.skin||a.skin)},n.scroll=function(e){return e=e?"scrollLeft":"scrollTop",s.body[e]|s.documentElement[e]},n.winarea=function(e){return document.documentElement[e?"clientWidth":"clientHeight"]},n.isleap=function(e){return e%4===0&&e%100!==0||e%400===0},n.checkVoid=function(e,t,a){var s=[];return e=0|e,t=0|t,a=0|a,e<n.mins[0]?s=["y"]:e>n.maxs[0]?s=["y",1]:e>=n.mins[0]&&e<=n.maxs[0]&&(e==n.mins[0]&&(t<n.mins[1]?s=["m"]:t==n.mins[1]&&a<n.mins[2]&&(s=["d"])),e==n.maxs[0]&&(t>n.maxs[1]?s=["m",1]:t==n.maxs[1]&&a>n.maxs[2]&&(s=["d",1]))),s},n.timeVoid=function(e,t){if(n.ymd[1]+1==n.mins[1]&&n.ymd[2]==n.mins[2]){if(0===t&&e<n.mins[3])return 1;if(1===t&&e<n.mins[4])return 1;if(2===t&&e<n.mins[5])return 1}else if(n.ymd[1]+1==n.maxs[1]&&n.ymd[2]==n.maxs[2]){if(0===t&&e>n.maxs[3])return 1;if(1===t&&e>n.maxs[4])return 1;if(2===t&&e>n.maxs[5])return 1}if(e>(t?59:23))return 1},n.check=function(){var e=n.options.format.replace(/YYYY|MM|DD|hh|mm|ss/g,"\\d+\\").replace(/\\$/g,""),t=new RegExp(e),a=n.elem[d.elemv],s=a.match(/\d+/g)||[],i=n.checkVoid(s[0],s[1],s[2]);if(""!==a.replace(/\s/g,"")){if(!t.test(a))return n.elem[d.elemv]="",n.msg("日期不符合格式，请重新选择。"),1;if(i[0])return n.elem[d.elemv]="",n.msg("日期不在有效期内，请重新选择。"),1;i.value=n.elem[d.elemv].match(t).join(),s=i.value.match(/\d+/g),s[1]<1?(s[1]=1,i.auto=1):s[1]>12?(s[1]=12,i.auto=1):s[1].length<2&&(i.auto=1),s[2]<1?(s[2]=1,i.auto=1):s[2]>n.months[(0|s[1])-1]?(s[2]=31,i.auto=1):s[2].length<2&&(i.auto=1),s.length>3&&(n.timeVoid(s[3],0)&&(i.auto=1),n.timeVoid(s[4],1)&&(i.auto=1),n.timeVoid(s[5],2)&&(i.auto=1)),i.auto?n.creation([s[0],0|s[1],0|s[2]],1):i.value!==n.elem[d.elemv]&&(n.elem[d.elemv]=i.value)}},n.months=[31,null,31,30,31,30,31,31,30,31,30,31],n.viewDate=function(e,t,a){var s=(n.query,{}),i=new Date;e<(0|n.mins[0])&&(e=0|n.mins[0]),e>(0|n.maxs[0])&&(e=0|n.maxs[0]),i.setFullYear(e,t,a),s.ymd=[i.getFullYear(),i.getMonth(),i.getDate()],n.months[1]=n.isleap(s.ymd[0])?29:28,i.setFullYear(s.ymd[0],s.ymd[1],1),s.FDay=i.getDay(),s.PDay=n.months[0===t?11:t-1]-s.FDay+1,s.NDay=1,n.each(d.tds,function(e,t){var a,i=s.ymd[0],o=s.ymd[1]+1;t.className="",e<s.FDay?(t.innerHTML=a=e+s.PDay,n.addClass(t,"laydate_nothis"),1===o&&(i-=1),o=1===o?12:o-1):e>=s.FDay&&e<s.FDay+n.months[s.ymd[1]]?(t.innerHTML=a=e-s.FDay+1,e-s.FDay+1===s.ymd[2]&&(n.addClass(t,d[2]),s.thisDay=t)):(t.innerHTML=a=s.NDay++,n.addClass(t,"laydate_nothis"),12===o&&(i+=1),o=12===o?1:o+1),n.checkVoid(i,o,a)[0]&&n.addClass(t,d[1]),n.options.festival&&n.festival(t,o+"."+a),t.setAttribute("y",i),t.setAttribute("m",o),t.setAttribute("d",a),i=o=a=null}),n.valid=!n.hasClass(s.thisDay,d[1]),n.ymd=s.ymd,d.year.value=n.ymd[0]+"年",d.month.value=n.digit(n.ymd[1]+1)+"月",n.each(d.mms,function(e,t){var a=n.checkVoid(n.ymd[0],(0|t.getAttribute("m"))+1);"y"===a[0]||"m"===a[0]?n.addClass(t,d[1]):n.removeClass(t,d[1]),n.removeClass(t,d[2]),a=null}),n.addClass(d.mms[n.ymd[1]],d[2]),s.times=[0|n.inymd[n.elemIndexMap.hour]||0,0|n.inymd[n.elemIndexMap.minute]||0,0|n.inymd[n.elemIndexMap.second]||0],n.each(new Array(3),function(e){n.hmsin[e].value=n.digit(n.timeVoid(s.times[e],e)?0|n.mins[e+3]:0|s.times[e])}),n[n.valid?"removeClass":"addClass"](d.ok,d[1])},n.festival=function(e,t){var a;switch(t){case"1.1":a="元旦";break;case"3.8":a="妇女";break;case"4.5":a="清明";break;case"5.1":a="劳动";break;case"6.1":a="儿童";break;case"9.10":a="教师";break;case"10.1":a="国庆"}a&&(e.innerHTML=a),a=null},n.viewYears=function(e){var t=n.query,a="";n.each(new Array(14),function(t){a+=7===t?"<li "+(parseInt(d.year.value)===e?'class="'+d[2]+'"':"")+' y="'+e+'">'+e+"年</li>":'<li y="'+(e-7+t)+'">'+(e-7+t)+"年</li>"}),t("#laydate_ys").innerHTML=a,n.each(t("#laydate_ys li"),function(e,t){"y"===n.checkVoid(t.getAttribute("y"))[0]?n.addClass(t,d[1]):n.on(t,"click",function(e){n.stopmp(e).reshow(),n.viewDate(0|this.getAttribute("y"),n.ymd[1],n.ymd[2])})})},n.getEachElementIndex=function(e){var t={},a=0;return e.replace(/YYYY|MM|DD|hh|mm|ss/g,function(e,n){return"YYYY"===e?t.year=a++:"MM"===e?t.month=a++:"DD"===e?t.day=a++:"hh"===e?t.hour=a++:"mm"===e?t.minute=a++:"ss"===e&&(t.second=a++),""}),t},n.initDate=function(e){var t=(n.query,new Date),a=n.elem[d.elemv].match(/\d+/g)||[],s=n.getEachElementIndex(e);n.elemIndexMap=s,a.length<3&&(a=n.options.start.match(/\d+/g)||[],a.length<3&&(a=[t.getFullYear(),t.getMonth()+1,t.getDate()])),n.inymd=a,n.viewDate(a[s.year],a[s.month]-1,a[s.day])},n.iswrite=function(){var e=n.query,t={time:e("#laydate_hms")};n.shde(t.time,!n.options.istime),n.shde(d.oclear,!("isclear"in n.options?n.options.isclear:1)),n.shde(d.otoday,!("istoday"in n.options?n.options.istoday:1)),n.shde(d.ok,!("issure"in n.options?n.options.issure:1))},n.orien=function(e,t){var a,s=n.elem.getBoundingClientRect();e.style.left=s.left+(t?0:n.scroll(1))+"px",a=s.bottom+e.offsetHeight/1.5<=n.winarea()?s.bottom-1:s.top>e.offsetHeight/1.5?s.top-e.offsetHeight+1:n.winarea()-e.offsetHeight,e.style.top=Math.max(a+(t?0:n.scroll()),1)+"px"},n.follow=function(e){n.options.fixed?(e.style.position="fixed",n.orien(e,1)):(e.style.position="absolute",n.orien(e))},n.viewtb=function(){var e,t=[],a=["日","一","二","三","四","五","六"],o={},d=s[i]("table"),r=s[i]("thead");return r.appendChild(s[i]("tr")),o.creath=function(e){var t=s[i]("th");t.innerHTML=a[e],r[l]("tr")[0].appendChild(t),t=null},n.each(new Array(6),function(a){t.push([]),e=d.insertRow(0),n.each(new Array(7),function(n){t[a][n]=0,0===a&&o.creath(n),e.insertCell(n)})}),d.insertBefore(r,d.children[0]),d.id=d.className="laydate_table",e=t=null,d.outerHTML.toLowerCase()}(),n.view=function(e,t){var o,l=n.query,r={};t=t||e,n.elem=e,n.options=t,n.options.format||(n.options.format=a.format),n.options.start=n.options.start||"",n.mm=r.mm=[n.options.min||a.min,n.options.max||a.max],n.mins=r.mm[0].match(/\d+/g),n.maxs=r.mm[1].match(/\d+/g),n.box?n.shde(n.box):(o=s[i]("div"),o.id=d[0],o.className=d[0],o.style.cssText="position: absolute;",o.setAttribute("name","laydate-v"+laydate.v),o.innerHTML=r.html='<div class="laydate_top"><div class="laydate_ym laydate_y" id="laydate_YY"><a class="laydate_choose laydate_chprev laydate_tab"><cite></cite></a><input id="laydate_y" readonly><label></label><a class="laydate_choose laydate_chnext laydate_tab"><cite></cite></a><div class="laydate_yms"><a class="laydate_tab laydate_chtop"><cite></cite></a><ul id="laydate_ys"></ul><a class="laydate_tab laydate_chdown"><cite></cite></a></div></div><div class="laydate_ym laydate_m" id="laydate_MM"><a class="laydate_choose laydate_chprev laydate_tab"><cite></cite></a><input id="laydate_m" readonly><label></label><a class="laydate_choose laydate_chnext laydate_tab"><cite></cite></a><div class="laydate_yms" id="laydate_ms">'+function(){var e="";return n.each(new Array(12),function(t){e+='<span m="'+t+'">'+n.digit(t+1)+"月</span>"}),e}()+"</div></div></div>"+n.viewtb+'<div class="laydate_bottom"><ul id="laydate_hms"><li class="laydate_sj">时间</li><li><input readonly>:</li><li><input readonly>:</li><li><input readonly></li></ul><div class="laydate_time" id="laydate_time"></div><div class="laydate_btn"><a id="laydate_clear">清空</a><a id="laydate_today">今天</a><a id="laydate_ok">确认</a></div>'+(a.isv?'<a href="http://sentsin.com/layui/laydate/" class="laydate_v" target="_blank">laydate-v'+laydate.v+"</a>":"")+"</div>",s.body.appendChild(o),n.box=l("#"+d[0]),n.events(),o=null),n.follow(n.box),t.zIndex?n.box.style.zIndex=t.zIndex:n.removeCssAttr(n.box,"z-index"),n.stopMosup("click",n.box),n.initDate(t.format),n.iswrite(),n.check()},n.reshow=function(){return n.each(n.query("#"+d[0]+" .laydate_show"),function(e,t){n.removeClass(t,"laydate_show")}),this},n.close=function(){n.reshow(),n.shde(n.query("#"+d[0]),1),n.elem=null},n.parse=function(e,t,s){return e=e.concat(t),s=s||(n.options?n.options.format:a.format),s.replace(/YYYY|MM|DD|hh|mm|ss/g,function(t,a){var s=-1;return"YYYY"===t?s=0:"MM"===t?s=1:"DD"===t?s=2:"hh"===t?s=3:"mm"===t?s=4:"ss"===t&&(s=5),n.digit(e[s])})},n.creation=function(e,t){var a=(n.query,n.hmsin),s=n.parse(e,[a[0].value,a[1].value,a[2].value]);n.elem[d.elemv]=s,t||(n.close(),"function"==typeof n.options.choose&&n.options.choose(s))},n.events=function(){var t=n.query,a={box:"#"+d[0]};n.addClass(s.body,"laydate_body"),d.tds=t("#laydate_table td"),d.mms=t("#laydate_ms span"),d.year=t("#laydate_y"),d.month=t("#laydate_m"),n.each(t(a.box+" .laydate_ym"),function(e,t){n.on(t,"click",function(t){n.stopmp(t).reshow(),n.addClass(this[l]("div")[0],"laydate_show"),e||(a.YY=parseInt(d.year.value),n.viewYears(a.YY))})}),n.on(t(a.box),"click",function(){n.reshow()}),a.tabYear=function(e){0===e?n.ymd[0]--:1===e?n.ymd[0]++:2===e?a.YY-=14:a.YY+=14,e<2?(n.viewDate(n.ymd[0],n.ymd[1],n.ymd[2]),n.reshow()):n.viewYears(a.YY)},n.each(t("#laydate_YY .laydate_tab"),function(e,t){n.on(t,"click",function(t){n.stopmp(t),a.tabYear(e)})}),a.tabMonth=function(e){e?(n.ymd[1]++,12===n.ymd[1]&&(n.ymd[0]++,n.ymd[1]=0)):(n.ymd[1]--,n.ymd[1]===-1&&(n.ymd[0]--,n.ymd[1]=11)),n.viewDate(n.ymd[0],n.ymd[1],n.ymd[2])},n.each(t("#laydate_MM .laydate_tab"),function(e,t){n.on(t,"click",function(t){n.stopmp(t).reshow(),a.tabMonth(e)})}),n.each(t("#laydate_ms span"),function(e,t){n.on(t,"click",function(e){n.stopmp(e).reshow(),n.hasClass(this,d[1])||n.viewDate(n.ymd[0],0|this.getAttribute("m"),n.ymd[2])})}),n.each(t("#laydate_table td"),function(e,t){n.on(t,"click",function(e){n.hasClass(this,d[1])||(n.stopmp(e),n.creation([0|this.getAttribute("y"),0|this.getAttribute("m"),0|this.getAttribute("d")]))})}),d.oclear=t("#laydate_clear"),n.on(d.oclear,"click",function(){n.elem[d.elemv]="",n.close()}),d.otoday=t("#laydate_today"),n.on(d.otoday,"click",function(){var e=(new Date,n.hmsin),t=new Date;e[0].value=t.getHours(),e[1].value=t.getMinutes(),e[2].value=t.getSeconds(),n.creation([n.ymd[0],n.ymd[1]+1,n.ymd[2]])}),d.ok=t("#laydate_ok"),n.on(d.ok,"click",function(){n.valid&&n.creation([n.ymd[0],n.ymd[1]+1,n.ymd[2]])}),a.times=t("#laydate_time"),n.hmsin=a.hmsin=t("#laydate_hms input"),a.hmss=["小时","分钟","秒数"],a.hmsarr=[],n.msg=function(e,s){var i='<div class="laydte_hsmtex">'+(s||"提示")+"<span>×</span></div>";"string"==typeof e?(i+="<p>"+e+"</p>",n.shde(t("#"+d[0])),n.removeClass(a.times,"laydate_time1").addClass(a.times,"laydate_msg")):(a.hmsarr[e]?i=a.hmsarr[e]:(i+='<div id="laydate_hmsno" class="laydate_hmsno">',n.each(new Array(0===e?24:60),function(e){i+="<span>"+e+"</span>"}),i+="</div>",a.hmsarr[e]=i),n.removeClass(a.times,"laydate_msg"),n[0===e?"removeClass":"addClass"](a.times,"laydate_time1")),n.addClass(a.times,"laydate_show"),a.times.innerHTML=i},a.hmson=function(e,a){var s=t("#laydate_hmsno span"),i=n.valid?null:1;n.each(s,function(t,s){i?n.addClass(s,d[1]):n.timeVoid(t,a)?n.addClass(s,d[1]):n.on(s,"click",function(t){n.hasClass(this,d[1])||(e.value=n.digit(0|this.innerHTML))})}),n.addClass(s[0|e.value],"laydate_click")},n.each(a.hmsin,function(e,t){n.on(t,"click",function(t){n.stopmp(t).reshow(),n.msg(e,a.hmss[e]),a.hmson(this,e)})}),n.on(s,"mouseup",function(){var e=t("#"+d[0]);e&&"none"!==e.style.display&&(n.check()||n.close())}).on(s,"keydown",function(t){t=t||e.event;var a=t.keyCode;13===a&&n.elem&&n.creation([n.ymd[0],n.ymd[1]+1,n.ymd[2]])})},n.init=function(){n.use("need"),n.use(d[4]+a.skin,d[3]),n.skinLink=n.query("#"+d[3])}(),laydate.reset=function(){n.box&&n.elem&&n.follow(n.box)},laydate.now=function(e,t){var a=new Date(0|e?function(e){return e<864e5?+new Date+864e5*e:e}(parseInt(e)):+new Date);return n.parse([a.getFullYear(),a.getMonth()+1,a.getDate()],[a.getHours(),a.getMinutes(),a.getSeconds()],t)},laydate.skin=t}(window);
+
+;!function(win){
+
+//全局配置，如果采用默认均不需要改动
+var config =  {
+    path: '', //laydate所在路径
+    skin: 'default', //初始化皮肤
+    format: 'YYYY-MM-DD', //日期格式
+    min: '1900-01-01 00:00:00', //最小日期
+    max: '2099-12-31 23:59:59', //最大日期
+    isv: false,
+    init: true
+};
+
+var Dates = {}, doc = document, creat = 'createElement', byid = 'getElementById', tags = 'getElementsByTagName';
+var as = ['laydate_box', 'laydate_void', 'laydate_click', 'LayDateSkin', 'skins/', '/laydate.css'];
+
+
+//主接口
+win.laydate = function(options){
+    options = options || {};
+    try{
+        as.event = win.event ? win.event : laydate.caller.arguments[0];
+    } catch(e){};
+    Dates.run(options);
+    return laydate;
+};
+
+laydate.v = '1.1';
+
+//获取组件存放路径
+Dates.getPath = (function(){
+    var js = document.scripts, jsPath = js[js.length - 1].src;
+    // @$plugin.MAIN_HOST 扩展插件目录资源加载
+    return $plugin.MAIN_HOST ? $plugin.MAIN_HOST + "plugin/layer/laydate/" : 
+    config.path ? config.path : jsPath.substring(0, jsPath.lastIndexOf("/") + 1);
+}());
+
+Dates.use = function(lib, id){
+    var link = doc[creat]('link');
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = Dates.getPath + lib + as[5];
+    id && (link.id = id);
+    doc[tags]('head')[0].appendChild(link);
+    link = null;
+};
+
+Dates.trim = function(str){
+    str = str || '';
+    return str.replace(/^\s|\s$/g, '').replace(/\s+/g, ' ');
+};
+
+//补齐数位
+Dates.digit = function(num){
+    return num < 10 ? '0' + (num|0) : num;
+};
+
+Dates.stopmp = function(e){
+    e = e || win.event;
+    e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+    return this;
+};
+
+Dates.each = function(arr, fn){
+    var i = 0, len = arr.length;
+    for(; i < len; i++){
+        if(fn(i, arr[i]) === false){
+            break
+        }
+    }
+};
+
+Dates.hasClass = function(elem, cls){
+    elem = elem || {};
+    return new RegExp('\\b' + cls +'\\b').test(elem.className);
+};
+
+Dates.addClass = function(elem, cls){
+    elem = elem || {};
+    Dates.hasClass(elem, cls) || (elem.className += ' ' + cls);
+    elem.className = Dates.trim(elem.className);
+    return this;
+};
+
+Dates.removeClass = function(elem, cls) {
+    elem = elem || {};
+    if (Dates.hasClass(elem, cls)) {
+        var reg = new RegExp('\\b' + cls +'\\b');
+        elem.className = elem.className.replace(reg, '');
+    }
+    return this;
+};
+
+//清除css属性
+Dates.removeCssAttr = function(elem, attr){
+    var s = elem.style;
+    if(s.removeProperty){
+        s.removeProperty(attr);
+    } else {
+        s.removeAttribute(attr);
+    }
+};
+
+//显示隐藏
+Dates.shde = function(elem, type){
+    elem.style.display = type ? 'none' : 'block';
+};
+
+//简易选择器
+Dates.query = function(node){
+    if(node && node.nodeType === 1){
+        if(node.tagName.toLowerCase() !== 'input'){
+            throw new Error('选择器elem错误');
+        }
+        return node;
+    }
+
+    var node = (Dates.trim(node)).split(' '), elemId = doc[byid](node[0].substr(1)), arr;
+    if(!elemId){
+        return;
+    } else if(!node[1]){
+        return elemId;
+    } else if(/^\./.test(node[1])){
+        var find, child = node[1].substr(1), exp = new RegExp('\\b' + child +'\\b');
+        arr = []
+        find = doc.getElementsByClassName ? elemId.getElementsByClassName(child) : elemId[tags]('*');
+        Dates.each(find, function(ii, that){
+            exp.test(that.className) && arr.push(that); 
+        });
+        return arr[0] ? arr : '';
+    } else {
+        arr = elemId[tags](node[1]);
+        return arr[0] ? elemId[tags](node[1]) : '';
+    }
+};
+
+//事件监听器
+Dates.on = function(elem, even, fn){
+    elem.attachEvent ? elem.attachEvent('on'+ even, function(){
+        fn.call(elem, win.even);
+    }) : elem.addEventListener(even, fn, false);
+    return Dates;
+};
+
+//阻断mouseup
+Dates.stopMosup = function(evt, elem){
+    if(evt !== 'mouseup'){
+        Dates.on(elem, 'mouseup', function(ev){
+            Dates.stopmp(ev);
+        });
+    }
+};
+
+Dates.run = function(options){
+    var S = Dates.query, elem, devt, even = as.event, target;
+    try {
+        target = even.target || even.srcElement || {};
+    } catch(e){
+        target = {};
+    }
+    elem = options.elem ? S(options.elem) : target;
+
+    as.elemv = /textarea|input/.test(elem.tagName.toLocaleLowerCase()) ? 'value' : 'innerHTML';
+    if (('init' in options ? options.init : config.init) && (!elem[as.elemv])) elem[as.elemv] = laydate.now(null, options.format || config.format);
+
+    if(even && target.tagName){
+        if(!elem || elem === Dates.elem){
+            return;
+        }
+        Dates.stopMosup(even.type, elem);
+        Dates.stopmp(even);
+        Dates.view(elem, options);
+        Dates.reshow();
+    } else {
+        devt = options.event || 'click';
+        Dates.each((elem.length|0) > 0 ? elem : [elem], function(ii, that){
+            Dates.stopMosup(devt, that);
+            Dates.on(that, devt, function(ev){
+                Dates.stopmp(ev);
+                if(that !== Dates.elem){
+                    Dates.view(that, options);
+                    Dates.reshow();
+                }
+            });
+        });
+    }
+
+    chgSkin(options.skin || config.skin)
+};
+
+Dates.scroll = function(type){
+    type = type ? 'scrollLeft' : 'scrollTop';
+    return doc.body[type] | doc.documentElement[type];
+};
+
+Dates.winarea = function(type){
+    return document.documentElement[type ? 'clientWidth' : 'clientHeight']
+};
+
+//判断闰年
+Dates.isleap = function(year){
+    return (year%4 === 0 && year%100 !== 0) || year%400 === 0;
+};
+
+//检测是否在有效期
+Dates.checkVoid = function(YY, MM, DD){
+    var back = [];
+    YY = YY|0;
+    MM = MM|0;
+    DD = DD|0;
+    if(YY < Dates.mins[0]){
+        back = ['y'];
+    } else if(YY > Dates.maxs[0]){
+        back = ['y', 1];
+    } else if(YY >= Dates.mins[0] && YY <= Dates.maxs[0]){
+        if(YY == Dates.mins[0]){
+            if(MM < Dates.mins[1]){
+                back = ['m'];
+            } else if(MM == Dates.mins[1]){
+                if(DD < Dates.mins[2]){
+                    back = ['d'];
+                }
+            }
+        }
+        if(YY == Dates.maxs[0]){
+            if(MM > Dates.maxs[1]){
+                back = ['m', 1];
+            } else if(MM == Dates.maxs[1]){
+                if(DD > Dates.maxs[2]){
+                    back = ['d', 1];
+                }
+            }
+        }
+    }
+    return back;
+};
+
+//时分秒的有效检测
+Dates.timeVoid = function(times, index){
+    if(Dates.ymd[1]+1 == Dates.mins[1] && Dates.ymd[2] == Dates.mins[2]){
+        if(index === 0 && (times < Dates.mins[3])){
+            return 1;
+        } else if(index === 1 && times < Dates.mins[4]){
+            return 1;
+        } else if(index === 2 && times < Dates.mins[5]){
+            return 1;
+        }
+    } else if(Dates.ymd[1]+1 == Dates.maxs[1] && Dates.ymd[2] == Dates.maxs[2]){
+        if(index === 0 && times > Dates.maxs[3]){
+            return 1;
+        } else if(index === 1 && times > Dates.maxs[4]){
+            return 1;
+        } else if(index === 2 && times > Dates.maxs[5]){
+            return 1;
+        }
+    }
+    if(times > (index ? 59 : 23)){
+        return 1;
+    }
+};
+
+//检测日期是否合法
+Dates.check = function(){
+    var reg = Dates.options.format.replace(/YYYY|MM|DD|hh|mm|ss/g,'\\d+\\').replace(/\\$/g, '');
+    var exp = new RegExp(reg), value = Dates.elem[as.elemv];
+    var arr = value.match(/\d+/g) || [], isvoid = Dates.checkVoid(arr[0], arr[1], arr[2]);
+    if(value.replace(/\s/g, '') !== ''){
+        if(!exp.test(value)){
+            Dates.elem[as.elemv] = '';
+            Dates.msg('日期不符合格式，请重新选择。');
+            return 1;
+        } else if(isvoid[0]){
+            Dates.elem[as.elemv] = '';
+            Dates.msg('日期不在有效期内，请重新选择。');
+            return 1;
+        } else {
+            isvoid.value = Dates.elem[as.elemv].match(exp).join();
+            arr = isvoid.value.match(/\d+/g);
+            if(arr[1] < 1){
+                arr[1] = 1;
+                isvoid.auto = 1;
+            } else if(arr[1] > 12){
+                arr[1] = 12;
+                isvoid.auto = 1;
+            } else if(arr[1].length < 2){
+                isvoid.auto = 1;
+            }
+            if(arr[2] < 1){
+                arr[2] = 1;
+                isvoid.auto = 1;
+            } else if(arr[2] > Dates.months[(arr[1]|0)-1]){
+                arr[2] = 31;
+                isvoid.auto = 1;
+            } else if(arr[2].length < 2){
+                isvoid.auto = 1;
+            }
+            if(arr.length > 3){
+                if(Dates.timeVoid(arr[3], 0)){
+                    isvoid.auto = 1;
+                };
+                if(Dates.timeVoid(arr[4], 1)){
+                    isvoid.auto = 1;
+                };
+                if(Dates.timeVoid(arr[5], 2)){
+                    isvoid.auto = 1;
+                };
+            }
+            if(isvoid.auto){
+                Dates.creation([arr[0], arr[1]|0, arr[2]|0], 1);
+            } else if(isvoid.value !== Dates.elem[as.elemv]){
+                Dates.elem[as.elemv] = isvoid.value;
+            }
+        }
+    }
+};
+
+//生成日期
+Dates.months = [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+Dates.viewDate = function(Y, M, D){
+    var S = Dates.query, log = {}, De = new Date();
+    Y < (Dates.mins[0]|0) && (Y = (Dates.mins[0]|0));
+    Y > (Dates.maxs[0]|0) && (Y = (Dates.maxs[0]|0));
+    
+    De.setFullYear(Y, M, D);
+    log.ymd = [De.getFullYear(), De.getMonth(), De.getDate()];
+    
+    Dates.months[1] = Dates.isleap(log.ymd[0]) ? 29 : 28;
+    
+    De.setFullYear(log.ymd[0], log.ymd[1], 1);
+    log.FDay = De.getDay();
+    
+    log.PDay = Dates.months[M === 0 ? 11 : M - 1] - log.FDay + 1;
+    log.NDay = 1;
+    
+    //渲染日
+    Dates.each(as.tds, function(i, elem){
+        var YY = log.ymd[0], MM = log.ymd[1] + 1, DD;
+        elem.className = '';
+        if(i < log.FDay){
+            elem.innerHTML = DD = i + log.PDay;
+            Dates.addClass(elem, 'laydate_nothis');
+            MM === 1 && (YY -= 1);
+            MM = MM === 1 ? 12 : MM - 1; 
+        } else if(i >= log.FDay && i < log.FDay + Dates.months[log.ymd[1]]){
+            elem.innerHTML = DD = i  - log.FDay + 1;
+            if(i - log.FDay + 1 === log.ymd[2]){
+                Dates.addClass(elem, as[2]);
+                log.thisDay = elem;
+            }
+        } else {
+            elem.innerHTML = DD = log.NDay++;
+            Dates.addClass(elem, 'laydate_nothis');
+            MM === 12 && (YY += 1);
+            MM = MM === 12 ? 1 : MM + 1; 
+        }
+       
+        if(Dates.checkVoid(YY, MM, DD)[0]){
+            Dates.addClass(elem, as[1]);
+        }
+        
+        Dates.options.festival && Dates.festival(elem, MM + '.' + DD);
+        elem.setAttribute('y', YY);
+        elem.setAttribute('m', MM);
+        elem.setAttribute('d', DD);
+        YY = MM = DD = null;
+    });
+    
+    Dates.valid = !Dates.hasClass(log.thisDay, as[1]);
+    Dates.ymd = log.ymd;
+    
+    //锁定年月
+    as.year.value = Dates.ymd[0] + '年';
+    as.month.value = Dates.digit(Dates.ymd[1] + 1) + '月';
+    
+    //定位月
+    Dates.each(as.mms, function(i, elem){
+        var getCheck = Dates.checkVoid(Dates.ymd[0], (elem.getAttribute('m')|0) + 1);
+        if(getCheck[0] === 'y' || getCheck[0] === 'm'){
+            Dates.addClass(elem, as[1]);
+        } else {
+            Dates.removeClass(elem, as[1]);
+        }
+        Dates.removeClass(elem, as[2]);
+        getCheck = null
+    });
+    Dates.addClass(as.mms[Dates.ymd[1]], as[2]);
+
+    //定位时分秒
+    log.times = [
+        Dates.inymd[Dates.elemIndexMap.hour]|0 || 0,
+        Dates.inymd[Dates.elemIndexMap.minute]|0 || 0,
+        Dates.inymd[Dates.elemIndexMap.second]|0 || 0
+    ];
+    Dates.each(new Array(3), function(i){
+        Dates.hmsin[i].value = Dates.digit(Dates.timeVoid(log.times[i], i) ? Dates.mins[i+3]|0 : log.times[i]|0);
+    });
+    
+    //确定按钮状态
+    Dates[Dates.valid ? 'removeClass' : 'addClass'](as.ok, as[1]);
+};
+
+//节日
+Dates.festival = function(td, md){
+    var str;
+    switch(md){
+        case '1.1':
+            str = '元旦';
+        break;
+        case '3.8':
+            str = '妇女';
+        break;
+        case '4.5':
+            str = '清明';
+        break;
+        case '5.1':
+            str = '劳动';
+        break;
+        case '6.1':
+            str = '儿童';
+        break;
+        case '9.10':
+            str = '教师';
+        break;
+        case '10.1':
+            str = '国庆';
+        break;
+    };
+    str && (td.innerHTML = str);
+    str = null;
+};
+
+//生成年列表
+Dates.viewYears = function(YY){
+    var S = Dates.query, str = '';
+    Dates.each(new Array(14), function(i){
+        if(i === 7) {
+            str += '<li '+ (parseInt(as.year.value) === YY ? 'class="'+ as[2] +'"' : '') +' y="'+ YY +'">'+ YY +'年</li>';
+        } else {
+            str += '<li y="'+ (YY-7+i) +'">'+ (YY-7+i) +'年</li>';
+        }
+    }); 
+    S('#laydate_ys').innerHTML = str;
+    Dates.each(S('#laydate_ys li'), function(i, elem){
+        if(Dates.checkVoid(elem.getAttribute('y'))[0] === 'y'){
+            Dates.addClass(elem, as[1]);
+        } else {
+            Dates.on(elem, 'click', function(ev){
+                Dates.stopmp(ev).reshow();
+                Dates.viewDate(this.getAttribute('y')|0, Dates.ymd[1], Dates.ymd[2]);
+            });
+        }
+    });
+};
+
+Dates.getEachElementIndex = function(format) {
+    var components = {};
+    var currentIndex = 0;
+    format.replace(/YYYY|MM|DD|hh|mm|ss/g, function(str, index){
+        if (str === 'YYYY') {
+            components['year'] = currentIndex++;
+        } else if (str === 'MM') {
+            components['month'] = currentIndex++;
+        } else if (str === 'DD') {
+            components['day'] = currentIndex++;
+        } else if (str === 'hh') {
+            components['hour'] = currentIndex++;
+        } else if (str === 'mm') {
+            components['minute'] = currentIndex++;
+        } else if (str === 'ss') {
+            components['second'] = currentIndex++;
+        }
+        return "";
+    });
+    return components;
+};
+
+//初始化面板数据
+Dates.initDate = function(format){
+    var S = Dates.query, log = {}, De = new Date();
+    var ymd = Dates.elem[as.elemv].match(/\d+/g) || [];
+    var elemIndexMap = Dates.getEachElementIndex(format);
+    Dates.elemIndexMap = elemIndexMap;
+    if(ymd.length < 3){
+        ymd = Dates.options.start.match(/\d+/g) || [];
+        if(ymd.length < 3){
+            ymd = [De.getFullYear(), De.getMonth()+1, De.getDate()];
+        }
+    }
+    Dates.inymd = ymd;
+    Dates.viewDate(ymd[elemIndexMap.year], ymd[elemIndexMap.month] - 1, ymd[elemIndexMap.day]);
+};
+
+//是否显示零件
+Dates.iswrite = function(){
+    var S = Dates.query, log = {
+        time: S('#laydate_hms')
+    };
+    Dates.shde(log.time, !Dates.options.istime);
+    Dates.shde(as.oclear, !('isclear' in Dates.options ? Dates.options.isclear : 1));
+    Dates.shde(as.otoday, !('istoday' in Dates.options ? Dates.options.istoday : 1));
+    Dates.shde(as.ok, !('issure' in Dates.options ? Dates.options.issure : 1));
+};
+
+//方位辨别
+Dates.orien = function(obj, pos){
+    var tops, rect = Dates.elem.getBoundingClientRect();
+    obj.style.left = rect.left + (pos ? 0 : Dates.scroll(1)) + 'px';
+    if(rect.bottom + obj.offsetHeight/1.5 <= Dates.winarea()){
+        tops = rect.bottom - 1;         
+    } else {
+        tops = rect.top > obj.offsetHeight/1.5 ? rect.top - obj.offsetHeight + 1 : Dates.winarea() - obj.offsetHeight;
+    }
+    obj.style.top = Math.max(tops + (pos ? 0 : Dates.scroll()),1) + 'px';
+};
+
+//吸附定位
+Dates.follow = function(obj){
+    if(Dates.options.fixed){
+        obj.style.position = 'fixed';
+        Dates.orien(obj, 1);
+    } else {
+        obj.style.position = 'absolute';
+        Dates.orien(obj);
+    }
+};
+
+//生成表格
+Dates.viewtb = (function(){
+    var tr, view = [], weeks = [ '日', '一', '二', '三', '四', '五', '六'];
+    var log = {}, table = doc[creat]('table'), thead = doc[creat]('thead');
+    thead.appendChild(doc[creat]('tr'));
+    log.creath = function(i){
+        var th = doc[creat]('th');
+        th.innerHTML = weeks[i];
+        thead[tags]('tr')[0].appendChild(th);
+        th = null;
+    };
+    
+    Dates.each(new Array(6), function(i){
+        view.push([]);
+        tr = table.insertRow(0);
+        Dates.each(new Array(7), function(j){
+            view[i][j] = 0;
+            i === 0 && log.creath(j);
+            tr.insertCell(j);
+        });
+    });
+    
+    table.insertBefore(thead, table.children[0]); 
+    table.id = table.className = 'laydate_table';
+    tr = view = null;
+    return table.outerHTML.toLowerCase();
+}());
+
+//渲染控件骨架
+Dates.view = function(elem, options){
+    var S = Dates.query, div, log = {};
+    options = options || elem;
+
+    Dates.elem = elem;
+    Dates.options = options;
+    Dates.options.format || (Dates.options.format = config.format);
+    Dates.options.start = Dates.options.start || '';
+    Dates.mm = log.mm = [Dates.options.min || config.min, Dates.options.max || config.max];
+    Dates.mins = log.mm[0].match(/\d+/g);
+    Dates.maxs = log.mm[1].match(/\d+/g);
+    
+    if(!Dates.box){
+        div = doc[creat]('div');
+        div.id = as[0];
+        div.className = as[0];
+        div.style.cssText = 'position: absolute;';
+        div.setAttribute('name', 'laydate-v'+ laydate.v);
+        
+        div.innerHTML =  log.html = '<div class="laydate_top">'
+          +'<div class="laydate_ym laydate_y" id="laydate_YY">'
+            +'<a class="laydate_choose laydate_chprev laydate_tab"><cite></cite></a>'
+            +'<input id="laydate_y" readonly><label></label>'
+            +'<a class="laydate_choose laydate_chnext laydate_tab"><cite></cite></a>'
+            +'<div class="laydate_yms">'
+              +'<a class="laydate_tab laydate_chtop"><cite></cite></a>'
+              +'<ul id="laydate_ys"></ul>'
+              +'<a class="laydate_tab laydate_chdown"><cite></cite></a>'
+            +'</div>'
+          +'</div>'
+          +'<div class="laydate_ym laydate_m" id="laydate_MM">'
+            +'<a class="laydate_choose laydate_chprev laydate_tab"><cite></cite></a>'
+            +'<input id="laydate_m" readonly><label></label>'
+            +'<a class="laydate_choose laydate_chnext laydate_tab"><cite></cite></a>'
+            +'<div class="laydate_yms" id="laydate_ms">'+ function(){
+                var str = '';
+                Dates.each(new Array(12), function(i){
+                    str += '<span m="'+ i +'">'+ Dates.digit(i+1) +'月</span>';
+                });
+                return str;
+            }() +'</div>'
+          +'</div>'
+        +'</div>'
+        
+        + Dates.viewtb
+        
+        +'<div class="laydate_bottom">'
+          +'<ul id="laydate_hms">'
+            +'<li class="laydate_sj">时间</li>'
+            +'<li><input readonly>:</li>'
+            +'<li><input readonly>:</li>'
+            +'<li><input readonly></li>'
+          +'</ul>'
+          +'<div class="laydate_time" id="laydate_time"></div>'
+          +'<div class="laydate_btn">'
+            +'<a id="laydate_clear">清空</a>'
+            +'<a id="laydate_today">今天</a>'
+            +'<a id="laydate_ok">确认</a>'
+          +'</div>'
+          +(config.isv ? '<a href="http://sentsin.com/layui/laydate/" class="laydate_v" target="_blank">laydate-v'+ laydate.v +'</a>' : '')
+        +'</div>';
+        doc.body.appendChild(div); 
+        Dates.box = S('#'+as[0]);        
+        Dates.events();
+        div = null;
+    } else {
+        Dates.shde(Dates.box);
+    }
+    Dates.follow(Dates.box);
+    options.zIndex ? Dates.box.style.zIndex = options.zIndex : Dates.removeCssAttr(Dates.box, 'z-index');
+    Dates.stopMosup('click', Dates.box);
+    
+    Dates.initDate(options.format);
+    Dates.iswrite();
+    Dates.check();
+};
+
+//隐藏内部弹出元素
+Dates.reshow = function(){
+    Dates.each(Dates.query('#'+ as[0] +' .laydate_show'), function(i, elem){
+        Dates.removeClass(elem, 'laydate_show');
+    });
+    return this;
+};
+
+//关闭控件
+Dates.close = function(){
+    Dates.reshow();
+    Dates.shde(Dates.query('#'+ as[0]), 1);
+    Dates.elem = null;
+};
+
+//转换日期格式
+Dates.parse = function(ymd, hms, format){
+    ymd = ymd.concat(hms); // [year, month, day, hour, minute, second]
+    format = format || (Dates.options ? Dates.options.format : config.format);
+    return format.replace(/YYYY|MM|DD|hh|mm|ss/g, function(str, index){
+        var pos = -1;
+        if (str === 'YYYY') {
+            pos = 0;
+        } else if (str === 'MM') {
+            pos = 1;
+        } else if (str === 'DD') {
+            pos = 2;
+        } else if (str === 'hh') {
+            pos = 3;
+        } else if (str === 'mm') {
+            pos = 4;
+        } else if (str === 'ss') {
+            pos = 5;
+        }
+        return Dates.digit(ymd[pos]);
+    });     
+};
+
+//返回最终日期
+Dates.creation = function(ymd, hide){
+    var S = Dates.query, hms = Dates.hmsin;
+    var getDates = Dates.parse(ymd, [hms[0].value, hms[1].value, hms[2].value]);
+    Dates.elem[as.elemv] = getDates;
+    if(!hide){
+        Dates.close();
+        typeof Dates.options.choose === 'function' && Dates.options.choose(getDates); 
+    }
+};
+
+//事件
+Dates.events = function(){
+    var S = Dates.query, log = {
+        box: '#'+as[0]
+    };
+    
+    Dates.addClass(doc.body, 'laydate_body');
+    
+    as.tds = S('#laydate_table td');
+    as.mms = S('#laydate_ms span');
+    as.year = S('#laydate_y');
+    as.month = S('#laydate_m');
+
+    //显示更多年月
+    Dates.each(S(log.box + ' .laydate_ym'), function(i, elem){
+        Dates.on(elem, 'click', function(ev){
+            Dates.stopmp(ev).reshow();
+            Dates.addClass(this[tags]('div')[0], 'laydate_show');
+            if(!i){
+                log.YY = parseInt(as.year.value);
+                Dates.viewYears(log.YY);
+            }
+        });
+    });
+    
+    Dates.on(S(log.box), 'click', function(){
+        Dates.reshow();
+    });
+    
+    //切换年
+    log.tabYear = function(type){  
+        if(type === 0){
+            Dates.ymd[0]--;
+        } else if(type === 1) {
+            Dates.ymd[0]++;
+        } else if(type === 2) {
+            log.YY -= 14;
+        } else {
+            log.YY += 14;
+        }
+        if(type < 2){
+            Dates.viewDate(Dates.ymd[0], Dates.ymd[1], Dates.ymd[2]);
+            Dates.reshow();
+        } else {
+            Dates.viewYears(log.YY);
+        }
+    };
+    Dates.each(S('#laydate_YY .laydate_tab'), function(i, elem){
+        Dates.on(elem, 'click', function(ev){
+            Dates.stopmp(ev);
+            log.tabYear(i);
+        });
+    });
+    
+    
+    //切换月
+    log.tabMonth = function(type){
+        if(type){
+            Dates.ymd[1]++;
+            if(Dates.ymd[1] === 12){
+                Dates.ymd[0]++;
+                Dates.ymd[1] = 0;
+            }            
+        } else {
+            Dates.ymd[1]--;
+            if(Dates.ymd[1] === -1){
+                Dates.ymd[0]--;
+                Dates.ymd[1] = 11;
+            }
+        }
+        Dates.viewDate(Dates.ymd[0], Dates.ymd[1], Dates.ymd[2]);
+    };
+    Dates.each(S('#laydate_MM .laydate_tab'), function(i, elem){
+        Dates.on(elem, 'click', function(ev){
+            Dates.stopmp(ev).reshow();
+            log.tabMonth(i);
+        });
+    });
+    
+    //选择月
+    Dates.each(S('#laydate_ms span'), function(i, elem){
+        Dates.on(elem, 'click', function(ev){
+            Dates.stopmp(ev).reshow();
+            if(!Dates.hasClass(this, as[1])){
+                Dates.viewDate(Dates.ymd[0], this.getAttribute('m')|0, Dates.ymd[2]);
+            }
+        });
+    });
+    
+    //选择日
+    Dates.each(S('#laydate_table td'), function(i, elem){
+        Dates.on(elem, 'click', function(ev){
+            if(!Dates.hasClass(this, as[1])){
+                Dates.stopmp(ev);
+                Dates.creation([this.getAttribute('y')|0, this.getAttribute('m')|0, this.getAttribute('d')|0]);
+            }
+        });
+    });
+    
+    //清空
+    as.oclear = S('#laydate_clear');
+    Dates.on(as.oclear, 'click', function(){
+        Dates.elem[as.elemv] = '';
+        Dates.close();
+    });
+    
+    //今天
+    as.otoday = S('#laydate_today');
+    Dates.on(as.otoday, 'click', function(){
+        var now = new Date();
+        // 2016-09-23 18:20:54 修复选中今天choose方法得不到数据
+        // Dates.creation([now.getFullYear(), now.getMonth() + 1, now.getDate()]);
+
+        // 2016-09-26 10:49:25 修复选中今天 如果YYYY-MM-DD hh:mm:ss格式，获取当前的时分秒
+        var hms = Dates.hmsin;
+        var date = new Date();
+        // 获取当前时间小时
+        hms[0].value = date.getHours();
+        // 获取当前时间分钟
+        hms[1].value = date.getMinutes();
+        // 获取当前时间秒
+        hms[2].value = date.getSeconds();
+        Dates.creation([Dates.ymd[0], Dates.ymd[1]+1, Dates.ymd[2]]);
+    });
+    
+    //确认
+    as.ok = S('#laydate_ok');
+    Dates.on(as.ok, 'click', function(){
+        if(Dates.valid){
+            Dates.creation([Dates.ymd[0], Dates.ymd[1]+1, Dates.ymd[2]]);
+        }
+    });
+    
+    //选择时分秒
+    log.times = S('#laydate_time');
+    Dates.hmsin = log.hmsin = S('#laydate_hms input');
+    log.hmss = ['小时', '分钟', '秒数'];
+    log.hmsarr = [];
+    
+    //生成时分秒或警告信息
+    Dates.msg = function(i, title){
+        var str = '<div class="laydte_hsmtex">'+ (title || '提示') +'<span>×</span></div>';
+        if(typeof i === 'string'){
+            str += '<p>'+ i +'</p>';
+            Dates.shde(S('#'+as[0]));
+            Dates.removeClass(log.times, 'laydate_time1').addClass(log.times, 'laydate_msg');
+        } else {
+            if(!log.hmsarr[i]){
+                str += '<div id="laydate_hmsno" class="laydate_hmsno">';
+                Dates.each(new Array(i === 0 ? 24 : 60), function(i){
+                    str += '<span>'+ i +'</span>';
+                });
+                str += '</div>'
+                log.hmsarr[i] = str;
+            } else {
+                str = log.hmsarr[i];
+            }
+            Dates.removeClass(log.times, 'laydate_msg');
+            Dates[i=== 0 ? 'removeClass' : 'addClass'](log.times, 'laydate_time1');
+        }
+        Dates.addClass(log.times, 'laydate_show');
+        log.times.innerHTML = str;
+    };
+    
+    log.hmson = function(input, index){
+        var span = S('#laydate_hmsno span'), set = Dates.valid ? null : 1;
+        Dates.each(span, function(i, elem){
+            if(set){
+                Dates.addClass(elem, as[1]);
+            } else if(Dates.timeVoid(i, index)){
+                Dates.addClass(elem, as[1]);
+            } else {
+                Dates.on(elem, 'click', function(ev){
+                    if(!Dates.hasClass(this, as[1])){
+                        input.value = Dates.digit(this.innerHTML|0);
+                    }
+                });
+            } 
+        });
+        Dates.addClass(span[input.value|0], 'laydate_click');
+    };
+    
+    //展开选择
+    Dates.each(log.hmsin, function(i, elem){
+        Dates.on(elem, 'click', function(ev){
+            Dates.stopmp(ev).reshow();
+            Dates.msg(i, log.hmss[i]);
+            log.hmson(this, i);
+        });
+    });
+    
+    Dates.on(doc, 'mouseup', function(){
+        var box = S('#'+as[0]);
+        if(box && box.style.display !== 'none'){
+            Dates.check() || Dates.close();
+        }
+    }).on(doc, 'keydown', function(event){
+        event = event || win.event;
+        var codes = event.keyCode;
+
+        //如果在日期显示的时候按回车
+        if(codes === 13 && Dates.elem){
+            Dates.creation([Dates.ymd[0], Dates.ymd[1]+1, Dates.ymd[2]]);
+        }
+    });
+};
+
+Dates.init = (function(){
+    Dates.use('need');
+    Dates.use(as[4] + config.skin, as[3]);
+    Dates.skinLink = Dates.query('#'+as[3]);
+}());
+
+//重置定位
+laydate.reset = function(){
+    (Dates.box && Dates.elem) && Dates.follow(Dates.box);
+};
+
+//返回指定日期
+laydate.now = function(timestamp, format){
+    var De = new Date((timestamp|0) ? function(tamp){
+        return tamp < 86400000 ? (+new Date + tamp*86400000) : tamp;
+    }(parseInt(timestamp)) : +new Date);
+    return Dates.parse(
+        [De.getFullYear(), De.getMonth()+1, De.getDate()],
+        [De.getHours(), De.getMinutes(), De.getSeconds()],
+        format
+    );
+};
+
+//皮肤选择
+laydate.skin = chgSkin;
+
+//内部函数
+function chgSkin(lib) {
+    Dates.skinLink.href = Dates.getPath + as[4] + lib + as[5];
+};
+
+}(window);

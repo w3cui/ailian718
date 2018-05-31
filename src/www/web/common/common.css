@@ -14,7 +14,7 @@ a { cursor:pointer; }
 .clearfix { zoom:1;} 
 .clear{ clear:both; font-size:0; height:0; overflow:hidden;}
 
-body{color:#333333; background:#fff url(../images/bg.jpg) no-repeat center 0;}
+body{color:#333333; background:#fff url(./images/bg.jpg) no-repeat center 0;}
 body,button,input,select,textarea { font-size:12px; font-family:Tahoma,Helvetica,Arial,"microsoft yahei","Microsoft Yahei",sans-serif;}
 a{color:#333333;text-decoration:none;}
 a:hover {text-decoration: none;color: #186DC3;}
@@ -31,9 +31,9 @@ a:hover {text-decoration: none;color: #186DC3;}
 }
 
 .header{ width:100%; height:100px;overflow:hidden;}
-.header .logo{width:190px; height:60px; margin:20px 0 0 0; float:left; background:url(../images/logo.png) no-repeat 0 0;}
+.header .logo{width:190px; height:60px; margin:20px 0 0 0; float:left; background:url(./images/logo.png) no-repeat 0 0;}
 .header .logo a{display:block; width:100%; height:100%;}
-.header-search{width:330px; margin:0 100px 0 200px; padding:20px 0;float:left;}
+.header-search{width:330px; margin:0 100px 0 200px; padding:20px 0;float:left;} 
 .searchbar{width:100%; overflow:hidden}
 .searchstyle{ width:80%; height:29px; background:#fff; border:3px solid #DC2D11; margin-bottom:10px; float:left;display:inline-block;padding-left:2px;}
 .searchstyle:focus{ outline:none}
@@ -63,13 +63,14 @@ a:hover {text-decoration: none;color: #186DC3;}
 .f-links .roll li a{color:#666;transition:all .5s ease}
 .f-links a.more{width:50px;height:22px;display:block;text-align:center;line-height:22px;color:#666;position:absolute;top:0;right:0;transition:all .5s ease}
 .infoot{height:96px;overflow:hidden;padding-top:20px}
-.infoot .ifl{float:left;width:190px;height:60px;padding-top:8px}
+.infoot .ifl{float:left;width:190px;height:60px;padding-top:8px; background: url(./images/footer_logo.png) no-repeat center center;}
 .infoot .ifc{float:left;width:607px;padding-left:40px}
 .infoot .ifc p{color:#666;line-height:18px;font-size:12px; line-height:1.8;}
 .infoot .ifc p a{color:#666;transition:all .5s ease}
-.infoot .ifc p span {color: #2f2f2f;margin: 0 15px;}
-.infoot .ifr{float:left;width:96px;height:92px;padding:15px 0 0 100px;}
+.infoot .ifc p span {color: #2f2f2f;margin: 0 15px;} 
+.infoot .ifr{ position: relative; float:left;width:96px;height:92px;padding:15px 0 0 100px;}
 .infoot .ifr p{font-size:12px;line-height:14px;color:#666}
+.infoot .ifr .code{ position: absolute; background:#fff; left: 0; top: 0; width: 80px; height: 80px; }
 
 
 .crumbs {padding:20px 0;color:#999; font-size:14px;}
@@ -194,8 +195,8 @@ a:hover {text-decoration: none;color: #186DC3;}
 .gamelistbox li .box02{ padding-top:20px;}
 .gamelistbox li .code{ position:absolute;left:20px;top:20px; display:none;}
 .gamelistbox li .code img{width:115px;}
-.download02{ width:112px; height:65px; border:0; cursor:pointer; background:url(../images/bg.gif) 0 -557px; }
-.download02:hover{width:112px; height:65px; border:0; cursor:pointer; background:url(../images/bg.gif) 0 -635px;}
+.download02{ width:112px; height:65px; border:0; cursor:pointer; background:url(./images/bg.gif) 0 -557px; }
+.download02:hover{width:112px; height:65px; border:0; cursor:pointer; background:url(./images/bg.gif) 0 -635px;}
 
 /** login */
 .hidden {
@@ -267,7 +268,7 @@ input, textarea {
     position: absolute;
     top: 0;
     right: 0;
-    background: url(../images/icon-close.jpg) no-repeat;
+    background: url(./images/icon-close.jpg) no-repeat;
     background-position: -47px 0;
 }
 .g-pop .link-close:hover {
@@ -348,7 +349,7 @@ input, textarea {
     display: inline-block;
     width: 21px;
     height: 21px;
-    background: url(../images/icon.jpg) no-repeat;
+    background: url(./images/icon.jpg) no-repeat;
     background-position: -28px -2px;
     cursor: pointer;
     position: absolute;
@@ -359,7 +360,7 @@ input, textarea {
     display: inline-block;
     width: 40px;
     height: 30px;
-    background: url(../images/icon1.png) no-repeat;
+    background: url(./images/icon1.png) no-repeat;
     position: absolute;
     left: 13px;
     top: 7px;
@@ -380,7 +381,7 @@ input, textarea {
     width: 261px;
     height: 34px;
     line-height: 32px;
-    background: url(../images/btn-longer.png) no-repeat center;
+    background: url(./images/btn-longer.png) no-repeat center;
     background-position: 0 0;
     font-size: 16px;
     color: #fff;
@@ -497,7 +498,7 @@ input, textarea {
     display: inline-block;
     width: 21px;
     height: 21px;
-    background: url(../images/icon.jpg) no-repeat;
+    background: url(./images/icon.jpg) no-repeat;
     background-position: -5px -2px;
     cursor: pointer;
     position: absolute;
@@ -531,11 +532,11 @@ input, textarea {
     display: none;
 }
 .g-register-pop .m-register-box .form-box .icon-error {
-    background: url(../images/icon.jpg) no-repeat;
+    background: url(./images/icon.jpg) no-repeat;
     background-position: -97px 0;
 }
 .g-register-pop .m-register-box .form-box .icon-correct {
-    background: url(../images/icon.jpg) no-repeat;
+    background: url(./images/icon.jpg) no-repeat;
     background-position: -67px 0;
 }
 .g-register-pop .m-register-box .form-box .get-checkcode {
@@ -570,7 +571,7 @@ input, textarea {
     display: none;
     width: 13px;
     height: 12px;
-    background: url(../images/icon.jpg) no-repeat;
+    background: url(./images/icon.jpg) no-repeat;
     background-position: -35px 0;
     margin-left: 1px;
 }
@@ -595,7 +596,7 @@ input, textarea {
     width: 261px;
     height: 34px;
     line-height: 32px;
-    background: url(../images/btn-longer.png) no-repeat center;
+    background: url(./images/btn-longer.png) no-repeat center;
     background-position: 0 0;
     font-size: 16px;
     color: #fff;
@@ -641,7 +642,7 @@ input, textarea {
 .star, .star .star_num {
     height: 15px;
     background-size: 76px 15px;
-    background-image: url(../images/star1.png);
+    background-image: url(./images/star1.png);
     background-repeat: no-repeat;
 }
 .star .star_num {
