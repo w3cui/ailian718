@@ -116,7 +116,7 @@ a:hover {text-decoration: none;color: #186DC3;}
 .login .login_other{ padding:15px 20px 0 20px; border-top:1px solid #eee; margin-top:30px;}
 .login .login_other ul{ padding:15px 0 0 0;}
 .login .login_other li{ float:left; width:24px; height:22px; margin-right:10px; }
-.login .login_other li a{ display:block; width:24px; height:22px;background: url(pass_login_icons.png) no-repeat 0 0;text-indent:-99999px;}
+.login .login_other li a{ display:block; width:24px; height:22px;background: url(./images/pass_login_icons.png) no-repeat 0 0;text-indent:-99999px;}
 .login .login_other li#qq a{ background-position:-25px 0;}
 .login .login_other li#weibo a{background-position:0 0;}
 
@@ -142,7 +142,7 @@ a:hover {text-decoration: none;color: #186DC3;}
 .reg .reg_other{ padding:15px 20px 0 20px; border-top:1px solid #eee; margin-top:30px;}
 .reg .reg_other ul{ padding:15px 0 0 0;}
 .reg .reg_other li{ float:left; width:24px; height:22px; margin-right:10px; }
-.reg .reg_other li a{ display:block; width:24px; height:22px;background: url(pass_login_icons.png) no-repeat 0 0;text-indent:-99999px;}
+.reg .reg_other li a{ display:block; width:24px; height:22px;background: url(./images/pass_login_icons.png) no-repeat 0 0;text-indent:-99999px;}
 .reg .reg_other li#qq a{ background-position:-25px 0;}
 .reg .reg_other li#weibo a{background-position:0 0;}
 
@@ -361,7 +361,7 @@ input, textarea {
     left: 230px;
     top: 7px;
 }
-.g-login-pop .icon-deco {
+.g-login-pop .icon-deco,.g-login-pop .icon-pass {
     display: inline-block;
     width: 40px;
     height: 30px;
@@ -371,6 +371,7 @@ input, textarea {
     top: 7px;
     z-index: 10;
 }
+.g-login-pop .icon-pass{ background-position: 0 -30px;  }
 .g-login-pop .placeholder {
     position: absolute;
     top: 3px;
@@ -870,4 +871,16 @@ input, textarea {
 .help_nr dt{background: #f4f4f4;font:14px/40px "\5FAE\8F6F\96C5\9ED1";color: #262626;padding: 0 10px 0 5px;height: 40px; font-weight:bold;}
 .help_nr dt span {color: #cbcbcb;padding-right: 5px;}
 .help_nr dd{color:#666; line-height:1.7; padding:15px;}
+
+.in_banner{ overflow: hidden; width: 824px; height:352px; position: relative;z-index: 1;  }
+.in_banner ul{ position: relative;width: 10000% }
+.in_banner li { float: left;width: 830px; height:352px; position: relative;}
+.in_banner li img{ display: block; }
+.in_banner li p.text{ position: absolute; width: 100%; z-index: 20; bottom: 0; height: 30px; line-height:30px; color: #fff;  background:#000; opacity: .8; }
+.in_banner .ulodd{ text-align: right; padding:7px 0;  position: absolute; bottom: 0; left: 0; width: 100%; z-index: 100; }
+.in_banner .ulodd a{ background:#fff; width: 10px; height: 10px; border-radius: 10px; display: inline-block; overflow: hidden; margin-right: 10px;  }
+.in_banner .ulodd a.ayes{ background:#BE1A00; }
+
+
+
 

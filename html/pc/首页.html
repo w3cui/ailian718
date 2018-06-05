@@ -29,10 +29,15 @@
                         <a href="javascript:;" id="topLoginOut">退出登录</a>
                     </div>
                     <div class="login-register-link withoutLogon-link">
-                        <a href="javascript:;" class="top-login-link">亲，请登陆</a>
+                        <!-- ui-login 绑定登陆弹窗 -->
+                        <a href="javascript:;" class="top-login-link" ui-login >亲，请登陆</a>
                         <a href=""></a>
                         <a href="#" class="top-register-link">欢迎注册</a>
                     </div>
+                </div>
+                <!-- 注册登陆触发源 -->
+                <div style="display: none;">
+                    <a ui-reg data-type="1"></a>
                 </div>
             </div>
         </div>
@@ -86,38 +91,25 @@
     <div class="main wrap_w">
         <div class="col_1 clearfix">
             <div class="l">
-                <div class="slide" id="slide">
-                    <ul class="slide-cont">
-                        <li class="slide-item">
-                            <a href="" target="_blank" title="">
-                                <img src="http://www.cellsgame.com/Uploads/Picture/2016-10-09/57fa0cb41f335.jpg" alt="">
-                                <span class="slide-txt">
-                                    <span class="slide-tit">双体系新门派 超燃势力战今日问世</span>
-                                    <span class="slide-des"></span>
-                                </span>
-                                <span class="slide-mask"></span>
-                            </a>
+                <div class="in_banner" ui-banner >
+                    <ul class="ullit">
+                        <li>
+                            <p class="text">挥斥方遒，指点江山是每个男子汉的终极梦想！</p>
+                            <a href=""> <img src="http://www.cellsgame.com/Uploads/Picture/2016-10-09/57fa0cb41f335.jpg"></a>
                         </li>
-                        <li class="slide-item">
-                            <a href="" target="_blank" title="">
-                                <img src="http://www.cellsgame.com/Uploads/Picture/2016-10-09/57fa0cb41f335.jpg" alt="">
-                                <span class="slide-txt">
-                                    <span class="slide-tit">挥斥方遒，指点江山是每个男子汉的终极梦想！</span>
-                                    <span class="slide-des"></span>
-                                </span>
-                                <span class="slide-mask"></span>
-                            </a>
+                        <li>
+                            <p class="text">挥斥方遒，指点江山是每个男子汉的终极梦想！</p>
+                            <a href=""> <img src="http://www.cellsgame.com/Uploads/Picture/2016-10-09/57fa0cb41f335.jpg"></a>
+                        </li>
+                        <li>
+                            <p class="text">挥斥方遒，指点江山是每个男子汉的终极梦想！</p>
+                            <a href=""> <img src="http://www.cellsgame.com/Uploads/Picture/2016-10-09/57fa0cb41f335.jpg"></a>
+                        </li>
+                        <li>
+                            <p class="text">挥斥方遒，指点江山是每个男子汉的终极梦想！</p>
+                            <a href=""> <img src="http://www.cellsgame.com/Uploads/Picture/2016-10-09/57fa0cb41f335.jpg"></a>
                         </li>
                     </ul>
-                    <div class="slide-nav">
-                        <a href="javascript:" class="">1</a>
-                        <a href="javascript:" class="nownav">2</a>
-                        <a href="javascript:" class="">3</a>
-                        <a href="javascript:" class="">4</a>
-                        <div class="nav-mask"></div>
-                    </div>
-                    <a href="javascript:;" title="" id="next"></a>
-                    <a href="javascript:;" title="" id="prev"></a>
                 </div>
             </div>
 
@@ -172,7 +164,7 @@
                     <a href="">更多&gt;&gt;</a>
                 </em>
             </div>
-            <ul class="clearfix">
+            <ul class="clearfix" ui-hover data-list="li">
                 <li>
                     <a href="" target="_blank">
                         <img src="http://www.cellsgame.com/Uploads/Picture/2016-07-12/578480da91f61.jpg" class="gpic">
@@ -492,7 +484,7 @@
                         </li>
                     </ul>
                     <div class="tabcon" id="gift" style="display: block;">
-                        <ul class="clearfix">
+                        <ul class="clearfix" ui-hover data-list="li">
                             <li class="cur">
                                 <div class="game-package-now">
                                     <span>
@@ -793,4 +785,6 @@
 </body>
 
 </html>
-<script type="text/javascript" src="../build/ailian/lib/wui/wui.js"></script>
+<script type="text/javascript" src="../../build/www/lib/jquery.js"></script>
+<script type="text/javascript" src="../../build/www/lib/wui/wui.js"></script>
+<script type="text/javascript" src="../../build/www/web/common/common.js"></script>
