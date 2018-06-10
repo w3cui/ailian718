@@ -47,12 +47,12 @@
                            '    <div class="m-box ">'+
                            '        <a href="#" class="link-close"></a>'+
                            '        <div class="form-box">  '+
-                           '            <form name="LoginForm" method="post" action="/reg/login.php" onsubmit="return InputCheck(this)">'+
+                           '            <form name="LoginForm" method="post" onsubmit="return wui.reg.setLogin(this)" >'+
                            '            <div class="title-bar">帐号登录</div>                   '+
                            '            <div id="errMsg" class="error-msg"></div>                   '+
                            '            <div class="input-optimize">                        '+
-                           '                <input type="text" id="loginInputUname" name="account">                     '+
-                           '                <i class="clear-text"></i>                      '+
+                           '                <input type="text"  name="username">                     '+
+                           '                <i class="clear-text" style="display:none;"></i>                      '+
                            '                <i class="icon-deco icon-acco"></i>                     '+
                            '                <div class="placeholder" style="display: none;">用户名/手机号</div>                   '+
                            '            </div>                  '+
@@ -77,7 +77,10 @@
                 },
                 link: function($el) {
                     var $scope = $el.scope,
-                        $element = $el.element;
+                        $element = $el.element,
+                        $template = $($el.template());
+                    var _id = 'ui_login_' + Math.floor(Math.random() * 100).toString() + new Date().getTime().toString();
+                        $template.attr("id", _id);
                     $($element).on("click",function(){
                         var _this = this;
                         $("body").append($el.template());
@@ -85,6 +88,7 @@
                             $(this).parents(".g-pop").removeClass("active").remove();
                         });
                         $(".g-pop .ui-reg").unbind("click").on("click",function(){
+                            $("#"+_id).remove();
                             $(_this).parents(".top").find("*[ui-reg]").click();
                         });
                         
@@ -100,20 +104,20 @@
                             '            <div class="m-box m-register-box">'+
                             '                <a href="#" class="link-close"></a>'+
                             '                <h2 class="title-bar">欢迎注册溪谷游戏平台帐号<span id="notice"></span></h2>'+
-                            '                <div class="tab-trigger-bar">'+
-                            '                            <a href="#" class="user-trigger" data-target="mUsernameRegisterPop">'+
-                            '                        注册用户名帐号'+
-                            '                        <span class="arrow"></span>'+
-                            '                    </a>'+
+                            '                <div class="tab-trigger-bar">'+                            
                             '                    <a href="#" class="phone-trigger active" data-target="mPhoneRegisterPop">'+
                             '                        注册手机帐号'+
+                            '                        <span class="arrow"></span>'+
+                            '                    </a>'+
+                            '                    <a href="#" class="user-trigger" data-target="mUsernameRegisterPop">'+
+                            '                        注册用户名帐号'+
                             '                        <span class="arrow"></span>'+
                             '                    </a>'+
                             '                </div>'+
                             '                <div class="form-box">'+
                             '                    <!-- 手机注册 -->'+
                             '                    <div class="m-phone-register register-tab-box active" id="mPhoneRegisterPop">'+
-                            '                        <form action="" id="mPhoneRegisterFormPop">'+
+                            '                        <form action="" id="mPhoneRegisterFormPop" onsubmit="return wui.reg.setPhoneReg(this)">'+
                             '                        <div>'+
                             '                            <label for="">手机号码</label>'+
                             '                            <div class="input-optimize">'+
@@ -124,28 +128,28 @@
                             '                            </div>'+
                             '                        </div>'+
                             '                        <div>'+
-                            '                            <a href="#" class="get-checkcode disabled" id="getSafeCodePop">免费获取安全码</a>'+
+                            '                            <a href="#" class="get-checkcode " onclick="wui.reg.setSms(this)" id="getSafeCodePop">免费获取安全码</a>'+
                             '                            <span class=""></span>'+
                             '                        </div>'+
                             '                        <div>'+
                             '                            <label for="">安全码</label>'+
                             '                            <div class="input-optimize">'+
-                            '                                <input type="text" name="vcode" placeholder="请输入安全码" id="registerSafeCodePop">'+
+                            '                                <input type="text" name="vcode" placeholder="安全码" id="registerSafeCodePop">'+
                             '                                <span class="error-msg"></span>'+
                             '                            </div>'+
                             '                        </div>'+
                             '                        <div>'+
                             '                    <label for="">密码</label>'+
                             '                    <div class="input-optimize">'+
-                            '                    <input type="password" name="password" placeholder="placeholder" id="registerPhonePassPop">'+
+                            '                    <input type="password" name="password" placeholder="密码" id="registerPhonePassPop">'+
                             '                    <span class="error-msg"></span>'+
-                            '                    </div>'+
+                            '                    </div>'+ 
                             '                </div>'+
                             '                    <div>'+
-                            '                    <a class="checkbox-optimize active">'+
+                            '                    <label class="checkbox-optimize active">'+
                             '                    <i class="icon-agree" id="registerByPhoneAgreePop"></i>'+
-                            '                    <input type="hidden" name="" value="">'+
-                            '                    </a>'+
+                            '                    <input type="checkbox" name="agree" value="1" checked  >'+
+                            '                    </label>'+
                             '                    <span href="#" id="registerByPhoneAgreeTxtPop" class="agree-txt active">我已阅读并同意《<a href="/index.php?s=/Article/agreement.html" target="_blank">溪谷手游用户注册协议</a>》'+
                             '                    </span>'+
                             '                    </div>'+
@@ -155,14 +159,14 @@
                             '            <!-- 手机注册END -->'+
                             '            <!-- 账注册 -->'+
                             '            <div class="m-username-register register-tab-box" id="mUsernameRegisterPop">'+
-                            '                <form action="/reg/reg.php" method="post" id="mNameRegisterFormPop">'+
+                            '                <form method="post" id="mNameRegisterFormPop" onsubmit="return wui.reg.setNameReg(this)">'+
                             '                    <div>'+
                             '                        <label for="">帐号</label>'+
                             '                        <div class="input-optimize">'+
                             '                            <input type="text" name="username" placeholder="6~30位数字、字母或下划线" id="userNameByNamePop">'+
                             '                            <i class="icon-error"></i>'+
                             '                            <i class="icon-correct"></i>'+
-                            '                            <span class="error-msg"></span>'+
+                            '                            <span class="error-msg"></span>'+ 
                             '                        </div>'+
                             '                    </div>'+
                             '                    <div>'+
@@ -188,10 +192,10 @@
                             '                        </div>'+
                             '                    </div>'+
                             '                    <div>'+
-                            '                        <span class="checkbox-optimize active">'+
+                            '                        <label class="checkbox-optimize active">'+
                             '                            <i class="icon-agree" id="registerByNameAgreePop"></i>'+
-                            '                            <input type="hidden" name="" value="">'+
-                            '                        </span>'+
+                            '                            <input type="checkbox" name="agree" value="1" checked >'+
+                            '                        </label>'+
                             '                        <span id="registerByNameAgreeTxtPop" class="agree-txt active">我已阅读并同意《<a href="" target="_blank">赛尔手游用户注册协议</a>》</span>'+
                             '                        <span class="agreeError"></span>'+
                             '                    </div>'+
@@ -214,15 +218,211 @@
                 link: function($el) {
                     var $scope = $el.scope,
                         $element = $el.element;
+                    var $template = $($el.template({}))
+                    var _id = 'ui_reg_' + Math.floor(Math.random() * 100).toString() + new Date().getTime().toString();
+                    $template.attr("id", _id);
                     $($element).on("click",function(){
-                        $("body").append($el.template({}));
+                        $("body").append($template);
                         $(".g-pop .link-close").unbind("click").on("click",function(){
                             $(this).parents(".g-pop").removeClass("active").remove();
+                        });
+                        $("#"+_id).find(".tab-trigger-bar a").unbind("click").on("click",function(){
+                            $("#"+_id).find(".tab-trigger-bar a").removeClass("active");
+                            $(this).addClass("active");
+                            $("#"+_id).find(".m-register-box .form-box > div").hide();
+                            $("#"+_id).find(".m-register-box .form-box > div:eq("+$(this).index()+")").show();
+                        });
+                        $("#"+_id).find("input[type='checkbox']").unbind("change").on("change",function(){
+                            if($(this).prop('checked')){
+                                $(this).parent().addClass('active');
+                            }else{
+                                $(this).parent().removeClass('active');
+                            }
+                        });
+
+                        $("#"+_id).find(".ime-login").unbind("click").on("click",function(){
+                            $("#"+_id).remove();
+                            $(_this).parents(".top").find("*[ui-login]").click();
+                        });
+
+                    }); 
+
+                }
+            }
+        })
+        .directive('ui-game-pay', function() {
+            return {
+                scope: {
+                    url: "url",
+                },
+                link: function($el) {
+                    var $scope = $el.scope,
+                        $element = $el.element;
+                    $($element).unbind('click').on("click",function(){
+                        layer.open({
+                          type: 2,
+                          title: '充值中心',
+                          shadeClose: true,
+                          shade: false,
+                          maxmin: true, //开启最大化最小化按钮
+                          area: ['1000px', '600px'],
+                          content: $scope.url
                         });
                     });
                 }
             }
         });
+
+
+
+    /*登陆注册处理*/
+    $wui.reg = {
+        ucenterSmsUrl : "/index.php?r=ucenter/sms",
+        ucenterLogin : "/index.php?r=ucenter/login",
+        ucenterRegister : "/index.php?r=ucenter/register",
+        test:{
+            phone:/^1[3|4|5|8][0-9]\d{4,8}$/,
+            username:/^[0-9A-Za-z_]{6,30}$/,
+            password:/^[0-9A-Za-z_]{6,30}$/,
+        },
+        getLoginRegSms : function(url,data,success){
+            var load = layer.load();
+            return $.ajax({
+                url: url,
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+            })
+            .done(function(data) {
+                layer.close(load);
+                success(data);
+            })
+            .fail(function() {
+                layer.msg("服务器繁忙，请稍后再试");
+                success(data);
+                layer.close(load);
+            });
+            
+        },
+        /*发送手机验证码*/
+        setSms:function(_t){
+            var phonePop = $("#registerPhonePop").val();
+            if($(_t).hasClass("disabled")) return false;
+            if(!this.test.phone.test(phonePop)){
+                layer.msg("请输入正确的手机号码！")
+                return false; 
+            }
+            var $this = this;
+            // 发送成功及交互
+            this.setSmsSetInterval = function(_this){
+                var sm = 59;
+                var set = setInterval(function(){
+                    if(sm <=0 ){
+                        $(_this).html("免费获取安全码").removeClass('disabled');
+                        clearInterval(set);
+                        return false;
+                    }
+                    $(_this).html(sm +"秒后、重新获取").addClass('disabled');
+                    sm --;
+                },1000)
+            }
+            // 开始送验证码
+            this.getLoginRegSms(this.ucenterSmsUrl,{account:phonePop},function(data){
+                $this.setSmsSetInterval(_t);
+            });
+        },
+        // getFormData  统一校验
+        getFormData:function(el){
+            var isForm = true;
+            var ret = [];
+            var $this = this;
+            var formData = $(el).serializeArray();
+            var password = "";
+            $.each(formData,function(key, val) {
+                if( this.name == "password" ){
+                    password = this.value;
+                }
+                if(this.name == "username" && (this.value == "" || !$this.test.username.test(this.value) ) ){
+                    isForm = false;
+                    layer.msg("账号不能为空，长度6-32，只能是字母或数字！");
+                    return false;
+                }else if(this.name == "account" && (this.value == "" || !$this.test.phone.test(this.value) ) ){
+                    isForm = false;
+                    layer.msg("请输入正确的手机号码！");
+                    return false;
+                }else if(this.name == "vcode" && this.value == "" ){
+                    isForm = false;
+                    layer.msg("安全码不能为空！");
+                    return false;
+                }else if(this.name == "password" && (this.value == "" || this.value.length < 6)){
+                    isForm = false;
+                    layer.msg("密码不能为空并大于6位！");
+                    return false;
+                }else if(this.name == "repassword" &&  password != this.value){
+                    isForm = false;
+                    layer.msg("两次输入的密码不一致！");
+                    return false;
+                }else if(this.name == "verify" && this.value == ""){
+                    isForm = false;
+                    layer.msg("验证码不能为空！");
+                    return false;
+                }
+                else if(this.name=="agree"  &&  !$(el).find("input[name='agree']").prop('checked')){
+                    layer.msg("请同意注册协议才可以注册账号！");
+                    isForm = false;
+                    return false;
+                }
+                var push = {} 
+                push[this.name] = this.value; 
+                ret.push(push);
+            });
+
+            return [isForm,ret];
+        },
+        // 手机验证码注册账号
+        setPhoneReg:function(el){
+            var $this = this;
+            var formData = this.getFormData(el);
+            // 校验form是否通过验证
+            if(formData[0]){
+                this.getLoginRegSms(this.ucenterRegister,formData[1],function(data){
+                    layer.msg("注册成功！")
+                });
+            }
+
+            return false;
+        },
+        // 账号名注册
+        setNameReg:function(el){
+            var $this = this;
+            var formData = this.getFormData(el);
+
+            // 校验form是否通过验证
+            if(formData[0]){
+                this.getLoginRegSms(this.ucenterRegister,formData[1],function(data){
+                    layer.msg("注册成功！")
+                });
+            }
+
+            return false;
+        },
+        // 登陆提交
+        setLogin:function(el){
+            var $this = this;
+            var formData = this.getFormData(el);
+
+            // 校验form是否通过验证
+            if(formData[0]){
+                this.getLoginRegSms(this.ucenterLogin,formData[1],function(data){
+                    layer.msg("登陆成功！")
+                });
+            }
+
+            return false;
+        }
+    };
+
+
 
     $wui.banner = function(o) {
         var bannthis = [];

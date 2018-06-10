@@ -499,7 +499,9 @@ input, textarea {
     vertical-align: middle;
     margin-left: 0;
     color: #333;
+
 }
+.g-register-pop .m-register-box .form-box input[type="checkbox"]{ display: none; }
 .g-register-pop .m-register-box .form-box .m-phone-register .clear-text {
     display: inline-block;
     width: 21px;
