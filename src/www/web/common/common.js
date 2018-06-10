@@ -83,13 +83,14 @@
                         $template.attr("id", _id);
                     $($element).on("click",function(){
                         var _this = this;
-                        $("body").append($el.template());
+                        $("body").append($template);
                         $(".g-pop .link-close").unbind("click").on("click",function(){
-                            $(this).parents(".g-pop").removeClass("active").remove();
-                        });
-                        $(".g-pop .ui-reg").unbind("click").on("click",function(){
+                            $(this).parents(".g-pop").remove();
                             $("#"+_id).remove();
+                        });
+                        $(".g-pop .ui-reg").unbind("click").on("click",function(){                            
                             $(_this).parents(".top").find("*[ui-reg]").click();
+                            $("#"+_id).remove();
                         });
                         
                     });
@@ -220,11 +221,13 @@
                         $element = $el.element;
                     var $template = $($el.template({}))
                     var _id = 'ui_reg_' + Math.floor(Math.random() * 100).toString() + new Date().getTime().toString();
-                    $template.attr("id", _id);
+                    $template.attr("id", _id).addClass('active');
                     $($element).on("click",function(){
+                        var _this = this;
                         $("body").append($template);
                         $(".g-pop .link-close").unbind("click").on("click",function(){
-                            $(this).parents(".g-pop").removeClass("active").remove();
+                            $(this).parents(".g-pop").remove();
+                            $("#"+_id).remove();
                         });
                         $("#"+_id).find(".tab-trigger-bar a").unbind("click").on("click",function(){
                             $("#"+_id).find(".tab-trigger-bar a").removeClass("active");
@@ -240,9 +243,9 @@
                             }
                         });
 
-                        $("#"+_id).find(".ime-login").unbind("click").on("click",function(){
-                            $("#"+_id).remove();
+                        $("#"+_id).find(".ime-login").unbind("click").on("click",function(){                            
                             $(_this).parents(".top").find("*[ui-login]").click();
+                            $("#"+_id).remove();
                         });
 
                     }); 

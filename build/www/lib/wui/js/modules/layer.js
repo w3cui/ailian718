@@ -1,16 +1,5 @@
-/** lwj-v MIT License By  */
- !(function(win, wui) {
-	"use strict";
-	/**
-	 * 弹窗插件依赖注入
-	 */
-	win.layer = {}
-	win.layer.host = wui.cache.dir+"plugin/layer/";
-	wui.loadAll({
-		uses: ["plugin/layer/layer.js"]
-	}, function() {
-		wui.layer = layer;
-	});
-	
-
-})(window, wui);
+/**
+ *  - v1.0.0  License By 
+ * 研发技术中心-技术研发部 
+ */
+!function(l,e){"use strict";l.layer={},l.layer.host=e.cache.dir+"plugin/layer/",e.loadAll({uses:["plugin/layer/layer.js"]},function(){e.layer=layer})}(window,wui);
