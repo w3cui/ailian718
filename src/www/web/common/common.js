@@ -290,6 +290,8 @@
         },
         getLoginRegSms : function(url,data,success){
             var load = layer.load();
+
+            console.log(data,url);
             return $.ajax({
                 url: url,
                 type: 'POST',
@@ -337,7 +339,7 @@
         // getFormData  统一校验
         getFormData:function(el){
             var isForm = true;
-            var ret = [];
+            var ret = {};
             var $this = this;
             var formData = $(el).serializeArray();
             var password = "";
@@ -375,11 +377,8 @@
                     isForm = false;
                     return false;
                 }
-                var push = {} 
-                push[this.name] = this.value; 
-                ret.push(push);
+                ret[this.name] = this.value;
             });
-
             return [isForm,ret];
         },
         // 手机验证码注册账号
@@ -413,7 +412,7 @@
         setLogin:function(el){
             var $this = this;
             var formData = this.getFormData(el);
-
+ 
             // 校验form是否通过验证
             if(formData[0]){
                 this.getLoginRegSms(this.ucenterLogin,formData[1],function(data){
