@@ -782,9 +782,16 @@
             </div>
         </div>
     </div>
+    <a ui-game-pay data-callback ="gamePayCallback" ></a>
 </body>
 
 </html>
+
 <script type="text/javascript" src="../../build/www/lib/jquery.js"></script>
 <script type="text/javascript" src="../../build/www/lib/wui/wui.js"></script>
 <script type="text/javascript" src="../../build/www/web/common/common.js"></script>
+<script>
+    var gamePayCallback = function($scope){
+        return "想返回的新url";
+    }
+</script>

@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "",
   "version": "1.0.0",
   "description": "研发技术中心-技术研发部",
@@ -12,7 +12,8 @@
     "dest": "./build/",
     "src": "./src/",
     "taskName": [
-      "www"
+      "www",
+      "ydsc"
     ],
     "images": [
       ".jpg",

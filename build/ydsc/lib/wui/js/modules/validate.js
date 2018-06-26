@@ -1,0 +1,5 @@
+/**
+ *  - v1.0.0  License By 
+ * 研发技术中心-技术研发部 
+ */
+!function(e,r){"use strict";r.validate=function(e){return e.validateInit=function(e,r){r=$.extend(r),$(e).validate({errorElement:r.errorElement||"label",errorClass:r.errorClass||"validate_error",highlight:function(e){$(e).addClass(r.errorClass||"validate_error")},success:function(e){$(e).removeClass(r.errorClass||"validate_error")},submitHandler:function(r){return!$(e).attr("onsubmit")&&void r.submit()}})},e.init=function(r,i){return e.validateInit(i,r),this.validateInit},e}({})}(window,wui),wui.directive("ui-validate",function(){return{uses:["plugin/validate/jquery.validate.js","plugin/validate/messages_zh.js","plugin/validate/validate_custom.js"],addcss:["plugin/validate/formValidate.css"],scope:{errorClass:"errorClass",errorElement:"errorElement"},link:function(e){var r=e.scope,i=e.fn.validate;i.init(r,e.element)}}});
