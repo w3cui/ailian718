@@ -1,11 +1,35 @@
-//透明度   
+//定位
+.p_r(@r:relative,@z:1){
+    position: @r; z-index: @z; zoom:1;
+}
+//投影
+.box_w (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+//背景缩放
+.size(@s,@y:auto){
+    -webkit-background-size: @s @y;
+    -moz-background-size: @s @y;
+    background-size: @s @y;
+}
+//透明
 .opacity(@value){
     @ie6_value:         (@value * 100); 
     -khtml-opacity:     @value;
       -moz-opacity:     @value;
            opacity:     @value;            
     filter: ~'alpha(opacity=@{ie6_value})';}
-
+//圆角
+.b_r(@radius){
+    border-radius: @radius;-moz-border-radius: @radius;-webkit-border-radius: @radius;-o-border-radius: @radius;-ms-border-radius: @radius;
+}
+//旋转
+.rotate(@radius){
+    -webkit-transform:rotate(@radius);
+    transform:rotate(@radius);
+}
 //定位
 .pos_r_a(@pos:relative,@z:1,@l:0px,@t:0px){ 
     position: @pos; zoom:1; z-index:@z; left: @l; top: @t; zoom:1;
@@ -20,12 +44,13 @@
 .p_f(){
   .p_r(fixed,1);
 }
-
-
+//margin和padding
+.mixin1(@a,...){margin:@arguments;}
+.mixin2(@a,...){padding:@arguments;}
 //圆角
 .b_r(@radius){
-  border-radius: @radius;-moz-border-radius: @radius;-webkit-border-radius: @radius;-o-border-radius: @radius;-ms-border-radius: @radius;
-}
+    border-radius: @radius;-moz-border-radius: @radius;-webkit-border-radius: @radius;-o-border-radius: @radius;-ms-border-radius: @radius;
+    }
 //投影
 .boxS(@x:0,@y:0,@blur:1px,@color:#000){ 
  -moz-box-shadow: @arguments;
@@ -54,6 +79,41 @@
     background-position:@l @t;
 }
 //移动
+.transform(@y:0px,@x:0px){
+    -webkit-transform: translateY(@y) translateX(@x);
+    transform: translateY(@y) translateX(@x);
+    }
+//移动
+.transitionYA(@t){
+    -webkit-transform: @t;
+    transform: @t;
+    }
+//最大宽度
+.maxmin(@w:auto){
+    max-width: @w;
+    margin: auto;
+    text-align: left;
+}
+//文字省略
+.ov_ell{overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.ov_ell_clamp(@clamp : 1){text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: @clamp;-webkit-box-orient: vertical;}
+//定位
+.p_r(@r:relative,@z:1){
+    position: @r; z-index: @z; zoom:1;
+}
+//背景
+.bg_p(@l,@t){
+    background-position:@l @t;
+}
+.linearGradient(@t,@b){
+  background: -moz-linear-gradient(top, @t 0%, @b 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@t), color-stop(100%,@b));
+  background: -webkit-linear-gradient(top, @t 0%,@b 100%);
+  background: -o-linear-gradient(top, @t 0%,@b 100%);
+  background: -ms-linear-gradient(top, @t 0%,@b 100%);
+  background: linear-gradient(to bottom, @t 0%,@b 100%);
+}
+//移动
 .transformYX(@y:0px,@x:0px){
     -moz-transform: translateY(@y) translateX(@x);
     //Webkit内核浏览器：Safari and Chrome
@@ -67,13 +127,13 @@
     }
 .animationHover(){
   overflow: hidden;.p_r;
-  &:after{ content: ""; display: block; .p_a; .w_h(0,0px); left: 50%; top: 50%; background: rgba(0,0,0,.0);.transition(all,200ms,ease-out);}
-  &:hover{
-    &:after{ background: rgba(0,0,0,.08); top:0; .w_h(100%,100%); left: 0;}
+  //&:after{ content: ""; display: block; .p_a; .w_h(0,0px); left: 50%; top: 50%;  z-index: -2; background: rgba(0,0,0,.0);.transition(all,200ms,ease-out);}
+  &:hover{opacity: .9;
+    //&:after{ background: rgba(0,0,0,.05); top:0; .w_h(100%,100%); left: 0; z-index: -2;}
   }
-  &:active{
-    &:after{ background: rgba(0,0,0,.15); top:0; .w_h(100%,100%); left: 0;}
-  }
+  // &:active{ opacity: .95;
+  //   //&:after{ background: rgba(0,0,0,.08); top:0; .w_h(100%,100%); left: 0;z-index: -2;}
+  // }
 }
 //dome http://www.w3cmark.com/animation/#1
 @import "animation.less";//动画组件 

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+    <link rel="stylesheet" type="text/css" href="http://static-dev.liweijia.com/aojia/wap/common/common.css"/>
+</head>
+<body>
+
+<!-- 页面内容 -->
+<div style="width: 1200px; margin:auto;">
+<h3>按钮集合</h3>
+<hr />
+<!-- 
+	按钮集合
+	btn-default	btn-primary	(按钮皮肤)
+	btn-min					(按钮尺寸min max 不加这是默认尺寸)
+	btn-block				(宽度为100% 块级元素)
+
+ -->
+<h3>按钮主题</h3>
+<a href="" class="btn btn-default">取消按钮</a>
+<a href="" class="btn btn-primary">主色按钮</a>
+<a href="" class="btn btn-outline">线框按钮</a>
+<a href="" class="btn btn-outpri">线框按钮</a>
+<h3>按钮尺寸</h3>
+<a href="" class="btn btn-default btn-max">取消按钮</a>
+<a href="" class="btn btn-primary btn-max">主色按钮</a>
+<a href="" class="btn btn-outline btn-max">线框按钮</a>
+<a href="" class="btn btn-default btn-min">取消按钮</a>
+<a href="" class="btn btn-primary btn-min">主色按钮</a>
+<a href="" class="btn btn-outline btn-min">线框按钮</a>
+<h3>图标按钮</h3>
+<a href="" class="btn btn-primary"><i class="iconfont icon-gouwuche"></i>带图标的按钮</a>
+<a href="" class="btn btn-default btn-min"><i class="iconfont icon-gouwuche"></i>带图标的按钮</a>
+<a href="" class="btn btn-default btn-max"><i class="iconfont icon-gouwuche"></i>带图标的按钮</a>
+<a href="" class="btn btn-outline btn-min"><i class="iconfont icon-gouwuche"></i>带图标的线框按钮</a>
+<h3>宽度为100% 块级元素</h3>
+<a href="" class="btn btn-default btn-block">取消按钮</a>
+<a href="" class="btn btn-primary btn-block">主色按钮</a>
+<hr />
+<h3>FORM集合</h3>
+<hr />
+<script type="text/javascript">
+    function valform($this){
+        alert($($this).valid());
+        if($($this).valid()){
+            $this.submit();
+        }
+    }
+</script>
+<form action="http://www.baidu.com/" ui-validate accept-charset="UTF-8" onsubmit="return valform(this);" method="post">
+<ul class="icon_form"  >
+    <li>
+        <div class="text "><i>*</i>用户名：</div>
+        <div class="inputtext "><input class="icon_input" name ="name" required="true" type="text" value="" /></div>
+        <div class="ov_h"></div>
+    </li>
+    <li>
+        <div class="text "><i>*</i>绑定手机：</div>
+        <div class="inputtext "><input class="icon_input" name ="Mobile"  isSimpleMobile="true" required="true" type="text" value="" /></div>
+        <div class="ov_h"></div>
+    </li>
+    <li>
+        <div class="text "><i>*</i>绑定邮箱：</div>
+        <div class="inputtext "><input class="icon_input" name ="mal"  email="true" required="true"  type="text" value="" /></div>
+        <div class="ov_h"></div>
+    </li>
+     <li>
+        <div class="text ">&nbsp;</div>
+        <div class="inputtext ">
+            <input type="submit" class="btn btn-primary btn-max" value="提交" />
+        </div>
+        <div class="ov_h"></div>
+    </li>
+</ul>
+</form>
+<hr />
+<h3>FORM验证</h3>
+<hr />
+<form ui-validate action=""  accept-charset="UTF-8" method="post">
+<input type="text" id="text1" class="form-control" placeholder="不能为空" required="true" value="" />
+<input type="text" id="text2" email="true" class="form-control" placeholder="验证邮箱"  value="" />
+<input type="text" id="text3" url="true" class="form-control" placeholder="验证URL"value="" />
+<input type="text" id="text4" date="true" class="form-control" placeholder="验证日期 " value="" />
+<input type="text" id="text5" dateISO="true" class="form-control" placeholder="验证日期 例如：2009-06-23" value="" />
+<input type="text" id="text6" number="true" class="form-control" placeholder="必须输入合法的数字(负数，小数)" value="" />
+<input type="text" id="text7" digits="true" class="form-control" placeholder=" 必须输入整数"  value="" />
+<input type="text" id="text8" creditcard="true" class="form-control" placeholder=" 必须输入合法的信用卡号"  value="" />
+<input type="text" id="text9" accept="jpg" class="form-control" placeholder="  输入拥有合法后缀名的字符串（上传文件的后缀）" value="" />
+<input type="text" id="text10" maxlength="5" class="form-control" placeholder="  输入长度最多是5的字符串(汉字算一个字符)" value="" />
+<input type="text" id="text11" minlength="10" class="form-control" placeholder="   输入长度最小是10的字符串(汉字算一个字符)"  value="" />
+<input type="text" id="text12" rangelength="5,10" class="form-control" placeholder="  输入长度必须介于 5 和 10 之间的字符串汉字算一个字符)" required="" value="" />
+<input type="text" id="text13" range="5,10" class="form-control" placeholder="  输入值必须介于 5 和 10 之间" required="" value="" />
+<input type="text" id="text14" max="5" class="form-control" placeholder="  输入值不能大于5"  value="" />
+<input type="text" id="text15" min="10" class="form-control" placeholder="  输入值不能小于10" value="" />
+<input type="text" id="text15" min="10" class="form-control" placeholder="  输入值不能小于10" value="" />
+<input type="text" id="text15" isIntEqZero="true" class="form-control" placeholder="整数必须为0" value="" />
+<input type="text" id="text16" isIntGtZero="true" class="form-control" placeholder="整数必须大于0" value="" />
+<input type="text" id="text16" isIntGteZero="true" class="form-control" placeholder="整数必须大于或等于0" value="" />
+<input type="text" id="text16" isIntNEqZero="true" class="form-control" placeholder="整数必须不等于0" value="" />
+<input type="text" id="text16" isIntLtZero="true" class="form-control" placeholder="整数必须小于0" value="" />
+
+<input type="text" id="text16" isIntLteZero="true" class="form-control" placeholder="整数必须小于或等于0" value="" />
+<input type="text" id="text16" isFloatEqZero="true" class="form-control" placeholder="浮点数必须为0" value="" />
+<input type="text" id="text16" isFloatGtZero="true" class="form-control" placeholder="浮点数必须大于0" value="" />
+<input type="text" id="text16" isFloatGteZero="true" class="form-control" placeholder="浮点数必须大于或等于0" value="" />
+<input type="text" id="text16" isFloatNEqZero="true" class="form-control" placeholder="浮点数必须不等于0" value="" />
+<input type="text" id="text16" isFloatLtZero="true" class="form-control" placeholder="浮点数必须小于0" value="" />
+<input type="text" id="text16" isFloatLteZero="true" class="form-control" placeholder="浮点数必须小于或等于0" value="" />
+<input type="text" id="text16" isFloat="true" class="form-control" placeholder="只能包含数字、小数点等字符" value="" />
+<input type="text" id="text16" isInteger="true" class="form-control" placeholder="匹配integer" value="" />
+<input type="text" id="text16" isNumber="true" class="form-control" placeholder="匹配数值类型，包括整数和浮点数" value="" />
+<input type="text" id="text16" isDigits="true" class="form-control" placeholder="只能输入0-9数字" value="" />
+<input type="text" id="text16" isChinese="true" class="form-control" placeholder="只能包含中文字符" value="" />
+<input type="text" id="text16" isEnglish="true" class="form-control" placeholder="只能包含英文字符" value="" />
+<input type="text" id="text16" isMobile="true" class="form-control" placeholder="请正确填写您的手机号码" value="" />
+<input type="text" id="text16" isPhone="true" class="form-control" placeholder="请正确填写您的电话号码" value="" />
+<input type="text" id="text16" isTel="true" class="form-control" placeholder="请正确填写您的联系方式" value="" />
+<input type="text" id="text16" isQq="true" class="form-control" placeholder="匹配QQ" value="" />
+<input type="text" id="text16" isZipCode="true" class="form-control" placeholder="请正确填写您的邮政编码" value="" />
+<input type="text" id="text16" isPwd="true" class="form-control" placeholder="以字母开头，长度在6-12之间，只能包含字符、数字和下划线。" value="" />
+<input type="text" id="text16" isIdCardNo="true" class="form-control" placeholder="请输入正确的身份证号码" value="" />
+<input type="text" id="text16" ip="true" class="form-control" placeholder="请填写正确的IP地址" value="" />
+<input type="text" id="text16" stringCheck="true" class="form-control" placeholder="只能包含中文、英文、数字、下划线等字符" value="" />
+<input type="text" id="text16" isChineseChar="true" class="form-control" placeholder="匹配中文(包括汉字和字符)" value="" />
+<input type="text" id="text16" isRightfulString="true" class="form-control" placeholder="判断是否为合法字符(a-zA-Z0-9-_)" value="" />
+<input type="text" id="text16" isContainsSpecialChar="true" class="form-control" placeholder="含有中英文特殊字符" value="" />
+
+<input type="submit" class="btn btn-primary"/>
+</form>
+
+<hr />
+<h3>弹窗集合</h3>
+<hr />
+<a class="btn btn-primary btn-max" onclick="layeropent();">弹窗</a>
+<a class="btn btn-primary btn-max" onclick="layerdelivery();">待发货</a>
+<a class="btn btn-primary btn-max" onclick="layerpay();">待付款</a>
+<a class="btn btn-primary btn-max" onclick="layeradd();">添加子帐号</a>
+<hr />
+
+<h3>时间选择插件</h3>
+<hr />
+
+<p>插件介绍配置说明  <a href="">http://www.layui.com/laydate/</a></p>
+<br>
+<input 
+    class="icon_input"  
+    type="text" 
+    placeholder="时间选择" 
+    ui-laydate
+/>
+<input 
+    class="icon_input"  
+    type="text" 
+    placeholder="时间选择" 
+    ui-laydate
+/>
+<input 
+    class="icon_input"  
+    type="text" 
+    placeholder="时间格式" 
+    ui-laydate="{
+                  format: 'YYYY/MM/DD hh:mm:ss',
+                  min: laydate.now(), //设定最小日期为当前日期
+                  max: '2099-06-16 23:59:59', //最大日期
+                  istime: true,
+                  istoday: false,
+                  choose: function(datas){
+                    alert(datas);
+                  }
+                }"
+/>
+<hr />
+
+<h3>城市联动</h3>
+<code>
+    数据显示不出来是正常的，跨域请假拉取不到数据
+</code>
+<hr />
+<select ui-areadata class="icon_input" data-id="" data-value="" ></select>
+<select ui-areadata class="icon_input" data-id="" data-value="" ></select>
+<select ui-areadata class="icon_input" data-id="" data-value="" ></select>
+
+<select ui-areadata="idAreadata" data-id="" data-value="" ></select>
+<select ui-areadata="idAreadata" data-id="" data-value="" ></select>
+<select ui-areadata="idAreadata" data-id="" data-selected="150722" ></select>
+
+<hr />
+
+<h3>上传组件</h3>
+<hr />
+
+<div ui-dragload data-callback="dragload">
+    拖动<br />拖动<br />拖动<br />
+    拖动<br />拖动<br />拖动<br />
+    拖动<br />拖动<br />拖动<br />
+    拖动<br />拖动<br />拖动<br />
+    拖动<br />拖动<br />拖动<br />
+    拖动<br />拖动<br />拖动<br />
+    拖动<br />拖动<br />拖动<br />
+
+</div>
+
+</div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="http://static-dev.liweijia.com/plugin/jquery.js"></script>
+<script type="text/javascript" src="http://localhost:3000/release/lwj.js"></script>
+<script type="text/javascript" src="http://static-dev.liweijia.com/aojia/wap/common/js/common.js"></script>
+
+<script type="text/javascript">
+    function dragload($this,$e){
+        console.log($this)
+        console.log($e())
+    }
+	// 弹窗dome
+	function layeropent(){
+		$App.layer.open({
+	      type: 2,
+	      title: '很多时候，我们想最大化看，比如像这个页面。',
+	      shadeClose: true,
+	      btn:["确认","取消"],
+	      maxmin: true, //开启最大化最小化按钮
+	      area: ['893px','800px'],
+	      content: 'http://www.liweijia.com'
+	    });
+	}
+    //销售订单 待发货
+    function layerdelivery(id){
+        $App.layer.open({
+            type: 1,
+            title: '确认发货',
+            shadeClose: true,
+            btn:["确认","取消"],
+            area: ['550px','420px'],
+            content: '<div class="layerForm">\
+                        <ul class="icon_form">\
+                            <li>\
+                                <div class="text ">买家：</div>\
+                                <div class="inputtext"><p class="icon_txt">张三-1358880080</p></div>\
+                                <div class="ov_h"></div>\
+                            </li>\
+                        </ul>\
+                    </div>'
+
+        },function(){
+
+        },function(){});
+    }
+    //销售订单 待付款
+    function layerpay(){
+        $App.layer.open({
+            type: 1,
+            title: '修改价格',
+            shadeClose: true,
+            btn:["确认","取消"],
+            area: ['810px','540px'],
+            content: '<div class="layerpay row">\
+                        <h3>买家：<span>张三-1358880080</span></h3>\
+                        <ul class="paytab">\
+                           <li class="col-sm-4">商品</li>\
+                           <li class="col-sm-2">单价</li>\
+                           <li class="col-sm-2">数量</li>\
+                           <li class="col-sm-2">总价</li>\
+                        </ul>\
+                        <ul class="paylist">\
+                            <li class="col-sm-4">\
+                                <p class="name">丽维家 100-18 英格兰锯齿木</p>\
+                                <p class="nr">规格:2440*1220*18mm</p>\
+                            </li>\
+                            <li class="col-sm-2">\
+                                <input class="inputtext" type="text" value="" />\
+                            </li>\
+                            <li class="col-sm-2">\
+                                    <p>10</p>\
+                            </li>\
+                            <li class="col-sm-2">\
+                                <p>2000.00</p>\
+                            </li>\
+                            <div class="ov_h"></div>\
+                        </ul>\
+                        <ul class="paylist">\
+                            <li class="col-sm-4">\
+                                <p class="name">丽维家 100-18 英格兰锯齿木</p>\
+                                <p class="nr">规格:2440*1220*18mm</p>\
+                            </li>\
+                            <li class="col-sm-2">\
+                                <input class="inputtext" type="text" value="" />\
+                            </li>\
+                            <li class="col-sm-2">\
+                                    <p>10</p>\
+                            </li>\
+                            <li class="col-sm-2">\
+                                <p>2000.00</p>\
+                            </li>\
+                            <div class="ov_h"></div>\
+                        </ul>\
+                        <div class="paytraffic">\
+                            <span>运费价格：</span>\
+                            <input type="text" value="" />\
+                        </div>\
+                        <div class="paytotal">\
+                            总价：<span class="col-main">4000.00<span>\
+                        </div>\
+                    </div>'
+        });
+    }
+    //子帐号管理
+    function layeradd(){
+        $App.layer.open({
+            type: 1,
+            title: '添加子帐号',
+            shadeClose: true,
+            btn:["确认","取消"],
+            area: ['550px','320px'],
+            content: '<div class="layerForm layeradd">\
+                        <ul class="icon_form">\
+                            <li>\
+                                <div class="text ">用户名：</div>\
+                                <div class="inputtext "><input class="icon_input" type="text" value=""></div>\
+                                <div class="ov_h"></div>\
+                            </li>\
+                            <li>\
+                                <div class="text ">密码：</div>\
+                                <div class="inputtext "><input class="icon_input" type="text" value=""></div>\
+                                <div class="ov_h"></div>\
+                            </li>\
+                            <li>\
+                                <div class="text ">确认密码：</div>\
+                                <div class="inputtext "><input class="icon_input" type="text" value=""></div>\
+                                <div class="ov_h"></div>\
+                            </li>\
+                        </ul>\
+                    </div>'
+        });
+    }
+</script>
+

@@ -1,0 +1,70 @@
+//公用头部
+.header(@HeaderBg:#fff,@IconFontColor:#666,@BorderColor:#ddd){
+    .header_pr{.transform(0); .p_r(fixed,100); left: 0px; top: 0px;  width: 100%;border-bottom: solid 1px @BorderColor;}
+    .header_pr:nth-child(2){ z-index: 99;}
+    .header_bg{ height: 46px;}
+    .icon_header{ .w_h(100%,45px); line-height: 45px; .p_r(relative,5); vertical-align:middle; background: @HeaderBg;.maxmin; 
+        &>a{.p_r(absolute,5);  top: 0px;  .w_h(45px,45px);vertical-align:middle; text-align: center;color: @IconFontColor;
+            font-size:1.29rem;
+            &.icon-caidan{
+                &.active:before{ content: "\e662"}
+            }
+            &.icon-logo~div.search{ margin: 0 10px 0 85px; }
+            &.icon-zuo~div.search{ margin-right: 10px; }
+            &:active{ background-color: rgba(222,222,222,.5);}
+        }
+        &>.icon-logo{background: url(../common/images/logo.svg) no-repeat center center; width: 80px; .size(100%,auto); }
+
+        &>a:nth-child(1){left: 0px; }
+        &>a:nth-child(3){  right: 0px;
+            &.text-a{ color: @IconFontColor;}
+        }
+        &>a.icon10{background:#ff6600; font-size:14px; border-radius: 5px;-webkit-border-radius:5px ; line-height:30px; height:30px; width:60px; color:#fff; margin-right: 20px;  top: 10px; }  
+        &>a.logo{ left:10px; background: url(images/login2.png) no-repeat 1px 0px; height: 100%; width: 167px; .size(100px); text-align: left; line-height: 58px;  text-indent: 6.5em; font-size: 16px;} 
+        &>a:nth-child(3).headerinf{ overflow: hidden; .w_h(35px,35px); .b_r(45px); right: 10px; top: 5px; left: auto;
+            img{.w_h(35px,35px); }
+        }
+        &>div{ text-align: center; font-size: 16px; color: @IconFontColor;  .p_r(relative,2);.ov_ell; background: @HeaderBg;
+            &.search{padding-top: 8px; margin:0 45px; }
+            .logo{ line-height: 9999; overflow: hidden; height: 45px; background: url(../main/images/login_home.png) no-repeat center center; .size(auto,100%); }
+        }
+        &>.headerlist{ .transition(all,800ms,ease-in-out);width: 150px;.transform(0,500px); opacity: 0; .p_r(absolute,5); right: 3px; top: 48px; width: 30%; background: #fff; border:solid 1px @BorderColor; .b_r(5px);.box_w(0px,0px,3px,#363636);
+            dd{.p_r(relative,5);
+                &:before{ content: ""; .p_r(absolute,5); background: url(images/h_top.png) no-repeat; .size(20px); .w_h(28px,14px); right: 8px; top: -10px;}
+                a{ display: block; line-height: 45px; font-size: 14px; color: #555; text-align: center; border-bottom:1px solid #eee ;
+                    &:hover{ background:#FEFEFE;}
+                    &:last-child{ border-bottom: 0px;}
+                }
+            }
+        }
+        &>.headerlistActive{.transform(0,0);opacity: 1;  }
+        &>.h_navlit{ background: #fff;.p_r(absolute,-1); top: 46px; left: 0; width: 100%;overflow-y: auto;.transition(all,400ms,ease);opacity: 0;.transform(0,-100%); .box_w(0px,0px,20px,rgba(0,0,0,.5));
+            &>h3{ font-size: 16px; background: #f5f3f1; padding: 0px 15px;clear: both; }
+            dl{ clear: both; line-height: 35px; border-bottom: solid 1px #eee;
+                &:after{.ov_h;  content: ""; display: block; }
+                &:last-child{ border-bottom: none;}
+                padding: 0px 15px;
+                dt{ font-size: 14px; 
+                    a{ display: inline-block;}
+                }
+                dd{ float: left; font-size: 12px; color: #555; margin-right: 20px; line-height: 35px;
+                    a{ color: #666;}
+                }
+            }
+            &.active{.transform(0,0);  opacity: 1;
+            }
+        }
+        &>.h_newlit{background: #fff;.p_r(absolute,-50); top: 45px; right: 0px; border: solid 1px #ddd; width: 35%;.transition(all,400ms,ease);opacity: 0;.transform(-200%,0);  padding-bottom: 5px; .boxS(-1px,1px,3px,rgba(125,125,125,.2));
+            a{ display: block; border-bottom:solid 1px #ddd; color: @col999;  line-height: 35px; font-size: 16px; text-align: left; padding-left: 1.8rem;
+                i{.p_r(relative,5); margin-right: 5px;  font-size: 1.2rem; }
+                &:last-child{ border-bottom: 0;}
+            }
+            &.active{.transform(0,0);  opacity: 1;.p_r(absolute,1);}
+            div{ .p_r(relative,5);
+                &:before{ content: ""; .p_r(absolute,5); top: -12px; right: 10px;  width: 17px; height: 12px;}
+            }
+        }
+    }
+    
+}
+
