@@ -14,17 +14,19 @@
 
 .in_nav{
 	a{text-align: center; padding: 0.9rem 0; font-size: .785rem; color: #666;
-		&:nth-child(2){
-			i{background: #7bb21c;}
-		}
-		&:nth-child(3){
-			i{background: #58bffa;}
-		}
-		&:nth-child(4){
-			i{background: #b799e9;}
-		}
+		// &:nth-child(2){
+		// 	i{background: #7bb21c;}
+		// }
+		// &:nth-child(3){
+		// 	i{background: #58bffa;}
+		// }
+		// &:nth-child(4){
+		// 	i{background: #b799e9;}
+		// } 
 	}
-	i{display: block; font-size: 2rem; color: #fff; background: #f8a411; .w_h(2.85rem,2.85rem); line-height: 2.85rem; .b_r(1rem); text-align: center; margin:auto auto .3rem auto;}
+	i{display: block; font-size: 2rem; color: #fff; background: #ebebeb; .w_h(2.85rem,2.85rem); line-height: 2.85rem; .b_r(50rem); text-align: center; margin:auto auto .3rem auto; overflow: hidden;
+		img{ width: 100%;}
+	} 
 }
 
 .in_cplist{
@@ -48,19 +50,27 @@
 }
 
 .in_h3{
-	font-size: 1.5rem; text-align: center; padding: 1rem 0; font-weight: 400;
+	font-size: 1.2rem; text-align: center; padding: .7rem 0 .7rem 0; font-weight: 400;
 	em{color: #f56119; font-weight:600;}
+	&.in_bg1{ background: url(../common/images/tab_h3.png); .size(100%,auto);}
 }
 
-.in_ullist{ margin-left: .7rem; padding: .7rem 0;
+.in_ullist{ margin-left: .7rem; 
 	li{ padding-bottom: 10px; line-height: 1.5rem;
 		a.img,img{display: block; width: 100%;}
-		.cent{ margin-right: .7rem;}
-		h3{ font-size: 1.1rem; line-height: 1.8rem; font-weight: 400;.ov_ell;padding-top: .5rem;}
+		.cent{ margin-right: .7rem; position: relative; background: #fff;}
+		h3{ font-size: 1.1rem; line-height: 1.8rem; font-weight: 400;.ov_ell;padding-top: .5rem; margin:0 .2rem;
+			span{ border:solid 1px burlywood; color: burlywood; font-size: .785rem;padding:0 .3rem; margin-right: .3rem;}
+		}
 		p{color: @col999; font-size: .785rem;.ov_ell;padding-bottom: .4rem;line-height: 1.2rem; min-height: 1.2rem;}
 		span.money{color: @col-main;font-size: 1rem;}
+		.xiao_num{ padding:.5rem 0.2rem; font-size: .785rem;
+			.num{ color: @col999;}
+		}
+		span.tab{ position: absolute; left: 0; top: 0; color: #fff; background: @col-red; font-size: .785rem; padding:0 .2rem; display: inline-block;}
 	}
 }
+.in_cplist~.col-body{ padding-top: .7rem;}
 
 .in_tel,.in_icp{height: 3rem; line-height: 3rem; text-align: center; border-top: solid 1px @col-body; }
 .in_icp{ background: @col-body; color: @col999; font-size: .758rem;}

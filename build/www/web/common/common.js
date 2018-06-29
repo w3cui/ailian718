@@ -257,11 +257,13 @@
             return {
                 scope: {
                     url: "url",
+                    callback:"=callback",
                 },
                 link: function($el) {
                     var $scope = $el.scope,
                         $element = $el.element;
                     $($element).unbind('click').on("click",function(){
+                        var url = $scope.callback ? $scope.callback($scope) : $scope.url; 
                         layer.open({
                           type: 2,
                           title: '充值中心',

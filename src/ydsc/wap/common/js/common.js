@@ -258,7 +258,7 @@
 		};
 	};
 
-	// 兼容木头来了编辑
+	// 兼容编辑
 	win.$api = $app.API;
 	win.$api.__HOST__ = $app.appUrl.MAIN_HOST;
 	win.$api.ajax = $app.API.ajax;

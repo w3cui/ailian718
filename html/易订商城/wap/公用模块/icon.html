@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <title></title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
-    <link rel="stylesheet" type="text/css" href="http://static-dev.liweijia.com/aojia/wap/common/common.css"/>
+    <link rel="stylesheet" type="text/css" href="http://static-local.ydsc.com/wap/common/common.css" />
+    <link rel="stylesheet" type="text/css" href="http://static-local.ydsc.com/wap/main/main.css" />
 </head>
 <body>
 
@@ -208,9 +209,9 @@
 
 </body>
 </html>
-<script type="text/javascript" src="http://static-dev.liweijia.com/plugin/jquery.js"></script>
-<script type="text/javascript" src="http://localhost:3000/release/lwj.js"></script>
-<script type="text/javascript" src="http://static-dev.liweijia.com/aojia/wap/common/js/common.js"></script>
+<script type="text/javascript" src="http://static-local.ydsc.com/lib/jquery.js"></script>
+<script type="text/javascript" src="http://static-local.ydsc.com/lib/wui/wui.js"></script>
+<script type="text/javascript" src="http://static-local.ydsc.com/wap/common/js/common.js"></script>
 
 <script type="text/javascript">
     function dragload($this,$e){
@@ -219,7 +220,7 @@
     }
 	// 弹窗dome
 	function layeropent(){
-		$App.layer.open({
+		$app.layer.open({
 	      type: 2,
 	      title: '很多时候，我们想最大化看，比如像这个页面。',
 	      shadeClose: true,
@@ -231,7 +232,7 @@
 	}
     //销售订单 待发货
     function layerdelivery(id){
-        $App.layer.open({
+        $app.layer.open({
             type: 1,
             title: '确认发货',
             shadeClose: true,
@@ -253,7 +254,7 @@
     }
     //销售订单 待付款
     function layerpay(){
-        $App.layer.open({
+        $app.layer.open({
             type: 1,
             title: '修改价格',
             shadeClose: true,
@@ -311,7 +312,7 @@
     }
     //子帐号管理
     function layeradd(){
-        $App.layer.open({
+        $app.layer.open({
             type: 1,
             title: '添加子帐号',
             shadeClose: true,
