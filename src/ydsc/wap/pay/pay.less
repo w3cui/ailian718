@@ -1,0 +1,198 @@
+@import "../../less_public/variables.less";//变量
+@import "../../less_public/package.less";//组件
+/*
+ * 购物车  @tanqilin  2016 11 17
+ */ 
+.def_but{ background: @col-main; color: #fff; border:0;-webkit-appearance: none; -webkit-user-select: none;  -moz-user-select: none; -ms-user-select: none;    user-select: none; 
+    &:hover{background: @col-main*.8; color: #fff;}
+}
+.def_butDis{ background: #eee; color: #999; border:0;-webkit-appearance: none; -webkit-user-select: none;  -moz-user-select: none; -ms-user-select: none;    user-select: none; 
+    &:hover{background: #ccc;}
+}
+.def_butno{ background: #fff; color: #36c3be; border:0;-webkit-appearance: none; -webkit-user-select: none;  -moz-user-select: none; -ms-user-select: none;    user-select: none; 
+    &:hover{background: #f5f5f5;}
+}
+.bgfff{ background: #fff;}
+ 
+.icon-defray ~ .appMain {
+    padding-bottom: 4.2rem;
+}
+.icon-defray{ .p_r(fixed,98); bottom: 0; left: 0; width: 100%;  height: 54px;
+    .tab{border-top: solid 1px #ccc; background:#fff;.p_r(relative,5);
+        &>div:nth-child(1){.p_r(relative,5);padding: 5px 0; height: 43px; overflow: hidden;
+            &:before{content: ""; .w_h(1px,100%); overflow: hidden; background: #ccc;.p_r(absolute,5);  right: 0; top: 0; display: block;}
+        }
+        a.col-4{.p_r(relative,5); text-align: center; font-size: 0.85rem;
+            i.iconfont{ font-size: 1.71rem; color: #666; display: block;
+                &.icon-xihuan{ color: @col-main;}
+            }
+            em{.p_r(absolute,5);  left: 50%; top: 0; .w_h(18px,18px); line-height: 18px; font-size: 0.714rem; color: #fff; background: #ff4e00; .b_r(50px);font-style:normal;}
+        }
+        a.col-6,a.col-12{
+            display: block; height: 100%;  overflow: hidden; line-height: 53px; text-align: center; font-size: 1rem; 
+        }
+    }
+    .cent{.p_r(relative,5);}
+    .order{.p_r(absolute,0); left: 0; bottom:54px; width: 100%; background:rgba(255, 255, 255, 0.97); padding-bottom: 30px;
+        .info{.p_r(relative,5); padding:0 0 0.714rem 40%; text-align: left; border-bottom: solid 1px #ccc;
+            a.img{ .p_r(absolute,5); left: 5%; width: 30%; bottom:0.714rem; border:solid 4px #fff;
+                img{ width: 100%; display: block;}
+            }
+            div.text{ padding: 0.714rem 0 4px 0.714rem; 
+                *{.ov_ell;}
+                .money{ color: @col-main; font-size: 1.14rem;}
+                p{ color: #999; font-size: 0.85rem;}
+                h3{ font-size: 1rem; padding:3px 0;}
+            }
+        }
+        .ullit{
+            li{border-bottom: solid 1px #ccc; padding-right: 1.07rem;
+                h3{ font-size: 1rem; font-weight: 100; line-height:35px; height: 35px; text-align: left; padding-left: 1.07rem;}
+                div.col-3{ padding-bottom: 0.714rem;
+                    a{ display: block; margin-left: 1.07rem; .b_r(3px); padding:7px 0; border:solid 1px #36c3be; font-size: 1rem;
+                        &.def_butno{ border-color: #ccc; color: #ccc; }
+                    }
+                }
+                .col-6{  padding: 5px 0; 
+                    .iconQuantity{ float: right;}
+                    &:nth-child(1){text-indent: 1.07rem; font-size: 1rem;text-align: left; line-height: 37px;}
+                }
+            }
+        }
+
+    }
+    .order_bg{ background: rgba(0,0,0,.5);.p_r(fixed,-5); .w_h(100%,100%); left: 0;top: 0; }
+}
+
+.def_ullit{
+    li{ border-bottom: solid 1px #eee; background: #fff;.p_r(relative,5);
+        &>label,&>div{ display: block; padding:0px 0px 0.714rem 125px;}
+        &.active .but{ opacity: 1; left: 0;}
+    }
+    a.img{ .w_h(80px,80px); .p_r(absolute,5); left: 2.5rem; top: 0.714rem; border:solid 1px #c1c1c1;
+        img{ display: block; .w_h(100%,100%);}
+     }
+    .checkbox{ border:solid 1px #ccc; border-radius: 1rem; width: 1rem; height: 1rem; margin-top: -.5rem;  background: #fff; display: inline-block; position: absolute; left: .7rem; top: 50%; z-index: 2;}
+    
+    input:checked + .checkbox{ background: @col-main; border-color: @col-main;}
+    div.text{  padding-top: 0.714rem;height: 82px;.p_r(relative,5); 
+        *{.ov_ell;}
+        h3{ font-size: 1rem;}
+        p{ font-size: 0.85rem; color: #999; padding:3px 0;}
+        p.money{ font-size: 1.14rem; padding-top: 0.714rem; color: @col-main; .p_r(absolute,5); left: 0; bottom: 0;
+            span{ color: #999; font-size: 1rem;.ov_ell;}  
+        }
+    }
+    div.money{.p_r(absolute,5); right: 0.714rem; top: 0.714rem;  text-align: right; width: 50px;
+        p{ color: @col-main; font-size: 1rem;.ov_ell;}
+       
+
+    }
+    div.but{.p_r(absolute,5); left:150%; top: 0; opacity: 0; width: 100%; background: #fff; height: 100%;.transition;
+        .iconfont{ font-size: 1.71rem; color: #999; position: absolute; right: 1rem; top: 50%; z-index: 10; margin-top: -.81rem;
+            &:hover{ color: @text-a;}
+        }
+        .icon_cal{ float:left; position: relative; z-index: 5; top: 33px; left: 1rem;}
+    }
+    input[type="checkbox"]{ display: none;}
+    &_qr{
+        li{ background: #fafafa;}
+    }
+}
+.def_msg{ text-align: center; font-size: 0.85rem; padding: 0.714rem 0;  color: #999; border-bottom: solid 1px #ccc; background: #fff;}
+
+.def_tab_nav{ border-bottom:1px solid #eee;
+    height: 45px; line-height: 45px; position: relative; z-index: 1; padding-left: 2.5rem;
+    .checkbox{ border:solid 1px #ccc; border-radius: 1rem; width: 1rem; height: 1rem; margin-top: -.5rem;  background: #fff; display: inline-block; position: absolute; left: .7rem; top: 50%; z-index: 2;}
+    input:checked + .checkbox{ background: @col-main; border-color: @col-main;}
+    .text-right a{margin-right: .785rem;}
+    img{ float: left; width: 2rem; height: 2rem;  border-radius: 3rem; position: absolute; left: .7rem; top: 50%; z-index: 2; margin-top: -1rem;}
+    &_img{
+        padding-left:3.3rem;
+    }
+}
+
+.def_msg_remarks{ border-bottom: solid 1px #eee;
+    height: 40px; line-height: 40px; 
+    span{float: left; width: 60px; text-align: right;} 
+    div.input{
+        margin-left: 60px;
+    }
+    input{ border:0; height: 40px; width: 100%; font-size: .785rem;}
+}
+.def_msg_money{ padding:.7rem ; border-bottom: solid .7rem @col-body;
+    .iconfont{ font-size: 18px; position: relative; top: 1px;}
+}
+
+.def_tab_box{ border-top: solid 1px #ccc; .p_r(fixed,98); bottom: 48px; left: 0; width: 100%; background: #fff; height: 50px;
+    &>div{
+        &:nth-child(1){ padding: 5px 0; height:2.85rem; line-height: 1.4rem; text-align: right; font-size: 0.85rem; color: #999; position: relative;
+            p{ font-size: 1rem; color: #333; line-height: 2.85rem;}
+            span{ color: @col-main;}
+            &>div{ padding-right: 0.714rem;}
+         }
+        a,input,button{  display: block; text-align: center; height: 50px; line-height: 50px; width: 100% }
+
+    }
+    label{ position: absolute; left: 0;top:0;height: 100%; line-height: 50px; padding-left: 2.5rem;
+        input{ display: none;}
+        .checkbox{ border:solid 1px #ccc; border-radius: 1rem; width: 1rem; height: 1rem; margin-top: -.5rem;  background: #fff; display: inline-block; position: absolute; left: .7rem; top: 50%; z-index: 2;}
+        input:checked + .checkbox{ background: @col-main; border-color: @col-main;}
+    }
+    &.def_tab_bottom{ bottom: 0;}
+}
+.def_tab_boxbg{ height: 4.2rem;}
+
+.def_add_tab{ border-bottom:solid 5px #f5f3f1; background: #fff; padding: 0.714rem 1.07rem 1.07rem 1.07rem;.p_r(relative,5);
+    p{ line-height: 25px; .ov_ell; font-size: 0.85rem;
+        &:nth-child(1){ font-size: 1rem;}
+        .iconfont{ font-size: 18px; color: @text-a;}
+    }    
+    &:after{ content: ""; height: 4px; display: block; background: url(../pay/images/addbk.png); .size(auto,100%);.p_r(absolute,5);  width: 100%; left: 0; bottom:0;}
+    &>a{ display: block;
+        &>.iconfont{.p_r(absolute,5); top: 50%; margin-top:-.57rem; right: 0.714rem; }
+    }
+
+}
+.def_add_link{  font-size: 1rem;  .p_r(relative,5);
+    a{ display: block;padding: 1.07rem;}
+    i.iconfont{.p_r(absolute,5); right: 0.714rem; top: 0.714rem;}
+}
+
+.def_dl{padding:0.714rem 0;border-bottom:solid 5px #f5f3f1;
+    dt{ font-size: 1rem; line-height: 2.85rem;}
+    dd{font-size: 0.85rem; line-height: 1.75rem; color: #999; padding-bottom: 0.714rem;
+        label{display: block; margin-right: 0.714rem; padding: 7px 0; text-align: center; border:solid 1px @col-main; font-size: 1rem; .b_r(3px);
+            &.def_butno{ border:solid 1px #ccc; color: #ccc;}
+            input{ display: none;}
+        }
+    }
+}
+.def_dl2{
+    padding-bottom:0.714rem;
+    dt{ font-size: 1rem; line-height: 2.85rem; border-bottom: solid 1px #f5f3f1;  .p_r(relative,5);
+        .money{.p_r(absolute,5); right: 0; top: 0; color: @col-main; }
+    }
+    dd{font-size: 0.85rem; line-height: 1.75rem; color: #555;  padding: 7px 0; text-align: center;.p_r(relative,5);
+        label{ display: block; font-size: 1rem; line-height: 1.75rem; text-align: left;
+            input{ display: none;}
+            i.checkbox{ background: #fff; .w_h(0.714rem,0.714rem); .b_r(1.4rem);  background: #fff; overflow: hidden;border:solid 1px  #9b9b9b; float: left; margin:5px 5px 0 0; }
+            input:checked + .checkbox{border-color: @col-main; background:@col-main;}
+        }
+        &.dd2{ border-bottom: solid 1px #f5f3f1;
+            img{ float: left; .w_h(1.75rem,1.75rem); margin-right: 5px;}
+            label i.checkbox{ left: none; right: 0px; .p_r(absolute,5); }
+        }
+    }
+}
+.def_topmsg{border-bottom:solid 5px #f5f3f1; padding:3.4rem 0; text-align: center; font-size: 1rem; line-height: 1.71rem; color: #666;
+    .iconfont{ font-size: 4.2rem; color: @col-main; padding-bottom: 1.4rem;}
+}
+.def_submit{ padding: 1.4rem 0;
+    .def_but{ width: 40%; padding:0.714rem 0; text-align: center; display: block; margin:auto; .b_r(3px);}
+}
+
+.def_mr{ padding: 150px 0; text-align: center; font-size: 17px; color: #999; line-height: 4.2rem;
+    .iconfont{ display: block; margin: auto; color: #ccc; font-size: 50px; .b_r(80px); .w_h(80px,80px); text-align: center; line-height: 80px;}
+    &>a{ width: 180px; line-height: 25px; border:solid 1px #b4b4b4; .b_r(3px); padding: 5px 0; text-align: center; background: #efefef; display: block; margin: auto;}
+}

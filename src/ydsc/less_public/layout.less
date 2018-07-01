@@ -80,7 +80,11 @@
 	background: @col-main; color: #fff;
 	&:hover{ color: #fff; background: #b8161c;}
 }
-
+// 主色
+.btn-yellow{
+	background: @col-yellow; color: #fff;
+	&:hover{ color: #fff; background:@col-yellow/.9;}
+}
 
 // 透明背景线框按钮
 .btn-outline{
@@ -102,7 +106,7 @@
 
 //加减计算
 .icon_cal{
-    @border:solid 1px #bfbfbf; font-size: @f_12;
+    @border:solid 1px #bfbfbf; font-size: @f_12; border-radius: 3px;
     border:@border; .w_h(130px,30px); background: @colfff; line-height: 30px; text-align: center;
     a{.w_h(30px,30px); background: #f5f5f5; float: left; font-size: @f_18; cursor: pointer;}
     input{ border: 0px none; border-left: @border;border-right:@border;.w_h(68px,30px); *line-height: 30px; background: none; float: left; text-align: center; font-size: @f_14; }
@@ -180,7 +184,7 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
 // 弹窗样式填充
 .layui-layer{
   .layui-layer-title{background: @col-main; color: #fff; border-color: @col-main; font-size: 1rem;}
-  .layui-layer-ico{ background-image: url(../common/images/layer_icon.png);}
+ .layui-layer-ico{ background-image: url(../common/images/layer_icon.png);}
   .layui-layer-setwin .layui-layer-min cite{background-color: #fff;}
   .layui-layer-btn{ text-align: center; padding: 8px 10px 8px 8px;
       a{ .p_r; overflow: hidden; text-align: center; white-space: nowrap; vertical-align: middle; -ms-touch-action: manipulation; touch-action: manipulation;
@@ -197,9 +201,9 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
 }
 
 .nav_icon_tab{
-    @h:35px; 
-    height: @h; .p_r(relative,80); background: #fff; border-bottom: solid 1px #ddd; padding-right: 45px; .opacity(0); .transition;
-    &.opacity1{.opacity(1);}
+    @h:45px; 
+    height: @h; .p_r(relative,80); background: #fff; border-bottom: solid 1px #ddd;  .opacity(0); .transition; padding-right: 45px;
+    &.opacity1{.opacity(1);} 
     &.nav_icon_tab_whole{ padding-right: 0;}
     .swiper-wrapper { height: @h; text-align: center; .p_r(relative,50);  display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;
         &:last-child{ }
@@ -217,13 +221,13 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
         }
         .icon-desc{ .w_h(1.2rem,@h); background: url(../common/images/asc.svg) no-repeat center center;.size(100%,auto); display: inline-block;
           &:before{center:""}
-        }
+        } 
 
     }
     .whole{ height: 100%; width: @h; background: rgba(229,229,229,.8); text-align: center; line-height: @h; .p_r(absolute,60); right: 0; top: 0; color: #999;
         &.active{.rotate(180deg);}
     }
-    &>.ulllit{ .p_r(absolute,20); left: 0; top:@h+1; background:#f9f9f9; opacity: 0; .transform(-200px,0px);.transition;
+    &>.ullit{ .p_r(absolute,20); left: 0; top:@h+1; background:#f9f9f9; opacity: 0; .transform(-200px,0px);.transition;
         li{ float: left; padding: 0px 15px;
             &.active{
                 a{ color: @col-main; }
@@ -234,10 +238,10 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
         }
      }
     &.active{
-        &>.ulllit{ opacity: 1; .transform(0px,0px);}
+        &>.ullit{ opacity: 1; .transform(0px,0px);}
     }
 
-    text-align: center; padding-right: 0;
+    text-align: center;
 }
 
 

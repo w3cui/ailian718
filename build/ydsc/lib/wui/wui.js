@@ -1,5 +1,613 @@
-/**
- *  - v1.0.0  License By 
- * 研发技术中心-技术研发部 
- */
-!function(win){"use strict";var wui=function(){this.v="1.0.0"};wui.fn=wui.prototype;var doc=document,config=wui.fn.cache={},getPath=function(){var e=doc.scripts,t=e[e.length-1].src;return t.substring(0,t.lastIndexOf("/")+1)}(),error=function(e){win.console&&console.error&&console.error("wui hint: "+e)},isOpera="undefined"!=typeof opera&&"[object Opera]"===opera.toString(),modules="object"==typeof modsConfig?modsConfig.moduleUrl:{layer:"modules/layer",jquery:"modules/jquery",directive:"modules/directive",box:"modules/box",validate:"modules/validate",umeditor:"modules/umeditor",swiper:"modules/swiper",number:"modules/number",mobile:""};config.modules={},config.status={},config.timeout=30,config.event={},config.directive={},config.version=""==(new wui).v?(new Date).getTime():(new wui).v,wui.fn.define=function(e,t){var n=this,i="function"==typeof e,o=function(){return"function"==typeof t&&t(function(e,t){wui[e]=t,config.status[e]=!0}),this};return i&&(t=e,e=[]),wui["wui.all"]||!wui["wui.all"]&&wui["wui.mobile"]?o.call(n):(n.uses(e,o),n)},wui.fn.uses=function(e,t,n){function i(e,t){var n="PLaySTATION 3"===navigator.platform?/^complete$/:/^(complete|loaded)$/;if("load"===e.type||n.test((e.currentTarget||e.srcElement).readyState)){config.modules[c]=t,u.removeChild(f);var i=t.match(/\/([^\/]+)\.js/)[1];config.status[c]=i,function r(){return++a>1e3*config.timeout/4?error(c+" is not a valid module"):void(config.status[c]?o():setTimeout(r,4))}()}}function o(){n.push(wui[c]),e.length>1?r.uses(e.slice(1),t,n):"function"==typeof t&&t.apply(wui,n)}var r=this,s=config.dir=config.dir?config.dir:getPath,u=doc.getElementsByTagName("body")[0];e="string"==typeof e?[e]:e,window.jQuery&&jQuery.fn.on&&(r.each(e,function(t,n){"jquery"===n&&e.splice(t,1)}),wui.jquery=jQuery);var c=e[0],a=0;if(n=n||[],config.host=config.host||(s.match(/\/\/([\s\S]+?)\//)||["//"+location.host+"/"])[0],0===e.length||wui["wui.all"]&&modules[c]||!wui["wui.all"]&&wui["wui.mobile"]&&modules[c])return o(),r;var f=doc.createElement("script"),l=(modules[c]?s+"js/":config.base||"")+(r.modules[c]||("http"==c.substr(0,4)?c:s+c))+(c.match(/.*\.js.*/)?"":".js");if(f.type="application/javascript",f.charset="utf-8",f.src=l+function(){var e=config.version===!0?config.v||(new Date).getTime():config.version||"";return e?"?v="+e:""}(),config.modules[c])!function v(){return++a>1e3*config.timeout/4?error(c+" is not a valid module"):void("string"==typeof config.modules[c]&&config.status[c]?o():setTimeout(v,4))}();else{if(r.nginit){config.modules[c]=l;var d=l.match(/\/([^\/]+)\.js/)[1];config.status[c]=d,$("body").append(f),i({type:"load"},l)}else u.appendChild(f);!f.attachEvent||f.attachEvent.toString&&f.attachEvent.toString().indexOf("[native code")<0||isOpera?f.addEventListener("load",function(e){i(e,l)},!1):f.attachEvent("onreadystatechange",function(e){i(e,l)})}return config.modules[c]=l,r},wui.fn.getStyle=function(e,t){var n=e.currentStyle?e.currentStyle:win.getComputedStyle(e,null);return n[n.getPropertyValue?"getPropertyValue":"getAttribute"](t)},wui.fn.link=function(e,t,n){var i=this,o=doc.createElement("link"),r=doc.getElementsByTagName("head")[0];"string"==typeof t&&(n=t);var s=e.match(/.*\.css.*/)?"http"==e.substr(0,4)?e:config.dir+e:config.dir+"css/"+e+".css";n=s.match(/\/([^\/\.]+)\.css/)[1];var u=o.id="lwj-ui-css-"+n,c=0;return doc.getElementById(u)?i:(o.rel="stylesheet",o.type="text/css",o.href=s+function(){var e=config.version===!0?config.v||(new Date).getTime():config.version||"";return e?"?v="+e:""}(),o.media="all",doc.getElementById(u)||r.appendChild(o),"function"!=typeof t?i:(function a(){return++c>1e3*config.timeout/100?error(e+" timeout"):void(doc.getElementById(u)?function(){t()}():setTimeout(a,100))}(),i))},wui.fn.addcss=function(e,t,n){e="object"==typeof e?e:[e];for(var i=0;i<e.length;i++)wui.fn.link(e[i],t,i)},wui.fn.img=function(e,t,n){var i=new Image;return i.src=e,i.complete?t(i):(i.onload=function(){i.onload=null,t(i)},void(i.onerror=function(e){i.onerror=null,n(e)}))},wui.fn.config=function(e){e=e||{};for(var t in e)config[t]=e[t];return this},wui.fn.modules=function(){var e={};for(var t in modules)e[t]=modules[t];return e}(),wui.fn.extend=function(e){var t=this;e=e||{};for(var n in e)t[n]||t.modules[n]?error("模块名 "+n+" 已被占用"):t.modules[n]=e[n];return t},wui.fn.data=function(e,t){if(e=e||"wui",win.JSON&&win.JSON.parse){if(null===t)return delete localStorage[e];t="object"==typeof t?t:{key:t};try{var n=JSON.parse(localStorage[e])}catch(i){var n={}}return t.value&&(n[t.key]=t.value),t.remove&&delete n[t.key],localStorage[e]=JSON.stringify(n),t.key?n[t.key]:n}},wui.fn.device=function(e){var t=navigator.userAgent.toLowerCase(),n=function(e){var n=new RegExp(e+"/([^\\s\\_\\-]+)");return e=(t.match(n)||[])[1],e||!1},i={os:function(){return/windows/.test(t)?"windows":/linux/.test(t)?"linux":/mac/.test(t)?"mac":/iphone|ipod|ipad|ios/.test(t)?"ios":void 0}(),ie:function(){return!!(win.ActiveXObject||"ActiveXObject"in win)&&((t.match(/msie\s(\d+)/)||[])[1]||"11")}(),weixin:n("micromessenger")};return e&&!i[e]&&(i[e]=n(e)),i.android=/android/.test(t),i.ios="ios"===i.os,i},wui.fn.hint=function(){return{error:error}},wui.fn.each=function(e,t){var n,i=this;if("function"!=typeof t)return i;if(e=e||[],e.constructor===Object){for(n in e)if(t.call(e[n],n,e[n]))break}else for(n=0;n<e.length&&!t.call(e[n],n,e[n]);n++);return i},wui.fn.stope=function(e){e=e||win.event,e.stopPropagation?e.stopPropagation():e.cancelBubble=!0},wui.fn.onevent=function(e,t,n){return"string"!=typeof e||"function"!=typeof n?this:(config.event[e+"."+t]=[n],this)},wui.fn.event=function(e,t,n){var i=this,o=null,r=t.match(/\(.*\)$/)||[],s=(t=e+"."+t).replace(r,""),u=function(e,t){var r=t&&t.call(i,n);r===!1&&null===o&&(o=!1)};return wui.each(config.event[s],u),r[0]&&wui.each(config.event[t],u),o},wui.fn.directive=function(dirName,events){config.directive[dirName]=config.directive[dirName]?config.directive[dirName]:events;var events=events(),$this=this,result={},isUses=0;return result.init=function(e,t){var n={};if(n.fn=$this,n.element=e,0==n.element.length)return $this;for(var i in events)this.isType(i,events[i],n,t)},result.isValue=function(e){return!e||""==e},result.isType=function(e,t,n,i){if(this.isValue(t))return!1;switch(e){case"template":n.template=t;break;case"uses":isUses=1,$this.uses(t,function(){isUses=2});break;case"addcss":isUses=1,$this.addcss(t,function(){isUses=2},t);break;case"scope":n.scope={};for(var o in t)n.scope[o]=this.isScope(o,t[o],n);break;case"link":setTimeout(function(){if(1===isUses||2===isUses)var e=setInterval(function(){2===isUses&&(clearInterval(e),i(n))},100);else i(n)},100);break;default:error(e+"未知参数！")}},result.isScope=function($key,$value,_$scope){function valAttr(e,t){return e.attr(t)?e.attr(t):e.data(t)}switch($value[0]){case"=":var val=valAttr(_$scope.element,$value.substr(1));return eval("("+(""!=val?val:"{}")+")");case"~":var val=valAttr(_$scope.element,$value.substr(1));return val&&""!=val&&"function"==typeof eval("("+val+")")?eval("("+val+")"):null;default:return valAttr(_$scope.element,$value)}},setTimeout(function(){$.each($("*["+dirName+"]"),function(e,t){result.init($(this),events.link)})},100),this},wui.fn.init=function(e){switch(e){case"directive":for(var t in config.directive)this.directive(t,config.directive[t]);break;default:for(var t in config.directive)this.directive(t,config.directive[t])}},wui.fn.ngModule=function(e,t){var n=this;return e.factory("wui",function(e){return n}),this.nginit=e,this.uses(t,function(){}),e},wui.fn.loadAll=function(e,t){var n=e.uses&&e.addcss?2:e.uses||e.addcss?1:0,i=1;e.uses&&this.uses(e.uses,function(){i++}),e.addcss&&this.addcss(e.addcss,function(){i++},e.addcss);var o=setInterval(function(){n<=i&&(t(),clearInterval(o))},400)},win.wui=new wui}(window);
+/** lwj-v MIT License By  */
+ ! function(win) {
+  "use strict";
+  var wui = function() {
+    this.v = '1.0.0';
+  };
+
+  wui.fn = wui.prototype;
+  var doc = document,
+    config = wui.fn.cache = {},
+
+    //获取wui所在目录
+    getPath = function() {
+      var js = doc.scripts,
+        jsPath = js[js.length - 1].src;
+      return jsPath.substring(0, jsPath.lastIndexOf('/') + 1);
+    }(),
+
+    //异常提示
+    error = function(msg) {
+      win.console && console.error && console.error('wui hint: ' + msg);
+    },
+
+    isOpera = typeof opera !== 'undefined' && opera.toString() === '[object Opera]',
+
+
+    //内置模块
+    modules = typeof modsConfig == "object" ? modsConfig.moduleUrl : {
+      layer: 'modules/layer', //弹层
+
+      jquery: 'modules/jquery', //DOM库（第三方）
+
+      directive: 'modules/directive', //指令插件
+
+      box: 'modules/box', //弹窗   
+
+      validate: 'modules/validate', //表单验证   
+
+      umeditor: 'modules/umeditor', //编辑器
+
+      swiper:'modules/swiper', //滑动
+
+      number:'modules/number',//数量加减
+
+      mobile: '' //移动大模块 | 若当前为开发目录，则为移动模块入口，否则为移动模块集合
+    };
+
+  config.modules = {}; //记录模块物理路径
+  config.status = {}; //记录模块加载状态
+  config.timeout = 30; //符合规范的模块请求最长等待秒数
+  config.event = {}; //记录模块自定义事件
+  config.directive = {}; //记录所有directive指令
+  config.version = (new wui()).v == "" ? (new Date()).getTime() : (new wui()).v;
+  //定义模块
+  wui.fn.define = function(deps, callback) {
+    var that = this,
+      type = typeof deps === 'function',
+      mods = function() {
+        typeof callback === 'function' && callback(function(app, exports) {
+          wui[app] = exports;
+          config.status[app] = true;
+        });
+        return this;
+      };
+
+    type && (
+      callback = deps,
+      deps = []
+    );
+
+    if (wui['wui.all'] || (!wui['wui.all'] && wui['wui.mobile'])) {
+      return mods.call(that);
+    }
+
+    that.uses(deps, mods);
+    return that;
+  };
+
+  /**
+   * 使用特定模块，并依据obj来设置属性，加载成功后执行回调函数callback
+   * @name uses
+   * @grammar wui.uses(apps, callback,)
+   * @example
+   * //指定加载到当前document中一个script文件，加载成功后执行function
+   * wui.uses( "@name/url",
+   * , function () {
+   *     console.log('加载成功！')
+   * },[]);
+   */
+  wui.fn.uses = function(apps, callback, exports) {
+    var that = this,
+      dir = config.dir = config.dir ? config.dir : getPath;
+    var head = doc.getElementsByTagName('body')[0];
+
+    apps = typeof apps === 'string' ? [apps] : apps;
+
+    //如果页面已经存在jQuery1.7+库且所定义的模块依赖jQuery，则不加载内部jquery模块
+    if (window.jQuery && jQuery.fn.on) {
+      that.each(apps, function(index, item) {
+        if (item === 'jquery') {
+          apps.splice(index, 1);
+        }
+      });
+      wui.jquery = jQuery;
+    }
+
+    var item = apps[0],
+      timeout = 0;
+    exports = exports || [];
+
+    //静态资源host
+    config.host = config.host || (dir.match(/\/\/([\s\S]+?)\//) || ['//' + location.host + '/'])[0];
+
+    if (apps.length === 0 || (wui['wui.all'] && modules[item]) || (!wui['wui.all'] && wui['wui.mobile'] && modules[item])) {
+      return onCallback(), that;
+    }
+
+    //加载完毕
+    function onScriptLoad(e, url) {
+      var readyRegExp = navigator.platform === 'PLaySTATION 3' ? /^complete$/ : /^(complete|loaded)$/
+      if (e.type === 'load' || (readyRegExp.test((e.currentTarget || e.srcElement).readyState))) {
+        config.modules[item] = url;
+        head.removeChild(node);
+        var addStatus = url.match(/\/([^\/]+)\.js/)[1];
+        config.status[item] = addStatus;
+        (function poll() {
+          if (++timeout > config.timeout * 1000 / 4) {
+            return error(item + ' is not a valid module');
+          };
+          config.status[item] ? onCallback() : setTimeout(poll, 4);
+        }());
+      }
+    }
+
+    //加载模块 str.substr(0, 4)
+    var node = doc.createElement('script'),
+      url = (
+        modules[item] ? (dir + 'js/') : (config.base || '')
+      ) + (that.modules[item] || (item.substr(0, 4) == "http" ? item : dir + item)) + (item.match(/.*\.js.*/) ? "" : '.js');
+    node.type = "application/javascript";
+    node.charset = 'utf-8';
+    node.src = url + function() {
+      var version = config.version === true ? (config.v || (new Date()).getTime()) : (config.version || '');
+      return version ? ('?v=' + version) : '';
+    }();
+
+    //首次加载
+    if (!config.modules[item]) {
+      if (that.nginit) {
+        config.modules[item] = url;
+        var addStatus = url.match(/\/([^\/]+)\.js/)[1];
+        config.status[item] = addStatus;
+        $("body").append(node);
+        onScriptLoad({
+          type: "load"
+        }, url);
+      } else {
+        head.appendChild(node);
+      }
+
+      if (node.attachEvent && !(node.attachEvent.toString && node.attachEvent.toString().indexOf('[native code') < 0) && !isOpera) {
+        node.attachEvent('onreadystatechange', function(e) {
+          onScriptLoad(e, url);
+        });
+      } else {
+        node.addEventListener('load', function(e) {
+          onScriptLoad(e, url);
+        }, false);
+      }
+    } else {
+      (function poll() {
+        if (++timeout > config.timeout * 1000 / 4) {
+          return error(item + ' is not a valid module');
+        };
+        (typeof config.modules[item] === 'string' && config.status[item]) ? onCallback(): setTimeout(poll, 4);
+      }());
+    }
+
+    config.modules[item] = url;
+
+    //回调
+    function onCallback() {
+      exports.push(wui[item]);
+      apps.length > 1 ?
+        that.uses(apps.slice(1), callback, exports) : (typeof callback === 'function' && callback.apply(wui, exports));
+    }
+
+    return that;
+
+  };
+
+  //获取节点的style属性值
+  wui.fn.getStyle = function(node, name) {
+    var style = node.currentStyle ? node.currentStyle : win.getComputedStyle(node, null);
+    return style[style.getPropertyValue ? 'getPropertyValue' : 'getAttribute'](name);
+  };
+
+  //css外部加载器
+  wui.fn.link = function(href, fn, cssname) {
+    var that = this,
+      link = doc.createElement('link');
+    var head = doc.getElementsByTagName('head')[0];
+    if (typeof fn === 'string') cssname = fn;
+    var app = (href.match(/.*\.css.*/) ? (href.substr(0, 4) == "http" ? href : config.dir + href) : config.dir + 'css/' + href + '.css');
+    cssname = app.match(/\/([^\/\.]+)\.css/)[1];
+
+    var id = link.id = 'lwj-ui-css-' + cssname,
+      timeout = 0;
+    if (doc.getElementById(id)) return that;
+    link.rel = 'stylesheet';
+    link.type="text/css";
+    link.href = app + function() {
+      var version = config.version === true ? (config.v || (new Date()).getTime()) : (config.version || '');
+      return version ? ('?v=' + version) : '';
+    }();
+    link.media = 'all';
+
+    if (!doc.getElementById(id)) {
+      head.appendChild(link);
+    }
+
+    if (typeof fn !== 'function') return that;
+
+    //轮询css是否加载完毕
+    (function poll() {
+      if (++timeout > config.timeout * 1000 / 100) {
+        return error(href + ' timeout');
+      };
+      doc.getElementById(id) ? function() {
+        fn();
+      }() : setTimeout(poll, 100);
+    }());
+
+    return that;
+  };
+
+  //css内部加载器
+  wui.fn.addcss = function(firename, fn, cssname) {
+    firename = typeof firename == "object" ? firename : [firename];
+    for (var key = 0; key < firename.length; key++) {
+      wui.fn.link(firename[key], fn, key);
+    }
+
+  };
+
+  //图片预加载
+  wui.fn.img = function(url, callback, error) {
+    var img = new Image();
+    img.src = url;
+    if (img.complete) {
+      return callback(img);
+    }
+    img.onload = function() {
+      img.onload = null;
+      callback(img);
+    };
+    img.onerror = function(e) {
+      img.onerror = null;
+      error(e);
+    };
+  };
+
+  //全局配置
+  wui.fn.config = function(options) {
+    options = options || {};
+    for (var key in options) {
+      config[key] = options[key];
+    }
+    return this;
+  };
+
+  //记录全部模块
+  wui.fn.modules = function() {
+    var clone = {};
+    for (var o in modules) {
+      clone[o] = modules[o];
+    }
+    return clone;
+  }();
+
+  //拓展模块
+  wui.fn.extend = function(options) {
+    var that = this;
+
+    //验证模块是否被占用
+    options = options || {};
+    for (var o in options) {
+      if (that[o] || that.modules[o]) {
+        error('\u6A21\u5757\u540D ' + o + ' \u5DF2\u88AB\u5360\u7528');
+      } else {
+        that.modules[o] = options[o];
+      }
+    }
+
+    return that;
+  };
+
+
+  //本地存储
+  wui.fn.data = function(table, settings) {
+    table = table || 'wui';
+
+    if (!win.JSON || !win.JSON.parse) return;
+
+    //如果settings为null，则删除表
+    if (settings === null) {
+      return delete localStorage[table];
+    }
+
+    settings = typeof settings === 'object' ? settings : {
+      key: settings
+    };
+
+    try {
+      var data = JSON.parse(localStorage[table]);
+    } catch (e) {
+      var data = {};
+    }
+
+    if (settings.value) data[settings.key] = settings.value;
+    if (settings.remove) delete data[settings.key];
+    localStorage[table] = JSON.stringify(data);
+
+    return settings.key ? data[settings.key] : data;
+  };
+
+  //设备信息
+  wui.fn.device = function(key) {
+    var agent = navigator.userAgent.toLowerCase();
+
+    //获取版本号
+    var getVersion = function(label) {
+      var exp = new RegExp(label + '/([^\\s\\_\\-]+)');
+      label = (agent.match(exp) || [])[1];
+      return label || false;
+    };
+
+    var result = {
+      os: function() { //底层操作系统
+        if (/windows/.test(agent)) {
+          return 'windows';
+        } else if (/linux/.test(agent)) {
+          return 'linux';
+        } else if (/mac/.test(agent)) {
+          return 'mac';
+        } else if (/iphone|ipod|ipad|ios/.test(agent)) {
+          return 'ios';
+        }
+      }(),
+      ie: function() { //ie版本
+        return (!!win.ActiveXObject || "ActiveXObject" in win) ? (
+          (agent.match(/msie\s(\d+)/) || [])[1] || '11' //由于ie11并没有msie的标识
+        ) : false;
+      }(),
+      weixin: getVersion('micromessenger') //是否微信
+    };
+
+    //任意的key
+    if (key && !result[key]) {
+      result[key] = getVersion(key);
+    }
+
+    //移动设备
+    result.android = /android/.test(agent);
+    result.ios = result.os === 'ios';
+
+    return result;
+  };
+
+  //提示
+  wui.fn.hint = function() {
+    return {
+      error: error
+    }
+  };
+
+  //遍历
+  wui.fn.each = function(obj, fn) {
+    var that = this,
+      key;
+    if (typeof fn !== 'function') return that;
+    obj = obj || [];
+    if (obj.constructor === Object) {
+      for (key in obj) {
+        if (fn.call(obj[key], key, obj[key])) break;
+      }
+    } else {
+      for (key = 0; key < obj.length; key++) {
+        if (fn.call(obj[key], key, obj[key])) break;
+      }
+    }
+    return that;
+  };
+
+  //阻止事件冒泡
+  wui.fn.stope = function(e) {
+    e = e || win.event;
+    e.stopPropagation ? e.stopPropagation() : e.cancelBubble = true;
+  };
+
+  //自定义模块事件
+  wui.fn.onevent = function(modName, events, callback) {
+    if (typeof modName !== 'string' || typeof callback !== 'function') return this;
+    config.event[modName + '.' + events] = [callback];
+
+    return this;
+  };
+
+  //执行自定义模块事件
+  wui.fn.event = function(modName, events, params) {
+    var that = this,
+      result = null,
+      filter = events.match(/\(.*\)$/) || []; //提取事件过滤器
+    var set = (events = modName + '.' + events).replace(filter, ''); //获取事件本体名
+    var callback = function(_, item) {
+      var res = item && item.call(that, params);
+      res === false && result === null && (result = false);
+    };
+    wui.each(config.event[set], callback);
+    filter[0] && wui.each(config.event[events], callback); //执行过滤器中的事件
+    return result;
+  };
+
+  /**
+   * 构建指令逻辑 指令触发于参数过滤
+   * @dirName 
+   * @events => function() {
+   *     return {
+   *       template: "", 模板
+   *       uses: [模块名/相对地址/绝对地址], 处理逻辑
+   *       addcss:[模块名/相对地址/绝对地址], 样式
+   *       scope: {
+   *         string: '文本', 
+   *         object: '=对象',  
+   *       },
+   *       link: function(el) {
+   *         var scope = el.scope;
+   *         var tpl = $(el.template).append("（我是属性值：" + scope.string + ")");
+   *         el.element.append(tpl);
+   *       }
+   *     }
+   *   }
+   * 创建指令 绑定指令逻辑
+   * wui.directive('ui-layer', function() {
+   *   return {
+   *     template: "<div ui-attr selecteda='---ui-attr内嵌组件---'>我是第一个组件：</div>",
+   *     uses: ["box"],
+   *     addcss:["lwj"],
+   *     scope: {
+   *       string: 'selecteda',
+   *       object: '=list',
+   *     },
+   *     link: function(el) {
+   *       var scope = el.scope;
+   *       var tpl = $(el.template).append("（我是属性值：" + scope.string + ")");
+   *       el.element.append(tpl);
+   *     }
+   *   };
+   * })
+   */
+  wui.fn.directive = function(dirName, events) {
+    // 记录 注册事件 directive
+    config.directive[dirName] = !config.directive[dirName] ? events : config.directive[dirName];
+    var events = events(),
+      $this = this,
+      result = {},
+      isUses = 0;
+    result.init = function(_$this, callback) {
+      var _$scope = {};
+      _$scope.fn = $this;
+      _$scope.element = _$this;
+      if (_$scope.element.length == 0) {
+        return $this;
+      }
+      for (var key in events) {
+        this.isType(key, events[key], _$scope, callback);
+      }
+    };
+    result.isValue = function($value) {
+      return $value && $value != "" ? false : true;
+    };
+    result.isType = function($type, $value, _$scope, callback) {
+      if (this.isValue($value)) return false;
+      switch ($type) {
+        // 模板
+        case "template":
+          _$scope.template = $value;
+          break;
+          // 需要加载的模块
+        case "uses":
+          isUses = 1;
+          $this.uses($value, function() {
+            isUses = 2;
+          });
+          break;
+          // 需要加载的css
+        case "addcss":
+          isUses = 1;
+          $this.addcss($value, function() {
+            isUses = 2;
+          }, $value)
+
+          break;
+          // 获取参数
+        case "scope":
+          _$scope.scope = {};
+          for (var key in $value) {
+            _$scope.scope[key] = this.isScope(key, $value[key], _$scope);
+          }
+          break;
+          // 获取参数
+        case "link":
+          setTimeout(function() {
+            if (isUses === 1 || isUses === 2) {
+              var set = setInterval(function() {
+                if (isUses === 2) {
+                  clearInterval(set);
+                  callback(_$scope);
+                }
+              }, 100);
+            } else {
+              callback(_$scope);
+            }
+          }, 100);
+          break;
+          // 未知参数
+        default:
+          error($type + "\u672a\u77e5\u53c2\u6570\uff01");
+      }
+
+    };
+    result.isScope = function($key, $value, _$scope) {
+
+      switch ($value[0]) {
+        case "=":
+          var val = valAttr(_$scope.element, $value.substr(1));
+          return eval("(" + (val != "" ? val : "{}") + ")");
+          break;
+        case "~":
+          var val = valAttr(_$scope.element, $value.substr(1));
+          return val && val != "" && typeof eval("(" + val + ")") == "function" ? eval("(" + val + ")") : null;
+          break;
+        default:
+          return valAttr(_$scope.element, $value);
+      }
+
+      function valAttr(_$this, _$value) {
+
+        return _$this.attr(_$value) ? _$this.attr(_$value) : _$this.data(_$value);
+      };
+    };
+    // 这里暂时没有想到更好的解决方案后暂时这样解决
+    setTimeout(function (){
+      $.each($("*[" + dirName + "]"), function(index, val) {
+        result.init($(this), events.link);
+      });
+    },100);
+    return this;
+  };
+
+  // 重新绑定directive
+  wui.fn.init = function(name) {
+    switch (name) {
+      case "directive":
+        for (var key in config.directive) {
+          this.directive(key, config.directive[key]);
+        }
+        break;
+      default:
+        for (var key in config.directive) {
+          this.directive(key, config.directive[key]);
+        }
+    };
+  };
+
+  // 注入ngmodule 并加载需要的组件
+  wui.fn.ngModule = function($myApp, apps) {
+    var $this = this;
+    $myApp.factory('wui', function($http) {
+      return $this;
+    });
+    this.nginit = $myApp;
+    this.uses(apps, function() {
+      //callback();
+    });
+
+    return $myApp;
+  }
+
+  // 合并加载css于js
+  wui.fn.loadAll = function(data, callback) {
+    var isUses = data.uses && data.addcss ? 2 : data.uses || data.addcss ? 1 : 0,
+      index = 1;
+    if (data.uses) {
+      this.uses(data.uses, function() {
+        index++;
+      });
+    }
+    if (data.addcss) {
+      this.addcss(data.addcss, function() {
+        index++;
+      }, data.addcss);
+    }
+    var set = setInterval(function() {
+      if (isUses <= index) {
+        callback();
+        clearInterval(set);
+      }
+    }, 400);
+  };
+
+  win.wui = new wui();
+}(window);

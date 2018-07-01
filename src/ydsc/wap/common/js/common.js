@@ -364,7 +364,7 @@
 							$$this.shareBox($this);
 						});
 					} else {
-                        $('.icon_share').find("*[data-key]").unbind('click').click(function(event) {
+                        $('.share-list').find("*[data-key]").unbind('click').click(function(event) {
 							$$this.showApi($(this).data("key"), $$this.config($($this).parents("*[ui-share]")));
 						});
 					}
@@ -380,12 +380,12 @@
 						content: '<div ui-share class="share-list" data-title="' + $this.title + '" data-description="' + $this.description + '" data-pic="' + $this.pic + '" data-url="' + $this.url + '">' +
 							'<i class="iconfont icon-weibo" data-key="weibo"></i>' +
 							'<i class="iconfont icon-kongjian" data-key="kongjian"></i>' +
-							'<i class="iconfont icon-weixin1" data-key="weixin"></i>' +
+							'<i class="iconfont icon-weixin" data-key="weixin"></i>' +
 							'</div>',
 						success: function(layero, index) {
 							$$this.isStartUp("box", $(".layui-layer-share"));
 						}
-					});
+					}); 
 				};
 				$$original.showApi = function($name, $config) {
 					switch ($name) {
@@ -404,7 +404,7 @@
 								return false;
 							}
 							wui.loadAll({
-								uses: [$app.appUrl.MAIN_HOST + "plugin/qrcode/qrcode.js", $app.appUrl.MAIN_HOST + "plugin/qrcode/jquery.qrcode.js"]
+								uses: ["https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"]
 							}, function() {
 								$app.layer.open({
 									type: 1,
@@ -527,8 +527,20 @@
 				
 			}
 		};
-	});
+	})
 
-
+	.directive('ui-active', function() {
+		return {
+			scope: {
+				el: 'el',
+			},
+			link: function(el) {
+				var scope = el.scope;
+				$(el.element).on("click",function(){
+					$(this).parents(scope.el).toggleClass("active");
+				});
+			}
+		};
+	})
 
 })(window);
