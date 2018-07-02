@@ -62,7 +62,7 @@ let mod = (filename, pkg) => ({
 	// 监听创建
 	watch($myApp) {
 		let watchdata = [filename + 'Watch', filename + "All_less"];
-		return [filename, watchdata, (cb) => {
+		return [filename, ['webserver',...watchdata], (cb) => {
 			gulp.watch(this.wat(),
 				watchdata);
 		}];

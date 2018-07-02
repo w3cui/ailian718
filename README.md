@@ -15,6 +15,7 @@ cnpm install
 > 项目名称在 package.json 里面的taskName字段里面
 ```
 gulp 项目名称 
+这时回启动默认资源目录webserver httt://127.0.0.1:3010
 ```
 
 

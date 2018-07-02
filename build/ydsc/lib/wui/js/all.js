@@ -1,5 +1,9 @@
-/**
- *  - v1.0.0  License By 
- * 研发技术中心-技术研发部 
- */
-wui.define(function(i){var e=wui.cache;wui.config({dir:e.dir.replace(/js\/dest\/$/,"")}),i("wui.all",wui.v)});
+/** lwj-v MIT License By  */
+ // 合并打包配置
+wui.define(function(exports){
+  var cache = wui.cache;
+  wui.config({
+    dir: cache.dir.replace(/js\/dest\/$/, '')
+  });
+  exports('wui.all', wui.v);
+});
