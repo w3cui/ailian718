@@ -192,3 +192,37 @@ input::-webkit-input-placeholder {
         }
     }
 }
+
+.ucenter_address_list{ background: #fff; margin: 0px 10px 20px 10px;
+    @media only screen and (min-width:750px){
+            &{ margin: 0px 0px 20px 0px; }
+    }
+    dt{ border-bottom: solid 1px #ccc; margin: 0px 10px; padding: 10px 0px;
+        p{ float: left; width: 50%; font-size: 16px; line-height: 35px; overflow: hidden;text-overflow: ellipsis;    white-space: nowrap;}
+        p:nth-child(2n){width: 50%; text-align: right;}
+        div{ font-size: 16px; clear: both;}
+    }
+    dd{line-height: 50px; margin: 0px 10px;
+        a{font-size: 14px; float:left; color:#555; 
+            &:nth-child(1){ width: 50%; 
+                &:before{  border:solid 2px #555; content: ""; position: relative; top: 6px; color: #fff; .b_r(200px); .w_h(22px,22px);display: inline-block; line-height: 20px; text-align: center; margin-right: 10px; display:inline-block;}
+                &.active{ color: #555;
+                    &:before{ border: solid 2px #ff6a07; color: #ff6a07;content: "\e620"; top:0; }
+                }
+            }
+            &:nth-child(3),&:nth-child(2){float: right; width: 70px; text-align:right;
+                &:before{ content: "\e60c"; font-size: 18px; margin-right: 5px;}
+            }
+            &:nth-child(3){
+                &:before{ content: "\e60e";}  
+            }
+           
+        }
+    }
+}
+
+.ucenter_default{ text-align: center; padding-bottom: 50px;
+    p{height: 145px; text-align: center; line-height: 145px; color: #ccc; font-size:80px;}
+    a{ display: block; width: 50%; margin: auto;}
+    div{ font-size: 16px; .p_r(relative,5); top: -15px;}    
+}
