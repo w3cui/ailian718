@@ -15,9 +15,9 @@
 
 	//获取公用js路径
 	$app.appUrl = new Array();
-	$app.appUrl.MAIN_HOST = $("script").last().attr("src").match(/(http|https):\/\/([^\/]+)\//)[0];
+	// $app.appUrl.MAIN_HOST = $("script").last().attr("src").match(/(http|https):\/\/([^\/]+)\//)[0]; 
 	$app.appUrl.DEV_HOST = ""; //调试接口域名
-
+ 
 	// 构建插件目录路径
 	win.$plugin = win.$plugin ? win.$plugin : new Array();
 	win.$plugin.MAIN_HOST = $app.appUrl.MAIN_HOST;
