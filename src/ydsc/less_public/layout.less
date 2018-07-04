@@ -201,6 +201,7 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
 }
 
 .nav_icon_tab{
+   &.nav_icon_tab2{ z-index: 100;}
     @h:45px; 
     height: @h; .p_r(relative,80); background: #fff; border-bottom: solid 1px #ddd;  .opacity(0); .transition; padding-right: 45px;
     &.opacity1{.opacity(1);} 
@@ -303,4 +304,20 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
   .iconfont{ font-size: 4rem; color: #999;}
   .text{ text-indent: center; padding:.8rem;color: #999;}
   .button{ .btn{padding-right: 40px; padding-left: 40px;}}
+}
+
+// 排序列表
+.nav_sort{ height: 45px; line-height: 45px;
+  a{ color: #555; position: relative; z-index: 0; font-size: .785rem;
+    &.sort:before,&.sort:after{width: 0; height: 0; content: ""; display: block; position: absolute; left: 50%; top: 50%; margin-top: -4px; margin-left: 1.5em;
+      border-width:0 3px 3px;
+      border-style:solid;
+      border-color:transparent transparent #999;
+    }
+    &.sort:after{ margin-top: 1px; .rotate(180deg);}
+    &.asce:before{ border-color:transparent transparent @col-main; }
+    &.desc:after{ border-color:transparent transparent @col-main;}
+    &.active{ color: #333;}
+  }
+
 }

@@ -13,8 +13,8 @@
 <body>
 
 	<nav class="in_nav">
-		<a href="javascript:;" onclick="sollTop($(document).innerHeight());" >Home</a>
-		<a href="javascript:;" onClick="sollTop(0);" >Subscribe</a>
+		<a href="javascript:;" onClick="sollTop(0);" >Home</a>
+		<a href="javascript:;" onclick="sollTop($(document).innerHeight());">Subscribe</a>
 	</nav>
 	<a href="javascript:;" onclick="sollTop($(document).innerHeight());" class="tab_page"></a>
 	<div class="in_time">
@@ -92,7 +92,9 @@
 
 </html>
 <script type="text/javascript">
+$(window).resize(function() {
 	$(".in_time,.in_layout").css({ "height": $(window).height() + "px" });
+});
 	var sollTop = function(t){
 		$('html,body').animate({scrollTop: t}, 600);
 	}
