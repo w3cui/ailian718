@@ -14,19 +14,19 @@
 
 	<nav class="in_nav">
 		<a href="javascript:;" onClick="sollTop(0);" >Home</a>
-		<a href="javascript:;" onclick="sollTop($(document).innerHeight());">Subscribe</a>
+		<a href="javascript:;" onclick="sollTop($('.in_time').height());">Subscribe</a>
 	</nav>
-	<a href="javascript:;" onclick="sollTop($(document).innerHeight());" class="tab_page"></a>
 	<div class="in_time">
 
+			<a href="javascript:;" onclick="sollTop($('.in_time').height());" class="tab_page"></a>
 		<div class="w_1200">
 			<h1 class="logo">Enveste</h1>
 		</div>
-		<div class="w_1200">
+		<div class="w_1200" style="top:-50px;">
 			<div class="text">
 				<p>OUR SITE IS</p>
 				<div>
-					<img src="images/bt.png" alt="">
+					COMING<br />SOON
 				</div>
 				<p>STAY TUNED!</p>
 			</div>
@@ -81,7 +81,17 @@
 		</div>
 		<div class="footer">
 				<div class="link">
-					
+					<a ><img src="./images/link_1.webp" alt=""></a>
+					<a ><img src="./images/link_2.webp" alt=""></a>
+					<a ><img src="./images/link_3.webp" alt=""></a>
+					<a ><img src="./images/link_4.webp" alt=""></a>
+					<a ><img src="./images/link_5.png" alt=""></a>
+					<a ><img src="./images/link_6.png" alt=""></a>
+					<a ><img src="./images/link_7.png" alt=""></a>
+					<a ><img src="./images/link_8.png" alt=""></a>
+					<a ><img src="./images/link_9.png" alt=""></a>
+					<a ><img src="./images/link_10.png" alt=""></a>
+					<a ><img src="./images/link_11.png" alt=""></a>
 				</div>
 				<footer><span>© 2018 by  Enveste </span>	<a href="">team@enveste.org</a> </footer>	
 			</div>
@@ -93,8 +103,17 @@
 </html>
 <script type="text/javascript">
 $(window).resize(function() {
-	$(".in_time,.in_layout").css({ "height": $(window).height() + "px" });
+	setHeight();
 });
+	var setHeight = function(){
+		var h = $(window).height();
+		if(h<900 && $(window).width() > 500){
+			$(".in_time,.in_layout").css({ "min-height": "820px" });
+		}else{
+			$(".in_time,.in_layout").css({ "min-height": $(window).height() + "px" });
+		}
+	}
+	setHeight()
 	var sollTop = function(t){
 		$('html,body').animate({scrollTop: t}, 600);
 	}
