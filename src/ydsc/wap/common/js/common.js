@@ -8,7 +8,7 @@
 		return $app.API.init($m);
 	};
 
-	// 构建公用库
+	// 构建公用库 
 	$app.API = $app.API || new Array(); //基础方法
 	// ieEs5 判断当前是否支持es5语法
 	$app.ieEs5 = document.addEventListener ? true : false;
