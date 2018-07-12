@@ -225,11 +225,13 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
         } 
 
     }
-    .whole{ height: 100%; width: @h; background: rgba(229,229,229,.8); text-align: center; line-height: @h; .p_r(absolute,60); right: 0; top: 0; color: #999;
+    .whole{ height: 100%; width: @h; background: rgba(229,229,229,1); text-align: center; line-height: @h; .p_r(absolute,60); right: 0; top: 0; color: #999;
         &.active{.rotate(180deg);}
     }
-    &>.ullit{ .p_r(absolute,20); left: 0; top:@h+1; background:#f9f9f9; opacity: 0; .transform(-200px,0px);.transition;
-        li{ float: left; padding: 0px 15px;
+    &>.ullit{ .p_r(absolute,20); left: 0; top:0; background:#f9f9f9; z-index: 50; opacity: 0; .transform(-200px,0px);.transition;
+        div.tab{ height: @h; line-height: @h; border-bottom: solid 1px #ddd;}
+        li{ float: left;  width: 25%; text-align: center ; border-bottom: solid 1px #eee; .p_r;
+          &:before{ content: ""; .p_a; left: 0; top: 0; width: 1px; height: 100%; background: #eee;}
             &.active{
                 a{ color: @col-main; }
             }
@@ -239,7 +241,8 @@ p.icon_input_none{ height: 22px; line-height: 22px;}
         }
      }
     &.active{
-        &>.ullit{ opacity: 1; .transform(0px,0px);}
+        &>.ullit{ opacity: 1; .transform(0px,0px); z-index: 50;}
+        .whole{.rotate(180deg);}
     }
 
     text-align: center;

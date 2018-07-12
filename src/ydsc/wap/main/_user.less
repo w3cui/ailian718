@@ -131,7 +131,7 @@ input::-webkit-input-placeholder {
 
 .ucnet_dt_lit{ background: @col-body; padding: .7rem 0 1px 0;
     li{ background: #fff; border-radius: 5px; margin-bottom: .7rem; position: relative;
-        .nr{ height: 65px; line-height: 65px; font-size: 1rem; border-bottom: solid 1px #eee;
+        .nr{ height: 65px; line-height: 65px; font-size: 1rem; border-bottom: solid 1px #eee; padding:0 5px;
             i.iconfont{ border-radius: 50px; height: 30px; width: 30px; display: inline-block; margin-right: 5px; background: #eee; color: #999; line-height: 30px; text-align: center;}
         }
         p.row{ 
@@ -143,10 +143,14 @@ input::-webkit-input-placeholder {
                 &::before{content: ""; border-right: solid 1px #eee; height: 50%; top: 25%; right: 0; position: absolute; display: block; width: 1px; overflow: hidden;}
             }
         }
+        .imglit{ padding: 5px 0; border-bottom: solid 1px #eee;
+            img{ width: 100%; display: block;}
+            .img{ margin:0 5px; display: inline-block;}
+        }
         &>a{ display: block; margin:0 .7rem;}
         .tab{
             border-radius: 10px 0 10px 0; background: #928fef; color: #fff; height: 20px; line-height: 20px; font-size: .785rem; text-align: center; padding:0 10px; position: absolute; right: 0; top: 23px; 
-            &.red{ background: @col-red;}
+            &.red{ background: @col-red; right: 5px; }
         } 
     }
 }
@@ -233,4 +237,8 @@ input::-webkit-input-placeholder {
     }
     p.text{ color: #888;}
     p.msg{ color: @col-main; padding-bottom: 60px;}
+}
+
+.release_tab{ .p_f; left: 0; bottom:0; width: 100%; height: 45px; line-height: 45px; text-align: right; background:@col-body;
+    a{ width: 45px; text-align: center; color: #666; display:  inline-block;}
 }
