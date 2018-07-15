@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1:3010/wap/common/common.css" />
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1:3010/wap/main/main.css" />
+</head>
+
+<body class="bgfff">
+	<div class="header_pr">
+		<header class="icon_header">
+			<a class="iconfont icon-zuojiantou"   ></a>
+			<div>评论</div>
+			
+		</header>
+	</div>
+	<div class="header_bg"></div>
+
+	<!-- 通用内容框架  appMain -->
+	<div class="appMain">
+		<form action="" class="comment_form">
+			<div class="form_lit row">
+				<p class="col-8">
+					<span>总体评分</span>
+					<i class="iconfont icon-shouchang active"></i>
+					<i class="iconfont icon-shouchang active"></i>
+					<i class="iconfont icon-shouchang"></i>
+					<i class="iconfont icon-shouchang"></i>
+					<i class="iconfont icon-shouchang"></i>
+				</p>
+				<p class="text-right col-4">
+					非常好
+				</p>
+			</div>	
+			<div class="form_textarea">
+				<div><textarea name="" id="" cols="30" rows="10" placeholder="评论内容"></textarea></div>
+				
+			</div>	
+			<div class="hr"></div>
+			<div class="form_lit bgfff row">
+				<p class="col-6">商品名称</p>
+				<p class="col-6 text-right"><i class="iconfont icon-xihuanyes"></i></p>
+			</div>
+			<div class="text-cent  but">
+				<a href="" class="btn btn-primary btn-block">提交</a>
+			</div>
+		</form>
+		
+	</div>
+
+
+
+</body>
+
+</html>
+<script type="text/javascript" src="http://127.0.0.1:3010/lib/jquery.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:3010/lib/wui/wui.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:3010/wap/common/js/common.js"></script>
+<script type="text/javascript">
+	//打电话弹窗
+	var getTelShow = function(){
+		layer.open({
+			type: 1
+			,title: false 
+			,area: '300px;'
+			,shade: 0.8
+			,id: 'layer_tel'
+			,resize: false
+			,btnAlign: 'c'
+			,moveType: 1 //拖拽模式，0或者1
+			,content: '<div style="padding: 20px 20px 0 20px; background:#f5f5f5;"><a href="tel:028-69712208" class="btn btn-outline btn-block"><i class="icon-dianhuayes iconfont"></i>028-69712208</a><a href="tel:028-69712208" class="btn btn-outline btn-block"><i class="icon-dianhuayes iconfont"></i>028-69712208</a></div>'
+			,success: function(layero){
+			
+			}
+		});
+	};
+	
+	</script>

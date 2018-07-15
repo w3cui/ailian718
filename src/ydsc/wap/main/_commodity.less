@@ -52,8 +52,8 @@
         .btn { height: 50px; padding: 0; line-height: 50px; .b_r(0);  }
     }
     .cent{.p_r(relative,5);}
-    .order{.p_r(absolute,0); left: 0; bottom:54px; width: 100%; background:rgba(255, 255, 255, 0.97); padding-bottom: 30px;
-        .info{.p_r(relative,5); padding:0 0 10px 40%; text-align: left; border-bottom: solid 1px #ccc;
+    .order{.p_r(absolute,0); left: 0;  bottom:100%; width: 100%; background:rgba(255, 255, 255, 0.97); padding-bottom: 30px;
+        .info{.p_r(relative,5); padding:0 0 10px 40%; text-align: left; border-bottom: solid 1px #ccc; margin-bottom: 10px;
             a.img{ .p_r(absolute,5); left: 5%; width: 30%; bottom:10px; border:solid 4px #fff;
                 img{ width: 100%; display: block;}
             }
@@ -75,6 +75,17 @@
                 .col-6{  padding: 5px 0; 
                     .iconQuantity{ float: right;}
                     &:nth-child(1){text-indent: 15px; font-size: 1rem;text-align: left; line-height: 37px;}
+                }
+            }
+        }
+        .fin_tab{ line-height: 30px;.p_r(relative,5); margin: 0px 15px;
+            &:after,&:before{content: ""; clear: both; overflow: hidden; height: 0; display: block;} 
+            dt{text-align: left; width: 75px; .p_r(absolute,5); left: 0; top: 0px;font-size: 1rem; line-height: 32px;}
+            dd{padding-left: 80px; font-size: 1rem; min-height: 32px;
+                &>div{ margin-bottom: 10px;}
+                &>label{ display: inline-block; padding: 0px 15px;line-height: 28px; font-size: 1rem; border:solid 1px #ccc; color:#333; margin-bottom: 10px; .b_r(3px);
+                    &:hover,&.active{ background: @col-main; border-color: @col-main; color: #fff; }
+                    input{ display: none;}
                 }
             }
         }
@@ -137,7 +148,6 @@
 
 }
 .in_banner{ .p_r(relative,5); border-bottom: solid 1px #ccc;
-    img {  width: 90%; display: block; margin:auto;}
     .swiper-slide{ text-align: center;}
     .swiper-slide, .swiper-wrapper{ height: auto;}
     .swiper-pagination-bullet-active{ background: #fff;}
@@ -206,4 +216,64 @@ html{
     .iconfont{ font-size: 4rem; color: #999;}
     .text{ text-indent: center; padding:.8rem;color: #999;}
     .button{ .btn{padding-right: 40px; padding-left: 40px;}}
+}
+
+
+.reco_list{
+    li{ height: 100px; border-bottom: 1px solid #eee; position: relative; margin-bottom:1px;}
+    a.img,a.img img{ float: left; .w_h(100px,100px);}
+    div.text{ margin-left: 110px;
+        h3{.ov_ell_clamp(2); padding: .3rem 0; font-size:1.1rem;  font-weight: 400; color: #555;}
+        .dw{font-size: .785rem; color: @col999;}
+        .money{ color: @col-main; font-size: 1.15rem; padding-top: 10px;
+            span{ color: #999; font-size: .785rem;}
+        }
+    }
+    .btn{ .p_a; right: 10px; bottom: 5px; padding-left: .5rem; padding-right: .5rem;}
+}
+
+
+
+.comment_banner{ height:150px; text-align: center; color: #fff; background:#333;}
+
+.comment_tab{ background:@col-link; padding:10px 0;
+    a{ text-align: center; color: #fff; font-size: .785rem; .p_r;
+        &:nth-child(1):before{
+            .p_a; right: 0; top: 0; height: 100%; top:0; width: 1px; display: inline-block; overflow: hidden; background: #fff; content: ""; opacity: .7;
+        }
+        p{ font-size: 1rem;}
+    }
+}
+.comment_tab_list{
+    padding:10px;
+    a{ background: #fff; border:solid 1px #eee; border-radius: 5px; padding:5px 10px; font-size: 1rem; display: inline-block;
+        &.active{ background: @col-main; color: #fff; border-color: @col-main;}
+    }
+}
+
+.comment_ullit{
+    li{ border-bottom: solid 1px #eee; padding:10px 10px;font-size: 1rem;
+        .name{ color: #999;
+            .time{ color: #999;}
+        }
+        .lv{ padding:5px 0;
+            i.iconfont{font-size: 1.5rem; color: #999;
+                &.active{ color: @col-link;}
+            }
+         }
+    }
+}
+
+.comment_form{background: @col-body;
+    .form_lit{ height: 45px; line-height: 45px; margin:0 10px; color: #555; 
+        i.iconfont{font-size: 1.5rem; color: #999; top: 1px;
+            &.active{ color: @col-link;}
+        }
+        &.bgfff{ background: #fff; margin: 0; padding:0 10px;}
+    }
+    .form_textarea{ background: #fff;
+        div{ margin:0px 10px; padding: 10px 0;}
+        textarea{ border:0; width: 100%; }
+    }
+    .but{ background: #fff; padding:10px; border-top: solid 1px @col-body;}
 }

@@ -18,9 +18,90 @@
 </div>
 <div class="header_bg"></div>
 
+<div class="ucent_goods_log">
+	<div class="cent row col-mar">
+		<div class="col-2 text-cent">
+			<i class="iconfont icon-daishouhuo"></i>
+		</div>
+		<div class="col-10"><a href="javascript:;" onclick="getTelShow();" class="btn btn-outpri btn-block">联系商家</a></div>
+	</div>
+</div>
+
 <!-- 通用内容框架  appMain -->
 <div class="appMain">	
+	<div class="nav_icon_tab nav_icon_tab_whole" ui-swiper data-config="{freeMode : true,slidesPerView : 'auto',initialSlide :0}">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide ">
+				<a href="/index">订单状态</a>
+			</div>
+			<div class="swiper-slide ">
+				<a href="/">订单详细</a>
+			</div>
+		</div>
+	</div>
+	<ul class="ucent_goods_logistics">
+		<li class="row">
+			<i class="iconfont icon-dingdan "></i>
+			<div class="text">
+				<p class="row">
+					<span class="col-6">订单已提交</span>
+					<span class="col-6 text-right time">昨天09:16</span>
+				</p>
+				<p class="nr">信息提示</p>
+			</div>
+		</li>
+		<li>
+			<i class="iconfont icon-daishouhuo"></i>
+			<div class="text">
+				<p class="row">
+					<span class="col-6">订单已提交</span>
+					<span class="col-6 text-right time">昨天09:16</span>
+				</p>
+				<p class="nr">信息提示</p>
+			</div>
+		</li>
+		<li>
+			<i class="iconfont icon-dingdan"></i>
+			<div class="text">
+				<p class="row">
+					<span class="col-6">订单已完成</span>
+					<span class="col-6 text-right time">昨天09:16</span>
+				</p>
+				<p class="nr">信息提示</p>
+			</div>
+		</li>
+	</ul>	
+	<ul class="ucent_goods_list2 ">
+		<li class="row">			
+			<a href="">
+				<p class="col-8"><i class="iconfont icon-dianpu col-link"></i>	易商通运城市运营中心</p>
+				<p class="col-4 text-right"><i class="iconfont icon-youjiantou"></i></p>
+				
+			</a>
+		</li>
+		<li class="row">
+			<p class="col-8">闪亮洗衣液   X1000</p>    <p class="col-4 text-right">积分：10.00</p>
+		</li>
+	</ul>
+	
+	<div class="hr"></div>
+	<ul class="ucent_goods_list2 ">
+			<li class="row">
+				<p class="col-8">合计：</p>    <p class="col-4 text-right col-main">积分：10011.00</p>
+			</li>
+		</ul>
+	
+	<div class="hr"></div>
 
+	<ul class="ucent_goods_list2 ">
+			<li class="row">			
+				<a href="">
+					<p class="col-8"><i class="iconfont icon-dingdan col-link"></i>	订单详细</p>
+					<p class="col-4 text-right"><i class="iconfont icon-youjiantou"></i></p>
+					
+				</a>
+			</li>
+	</ul>
 	<ul class="ucent_goods_list ">
 		<li class="col-mar row">
 			订单状态：<span class="col-main">未支付</span>
@@ -81,3 +162,23 @@
 <script type="text/javascript" src="http://127.0.0.1:3010/lib/jquery.js"></script>
 <script type="text/javascript" src="http://127.0.0.1:3010/lib/wui/wui.js"></script>
 <script type="text/javascript" src="http://127.0.0.1:3010/wap/common/js/common.js"></script>
+<script type="text/javascript">
+//打电话弹窗
+var getTelShow = function(){
+	layer.open({
+		type: 1
+		,title: false 
+		,area: '300px;'
+		,shade: 0.8
+		,id: 'layer_tel'
+		,resize: false
+		,btnAlign: 'c'
+		,moveType: 1 //拖拽模式，0或者1
+		,content: '<div style="padding: 20px 20px 0 20px; background:#f5f5f5;"><a href="tel:028-69712208" class="btn btn-outline btn-block"><i class="icon-dianhuayes iconfont"></i>028-69712208</a><a href="tel:028-69712208" class="btn btn-outline btn-block"><i class="icon-dianhuayes iconfont"></i>028-69712208</a></div>'
+		,success: function(layero){
+		
+		}
+	});
+};
+
+</script>

@@ -45,7 +45,8 @@ input::-webkit-input-placeholder {
 		a{ display: block; padding: 0 1rem;
 			.animationHover;
 		}
-		.fl{ margin-right: .5rem;}
+        .fl{ margin-right: .5rem;}
+        .col-yellow{ color: @col-yellow;}
 	}
 }
 .ucent_tab_nav{ height: 3rem; line-height: 3rem; background: #f5f3f1;
@@ -57,7 +58,9 @@ input::-webkit-input-placeholder {
 			img{.w_h(4rem,4rem);}
 		}
 		div.text{ line-height: 1.5rem; font-size:1rem;
-			p{ color: #999;}
+            p{ color: #999;
+                &.name span{ background: @col-yellow; color: #fff; border-radius: 3px; padding:1px 3px;}
+            }
 		}
 	}
 }
@@ -124,7 +127,7 @@ input::-webkit-input-placeholder {
 	dt{ text-align: center; height: 3rem; line-height: 3rem; background: #fff; padding-bottom: 1rem; font-size: 1.2rem; color: @col-main;
 		img{display: inline-block; height: 3rem;.p_r; top: -.4rem;}
 	}
-	dd{ padding: .5rem 1rem 0; line-height: 2rem; font-size: 1rem; color: #666;
+	dd{ padding:.5rem; line-height: 2rem; font-size: 1rem; color: #666;
 		&:nth-child(3){ padding-bottom: .5rem;}
 	}
 }
@@ -239,6 +242,72 @@ input::-webkit-input-placeholder {
     p.msg{ color: @col-main; padding-bottom: 60px;}
 }
 
-.release_tab{ .p_f; left: 0; bottom:0; width: 100%; height: 45px; line-height: 45px; text-align: right; background:@col-body;
+.release_tab{ .p_f; left: 0; bottom:0; width: 100%; height: 45px; line-height: 45px; z-index: 500; text-align: right; background:@col-body;
     a{ width: 45px; text-align: center; color: #666; display:  inline-block;}
+}
+
+.ucent_goods_logistics{ background: @col-body; min-height: 560px; .p_r;
+    &::before{ content: ""; width: 2px; height: 100%;background: #e1e1e1; left: 2rem; top: 0; display: block; .p_a;}
+
+    li{ .p_r; padding:10px 0;
+        &::before{ content: ""; width: 2px; height: 100%;background: #35b4dc; left: 2rem; top: 0; display: block;.p_a;}
+        &>.iconfont{.p_a; left: 1rem; top:50%; font-size: 2rem; margin-top: -1rem; color: #35b4dc; background: @col-body;}
+        div.text{ min-height: 3rem; margin:0 10px 0 4rem; background: #fff; border-radius: 5px; padding:10px; .p_r;
+            &::before{ content: ""; .p_a; display: block; left: -10px; top: 50%; margin-top: -7px;
+                width:0; height:0; 
+                border-top:10px solid transparent;
+                border-bottom:10px solid transparent; 
+                border-right:10px solid #fff; 
+            }
+            p{  font-size: 1rem; line-height: 25px;}
+            .nr{ color: #555;}
+            .time{ color: #999;}
+        } 
+    }
+}
+
+.ucent_goods_log{ .p_f; bottom : 0; left: 0; background: #fff; z-index: 500; box-shadow: 0 -1px 3px rgba(0,0,0,.1); padding:5px 0; width: 100%;
+    .iconfont{ font-size: 2rem; .p_r; left: -.65rem; color: #999;}
+}
+
+#layer_tel{
+    a{ margin-bottom: 10px;} 
+}
+
+.ucent_goods_list2{
+    li{ border-bottom: solid @col-body 1px; line-height: 2.5rem;
+        &:nth-child(1){ height: 3rem; line-height: 3rem;}
+        p:nth-child(1){ text-indent: 1rem;}
+        p:nth-child(2){ .p_r; right: .5rem;}
+        .col-link{ font-size: 1.5rem; top: 2px;}
+    }
+}
+.ucent_goods_log~.appMain{ padding-bottom:45px;}
+
+.ucent_nav_form{
+    li{ position: relative;border-bottom: solid 1px #eee; padding:10px;
+        input{ .p_a; border:0; width: 100%;}
+        img{ height: 50px; width: 50px; border-radius: 80px;  float: left; 
+        }
+        &.file{ line-height: 50px;
+            input{ .p_a; width: 100%; height: 100%; opacity: 0;}
+        }
+    }
+}
+
+.ucent_recharge{
+    
+    li{border-bottom: 1px solid #eee;  font-size: .785rem; padding:5px 0; color: #555;
+        &.tab{ line-height: 40px;}
+        .cent{ line-height: 2.5rem;}
+    }
+}
+
+.cp_list{
+    &:after{content: ""; height: 1rem; display: block;}
+    li{ background: #fff; .p_r; margin:0 1rem 1rem 1rem;padding:0;
+        span{ background: #35b4dc; width: 50px; height: 50px; border-radius: 50px; line-height: 50px; .p_a; top: 50%; left: 50%; margin:-25px 0  0 -25px; font-size: 1rem; color: #fff; text-align: center;}
+        img{ width: 100%; display: block; border-radius: 5px;}
+        .iconfont{ .p_a; right: 5px; top:5px; background: rgba(0,0,0,.5); color: #fff; .b_r(20px); width: 40px; height: 40px; line-height: 40px; text-align: center;}
+    }
 }

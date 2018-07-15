@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1:3010/wap/common/common.css" />
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1:3010/wap/main/main.css" />
+</head>
+
+<body class="bgfff">
+	<div class="header_pr">
+		<header class="icon_header">
+			<a class="iconfont icon-zuojiantou"   ></a>
+			<div>商品评论</div>
+			
+		</header>
+	</div>
+	<div class="header_bg"></div>
+
+	<div class="ucent_goods_log">
+		<div class="cent row col-mar">
+			<a href="javascript:;" onclick="getTelShow();" class="btn btn-outpri btn-block">联系商家</a>
+		</div>
+	</div>
+
+	<!-- 通用内容框架  appMain -->
+	<div class="appMain">
+		<div class="nav_icon_tab nav_icon_tab_whole nav_icon_tab2" ui-swiper data-config="{freeMode : true,slidesPerView : 'auto',initialSlide :0}">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide ">
+					<a href="/index">评论</a>
+				</div>
+				<div class="swiper-slide ">
+					<a href="/">商品详细</a>
+				</div>
+			</div>
+		</div>
+		<div class="comment_banner">
+			<p style="font-size: 18px; padding:50px 0;">易商通运城市运营中心</p>
+		</div>	
+		
+		<ul class="ucent_nav">
+			<li>
+				<a href="" >
+					<i class="iconfont icon-daishouhuo fl"></i>
+					<span class="fl">配送时间：09:00-17:30</span>
+				</a>
+			</li>
+			
+			<li>
+				<a href="">
+					<i class="iconfont icon-shouhuodizi fl"></i>
+					<span class="fl">商家地址：山西天源路</span>
+				</a>
+			</li>
+		</ul>
+
+	</div>
+
+
+
+</body>
+
+</html>
+<script type="text/javascript" src="http://127.0.0.1:3010/lib/jquery.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:3010/lib/wui/wui.js"></script>
+<script type="text/javascript" src="http://127.0.0.1:3010/wap/common/js/common.js"></script>
+<script type="text/javascript">
+	//打电话弹窗
+	var getTelShow = function(){
+		layer.open({
+			type: 1
+			,title: false 
+			,area: '300px;'
+			,shade: 0.8
+			,id: 'layer_tel'
+			,resize: false
+			,btnAlign: 'c'
+			,moveType: 1 //拖拽模式，0或者1
+			,content: '<div style="padding: 20px 20px 0 20px; background:#f5f5f5;"><a href="tel:028-69712208" class="btn btn-outline btn-block"><i class="icon-dianhuayes iconfont"></i>028-69712208</a><a href="tel:028-69712208" class="btn btn-outline btn-block"><i class="icon-dianhuayes iconfont"></i>028-69712208</a></div>'
+			,success: function(layero){
+			
+			}
+		});
+	};
+	
+	</script>
