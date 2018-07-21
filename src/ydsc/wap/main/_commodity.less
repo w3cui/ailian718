@@ -52,7 +52,7 @@
         .btn { height: 50px; padding: 0; line-height: 50px; .b_r(0);  }
     }
     .cent{.p_r(relative,5);}
-    .order{.p_r(absolute,0); left: 0;  bottom:100%; width: 100%; background:rgba(255, 255, 255, 0.97); padding-bottom: 30px;
+    .order{.p_r(absolute,50); left: 0;  bottom:0; width: 100%; background:rgba(255, 255, 255, 0.97); 
         .info{.p_r(relative,5); padding:0 0 10px 40%; text-align: left; border-bottom: solid 1px #ccc; margin-bottom: 10px;
             a.img{ .p_r(absolute,5); left: 5%; width: 30%; bottom:10px; border:solid 4px #fff;
                 img{ width: 100%; display: block;}
@@ -61,8 +61,9 @@
                 *{.ov_ell;}
                 .money{ color: @col-main; font-size: 16px;}
                 p{ color: #999; font-size: 12px;}
-                h3{ font-size: 1rem; padding:3px 0;}
+                h3{ font-size: 1rem; padding:3px 15px 3px 3px;}
             }
+            &>.iconfont{ .p_a; right: 5px; color: #999; top: 5px;}
         }
         .ullit{
             li{border-bottom: solid 1px #ccc; padding-right: 15px;
@@ -88,6 +89,10 @@
                     input{ display: none;}
                 }
             }
+        }
+
+        .but{
+            a{ height: 50px; line-height: 50px; text-align: center; padding:0;.b_r(0);}
         }
 
     }
